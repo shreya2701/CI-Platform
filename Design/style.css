@@ -10,17 +10,18 @@
     }
     .box{
       width: 100%;
-      padding: 60px;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      padding-left: 30px;
+      padding-right: 30px;
     }
     .revenue{
       min-height: 300px ;
     }
-    body{
-      overflow-x: hidden;
-    }
+    
     .absolute{
         position:absolute;
-        top: 84%;
+        /* top: 84%; */
         left: 40%    
     }
     .carousel-p{
@@ -155,8 +156,6 @@
       .name{
         text-align: center;
       }
-
-
       
     }
     
@@ -166,10 +165,9 @@
       padding: 8px;
     }
     .nav-line {
-      color: white;
-      size: 12pt;
-      padding: 10px 30px;
-      border-right: 1px solid black;
+      size: 13pt;
+      padding: 15px 30px;
+      border-right: 1px solid  rgba(0, 0, 0, 0.55);
     }
 
 
@@ -263,9 +261,9 @@
     } */
 
 
-    .dropdown:hover >.dropdown-menu{
+    /* .dropdown:hover >.dropdown-menu{
       display: block !important;
-    }
+    } */
     .dropdown-submenu:hover > .dropdown-menu{
       display: block !important;
         left: 100%;
@@ -273,7 +271,7 @@
     }
     
     .dropdown-item{
-      font-size: small; /* 13px */
+      font-size: small; 
     }
     .dropdown-toggle::after{
       font-size: var(--font-md);
@@ -287,6 +285,11 @@
           font-size: 18px;
           margin-top: 1px;
           line-height: 12px;
+    }
+
+
+    .dropdown-menu{
+      min-width: 9rem;
     }
     
     .box1{
@@ -342,6 +345,7 @@
       z-index: 5;
       margin-left:auto; 
       margin-right:auto;
+      cursor: auto;
     }
     
     .checked {
@@ -372,6 +376,13 @@
         color: #f88634;
         background-color: #fff;
         border-color: #f88634;
+        border-color:  #f88634;
+        
+    }
+    .button:hover{
+      opacity:1;
+      filter:alpha(opacity=100);
+      box-shadow: 0 0 0 1px #f88634;
     }
     
     .icon {
@@ -1047,6 +1058,31 @@
           .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
             color:  #f88634;
             background-color: white;
+        }
+
+
+        .admin-sidenav{
+          color:white ;
+          background-color:#f88634;
+        }
+
+        .admin-icon{
+          color: #333;
+          border: none;
+        }
+
+
+
+        .timesheet-heading{
+          font-family: NotoSans;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #414141;
         }
          
           
