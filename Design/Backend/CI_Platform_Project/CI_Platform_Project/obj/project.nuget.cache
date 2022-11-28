@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VMEJ9GXF8Up6U6oP97Ra/4PA7KGPqsZ0wV6Lptul/OC/3fejgcVPKQttggyVSFBqiLmDD7EHdk/kpbIErwuiZQ==",
+  "dgSpecHash": "HWZlYvmefA41xWbaQ7of9Ayqa4HImhgbZQ57jW7pEoEeKas8NbZgfy6VIX+Q+m1BySMSI9GQLwo8BGGC4vK3wQ==",
   "success": true,
-  "projectFilePath": "D:\\TatvaSoft_Task\\Backend\\CI_Platform_Project\\CI_Platform_Project\\CI_Platform_Project.csproj",
+  "projectFilePath": "D:\\TatvaSoft_Task\\CI Platform Design\\Design\\Backend\\CI_Platform_Project\\CI_Platform_Project\\CI_Platform_Project.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

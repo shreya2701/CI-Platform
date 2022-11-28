@@ -1,0 +1,1016 @@
+<html>
+  <head>
+    <title>admin</title>
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"  
+        crossorigin="anonymous"> 
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+        <link rel="styesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="style.css">
+        <!-- <link rel="stylesheet" href="css/bootstrap-side-navbar.min.css" /> -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+     
+        <style>
+         
+/* @media (min-width: 991.98px) {
+main {
+padding-left: 240px;
+}
+} */
+
+/* Sidebar */
+.sidebar {
+position: fixed;
+top: 0;
+bottom: 0;
+left: 0;
+padding: 58px 0 0; /* Height of navbar */
+box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+width: 240px;
+z-index: 600;
+}
+
+/* @media (max-width: 991.98px) {
+.sidebar {
+width: 50%;
+}
+} */
+.sidebar .active {
+border-radius: 5px;
+box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidebar-sticky {
+position: relative;
+top: 0;
+height: calc(100vh - 48px);
+padding-top: 0.5rem;
+overflow-x: hidden;
+overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+main>section {
+  display: none;
+}
+:target {
+  display: block;
+}
+        </style>
+  </head>
+  <body>
+    <!--Main Navigation-->
+          <!--Main Navigation-->
+          <!-- <header> -->
+            <!-- Sidebar -->
+            
+                <!-- <nav id="sidebarMenu" class=" collapse d-lg-block sidebar collapse p-2" data-mdb-mode="side" data-mdb-hidden="false" data-mdb-scroll-container="#scrollContainer" style="background-color: #f88634;">
+                  <div class="position-sticky">
+                    <div class="list-group list-group-flush mx-3 mt-4">
+                      <p class="mb-0 admin-sidenav">
+                        Navigation
+                      </p>
+                      <a href="#" class="list-group-item list-group-item-action py-2 ripple admin-sidenav"  aria-current="true">
+                        <i class="bi bi-person fa-fw me-3" style="color: orange;"></i><span>User</span>
+                      </a>
+                      <a href="#" class="list-group-item list-group-item-action py-2 ripple admin-sidenav">
+                        <i class="bi bi-file-earmark-break fa-fw me-3" style="color: orange;"></i><span>CMS Page</span>
+                      </a>
+                      <a href="#" class="list-group-item list-group-item-action py-2 ripple admin-sidenav"><i
+                          class="bi bi-person fa-fw me-3"></i><span>Mission</span></a>
+                      <a href="#" class="list-group-item list-group-item-action py-2 ripple admin-sidenav"><i
+                          class="bi bi-person fa-fw me-3"></i><span>Mission Theeme</span></a>
+                      <a href="#" class="list-group-item list-group-item-action py-2 ripple admin-sidenav">
+                        <i class="bi bi-person fa-fw me-3"></i><span>Mission Skill</span>
+                      </a>
+                      <a href="#" class="list-group-item list-group-item-action py-2 ripple admin-sidenav"><i
+                          class="bi bi-person fa-fw me-3"></i><span>Mission Application</span></a>
+                      <a href="#" class="list-group-item list-group-item-action py-2 ripple admin-sidenav"><i
+                          class="bi bi-person fa-fw me-3"></i><span>Story</span></a>
+                      <a href="#" class="list-group-item list-group-item-action py-2 ripple admin-sidenav"><i
+                          class="bi bi-person fa-fw me-3"></i><span>Banner</span></a>
+                    </div>
+                  </div>
+                </nav> -->
+              
+
+              
+
+
+
+             
+               
+              
+            <!-- Sidebar -->
+
+            <!-- Navbar -->
+           
+            <!-- Navbar -->
+          <!-- </header> -->
+          <!--Main Navigation-->
+          <header>
+          <div class="container-fluid p-0">
+            <div class="row gx-0 flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0"style="background-color: #f88634;">
+                    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100 mx-2">
+                        <a href="/" class="d-flex align-items-center pt-4 mb-md-0 me-md-auto text-white text-decoration-none ">
+                            <span class=" d-none d-sm-inline mx-0 small">NAVIGATION</span>
+                        </a>
+                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mx-2" id="menu">
+                            <li class="nav-item">
+                                <a href="#User" class="nav-link align-middle px-0">
+                                    <i class="fs-4 bi bi-person admin-icon"></i> <span class="ms-1 d-none d-sm-inline admin-sidenav">User</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                              <a href="#CMS" class="nav-link align-middle px-0">
+                                <i class="bi bi-file-earmark-text-fill admin-icon"></i><span class="ms-1 d-none d-sm-inline admin-sidenav">CMS Page</span>
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                              <a href="#Mission" class="nav-link align-middle px-0">
+                                  <i class=" bi bi-bullseye admin-icon"></i> <span class="ms-1 d-none d-sm-inline admin-sidenav">Mission</span>
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                              <a href="#Theme" class="nav-link align-middle px-0">
+                                  <i class="bi bi-columns-gap admin-icon"></i> <span class="ms-1 d-none d-sm-inline admin-sidenav">Mission Theme</span>
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                              <a href="#Skill" class="nav-link align-middle px-0">
+                                  <i class="bi bi-tools admin-icon"></i> <span class="ms-1 d-none d-sm-inline admin-sidenav">Mission Skill</span>
+                              </a>
+                            </li>
+                            <li>
+                                <a href="#" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                    <i class="bi bi-files admin-icon"></i> <span class="ms-1 d-none d-sm-inline admin-sidenav">Story</span> </a>
+                                <ul class="collapse show nav flex-column ms-1 " id="submenu1" data-bs-parent="#menu">
+                                    <li class="w-100">
+                                        <a href="#Listing" class="nav-link px-0"> <i class="bi bi-journal-text admin-icon"></i><span class="d-none d-sm-inline admin-sidenav">Story Listing</span> </a>
+                                    </li>
+                                    <li>
+                                        <a href="#Detail" class="nav-link px-0"><i class="bi bi-journal-text admin-icon"></i> <span class="d-none d-sm-inline admin-sidenav">Story Detail</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                              <a href="#Banner" class="nav-link align-middle px-0">
+                                  <i class="bi bi-box admin-icon"></i> <span class="ms-1 d-none d-sm-inline admin-sidenav">Banner Management</span>
+                              </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col p-0 ">
+                  <div class="container-fluid p-0">
+              
+                    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white " style="box-shadow: 3px 5.2px 10px 0 rgba(0, 0, 0, 0.08);">
+                      <!-- Container wrapper -->
+                      <div class="container-fluid">
+                        
+                      
+                      
+                     
+      
+      
+                        <span class="px-2" style="font-size: 15px;">
+                          Thursday, November 3, 2022, 10:06 AM
+                        </span>
+                        <!-- Brand -->
+                        <!-- <a class="navbar-brand" href="#">
+                          <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="25" alt="MDB Logo"
+                            loading="lazy" />
+                        </a> -->
+                        <!-- Search form -->
+                        <!-- <form class="d-none d-md-flex input-group w-auto my-auto">
+                          <input autocomplete="off" type="search" class="form-control rounded"
+                            placeholder='Search (ctrl + "/" to focus)' style="min-width: 225px;" />
+                          <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
+                        </form> -->
+        
+                        <!-- Right links -->
+                        <ul class="navbar-nav ms-auto d-flex flex-row">
+                          <!-- Notification dropdown -->
+                          
+        
+                          <!-- Icon -->
+                          
+        
+                          <!-- Icon dropdown -->
+                          
+                          <!-- Avatar -->
+                         
+                          <div class="col d-flex justify-content-end d-lg-none ">
+                            <!-- <a class="button" href="#modalCentersubmit" data-bs-toggle="modal"><i class="bi bi-plus-circle pt-3" style="font-size: 2.00rem;"></i></i></a>&nbsp; -->
+                                   <nav class="nav justify-content-center" aria-label="Secondary navigation">
+                                       <li class="nav-item dropdown">
+                                          <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown"  aria-expanded="false">
+                                              <div class=" d-flex justify-content-between "><img src="assets/user-img.png" class="rounded-circle"
+                                                  alt="Avatar" width="40px" height="40px" /></div>
+                                          </a>
+                                          <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">volunteered</a></li>
+                                            <li><a class="dropdown-item" href="#"> Policy</a></li>
+                                          </ul>
+                                        </li>
+                                        </nav>
+                              </div> 
+      
+                          <div class="margin d-flex align-items-center p-0">
+                            <img src="assets/user-img.png" class="rounded-circle fadelarge"
+                                 alt="Avatar" width="40px" height="40px" />&nbsp;&nbsp;
+                                 <nav class="nav justify-content-center" aria-label="Secondary navigation">
+                                 <li class="nav-item dropdown">
+                                    <a class="nav-link fadelarge" href="#" role="button" data-bs-toggle="dropdown"  aria-expanded="false" style="color: black;">
+                                        <div class=" d-flex justify-content-between ">User Name<i class=" icon bi bi-chevron-down "></i></div>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                      <li><a class="dropdown-item" href="#">volunteered</a></li>
+                                      <li><a class="dropdown-item" href="#"> Policy</a></li>
+                                    </ul>
+                                  </li>
+                                  </nav>
+                        </div> 
+                        </ul>
+                      </div>
+                      <!-- Container wrapper -->
+                    </nav>
+                  </div>
+                 <main class="p-0">
+                  <section class="m-4" id="User">
+                    
+                    <button class="mision-border  p-2" style="background-color: white;"><span style="font-size: 22px;color: #414141">User</span></button>
+                    
+                     <a href="#UserEdit"><button type="submit" class="mx-4 px-4  py-1 btn-block rounded-pill button float-end"> Add<i class="bi-ad ms-2"></i></button></a>
+                 
+                    <hr class="m-0 mb-4">
+                    <table id="example" class="table row-border" style="width:100%">
+                      <thead>
+                          <tr>
+                              <th>FirstName</th>
+                              <th>LastName</th>
+                              <th>Email</th>
+                              <th>EmployeeId</th>
+                              <th>Depatment</th>
+                              <th >Status</th> 
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Adam</td>
+                              <td>Baldwin</td>
+                              <td>Adam12546@yahs.com</td>
+                              <td>1364978456</td>
+                              <td>HR</td>
+                              <td>
+                              Active</td>
+                              <td>
+                                
+                                  <a href="#UserEdit"><i class="bi bi-pencil-square" style="color:#f88634;"></i></a>
+                                   &nbsp;
+                                   <a href="#modalCenterDelete" role="button" class="btn p-0" data-bs-toggle="modal">
+                                    <i class="bi bi-trash text-end"></i>
+                                    </i></a> 
+                                    <!-- Modal HTML -->
+    <div id="modalCenterDelete" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="text-start">Are you sure you want to delete this item?</p>
+            </div>
+            <div class="modal-footer border-top-0 justify-content-center">
+                <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill  " style="font-size: 16px;">Cancel</button>
+                <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Delete</button>
+            </div>
+        </div>
+    </div>
+    </div>
+                                
+                          </td>
+
+                          </tr>
+                          
+                      </tbody>
+                      
+                  </table>
+                  </section>
+                  <section class="m-4" id="UserEdit">
+                    <form style="border: 1px solid rgb(222, 218, 218);" class="">
+                      <div>
+                        <p class="m-0 p-2 px-4" style="background-color: rgba(151, 148, 148, 0.148); box-shadow:3px 3px 2px 0 rgb(0 0 0 / 8%);">
+                          Edit
+                        </p>
+                        <hr class="m-0">
+                      </div>
+                      <div class="bg-white" style="padding-left: 25px; padding-bottom: 30px;">
+                        <div class="form-group mb-3 mt-3">
+                          <label for="title">Title</label>
+                          <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+                        </div>
+                        <div class="form-group mb-3">
+                          <label for="exampleFormControlTextarea1">Description</label>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="9"></textarea>
+                        </div>
+                        <div class="form-group mb-3">
+                          <label for="title">Slug</label>
+                          <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Plantation and Afforestation">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">Status</label>
+                          <select class="form-control" id="exampleFormControlSelect1">
+                            <option>Active</option>
+                            <option>Deavtive</option>
+                          </select>
+                        </div>
+                      </div>
+                     </form>
+                     <div class="modal-footer border-top-0 justify-content-end mb-3 ">
+                     <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill bg-white " style="font-size: 16px;">Cancel</button>&nbsp;
+                      <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Save</button>
+                  </div>
+                  
+                 
+                  </section>
+                  <section class="m-4" id="CMS">
+                    <button class="mision-border  p-2" style="background-color: white;"><span style="font-size: 22px;color: #414141">Cms Pages</span></button>
+                    
+                     <a href="#CMSEdit"><button type="submit" class="mx-4 px-4  py-1 btn-block rounded-pill button float-end"> Add<i class="bi-ad ms-2"></i></button></a>
+                 
+                    <hr class="m-0 mb-4">
+                    <table id="example" class="table row-border" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th class="w-75">Title</th>
+                                <th >Status</th> 
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Adam</td>
+                                <td>
+                                Active</td>
+                                <td>
+                                  
+                                    <a href="#CMSEdit"><i class="bi bi-pencil-square" style="color:#f88634;"></i></a>
+                                     &nbsp;
+                                     <a href="#modalCenterDeleteCMS" role="button" class="btn p-0" data-bs-toggle="modal">
+                                      <i class="bi bi-trash text-end"></i>
+                                      </i></a> 
+                                      <!-- Modal HTML -->
+      <div id="modalCenterDeleteCMS" class="modal fade" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header border-bottom-0">
+                  <h5 class="modal-title">Confirm Delete</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body pt-0">
+                  <p class="text-start">Are you sure you want to delete this item?</p>
+              </div>
+              <div class="modal-footer border-top-0 justify-content-center">
+                  <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill  " style="font-size: 16px;">Cancel</button>
+                  <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Delete</button>
+              </div>
+          </div>
+      </div>
+      </div>
+                                  
+                            </td>
+  
+                            </tr>
+                            
+                        </tbody>
+                        
+                    </table>
+                  </section>
+                  <section class="m-4" id="CMSEdit">
+                    <form style="border: 1px solid rgb(222, 218, 218);" class="">
+                      <div>
+                        <p class="m-0 p-2 px-4" style="background-color: rgba(151, 148, 148, 0.148); box-shadow:3px 3px 2px 0 rgb(0 0 0 / 8%);">
+                          Edit
+                        </p>
+                        <hr class="m-0">
+                      </div>
+                      <div class="bg-white" style="padding-left: 25px; padding-bottom: 30px;">
+                        <div class="form-group mb-3 mt-3">
+                          <label for="title">Title</label>
+                          <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+                        </div>
+                        <div class="form-group mb-3">
+                          <label for="exampleFormControlTextarea1">Description</label>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="9"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">Status</label>
+                          <select class="form-control" id="exampleFormControlSelect1">
+                            <option>Active</option>
+                            <option>Deavtive</option>
+                          </select>
+                        </div>
+                      </div>
+                     </form>
+                     <div class="modal-footer border-top-0 justify-content-end mb-3 ">
+                     <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill bg-white " style="font-size: 16px;">Cancel</button>&nbsp;
+                      <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Save</button>
+                  </div>
+                  
+                 
+                  </section>
+
+
+
+
+                  <!-- Mission -->
+                  <section class="m-4" id="Mission">
+                    
+                    <button class="mision-border  p-2" style="background-color: white;"><span style="font-size: 22px;color: #414141">Mission</span></button>
+                    
+                     <a href="#MissionEdit"><button type="submit" class="mx-4 px-4  py-1 btn-block rounded-pill button float-end"> Add<i class="bi-ad ms-2"></i></button></a>
+                 
+                    <hr class="m-0 mb-4">
+                    <table id="example" class="table row-border" style="width:100%">
+                      <thead>
+                          <tr>
+                              <th class="w-75">Title</th>
+                              <th >Status</th> 
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Adam</td>
+
+                              <td>
+                              Active</td>
+                              <td>
+                                
+                                  <a href="#UserEdit"><i class="bi bi-pencil-square" style="color:#f88634;"></i></a>
+                                   &nbsp;
+                                   <a href="#modalCenterDeleteMission" role="button" class="btn p-0" data-bs-toggle="modal">
+                                    <i class="bi bi-trash text-end"></i>
+                                    </i></a> 
+                                    <!-- Modal HTML -->
+    <div id="modalCenterDeleteMission" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="text-start">Are you sure you want to delete this item?</p>
+            </div>
+            <div class="modal-footer border-top-0 justify-content-center">
+                <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill  " style="font-size: 16px;">Cancel</button>
+                <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Delete</button>
+            </div>
+        </div>
+    </div>
+    </div>
+                                
+                          </td>
+
+                          </tr>
+                          
+                      </tbody>
+                      
+                  </table>
+                  </section>
+                  <section class="m-4" id="MissionEdit">
+                    <form style="border: 1px solid rgb(222, 218, 218);" class="">
+                      <div>
+                        <p class="m-0 p-2 px-4" style="background-color: rgba(151, 148, 148, 0.148); box-shadow:3px 3px 2px 0 rgb(0 0 0 / 8%);">
+                          Edit
+                        </p>
+                        <hr class="m-0">
+                      </div>
+                      <div class="bg-white" style="padding-left: 25px; padding-bottom: 30px;">
+                        <div class="form-group mb-3 mt-3">
+                          <label for="title">Title</label>
+                          <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+                        </div>
+                        <div class="form-group mb-3">
+                          <label for="exampleFormControlTextarea1">Description</label>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="9"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">Status</label>
+                          <select class="form-control" id="exampleFormControlSelect1">
+                            <option>Active</option>
+                            <option>Deavtive</option>
+                          </select>
+                        </div>
+                      </div>
+                     </form>
+                     <div class="modal-footer border-top-0 justify-content-end mb-3 ">
+                     <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill bg-white " style="font-size: 16px;">Cancel</button>&nbsp;
+                      <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Save</button>
+                  </div>
+                  </section>
+
+
+
+                  <!-- Theme -->
+                  <section class="m-4" id="Theme">
+                    
+                    <button class="mision-border  p-2" style="background-color: white;"><span style="font-size: 22px;color: #414141">Theme</span></button>
+                    
+                     <a href="#ThemeEdit"><button type="submit" class="mx-4 px-4  py-1 btn-block rounded-pill button float-end"> Add<i class="bi-ad ms-2"></i></button></a>
+                 
+                    <hr class="m-0 mb-4">
+                    <table id="example" class="table row-border" style="width:100%">
+                      <thead>
+                          <tr>
+                              <th class="w-75">Name</th>
+                              <th >Status</th> 
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Adam</td>
+                              <td>
+                              Active</td>
+                              <td>
+                                
+                                  <a href="#ThemeEdit"><i class="bi bi-pencil-square" style="color:#f88634;"></i></a>
+                                   &nbsp;
+                                   <a href="#modalCenterDeletetheme" role="button" class="btn p-0" data-bs-toggle="modal">
+                                    <i class="bi bi-trash text-end"></i>
+                                    </i></a> 
+                                    <!-- Modal HTML -->
+    <div id="modalCenterDeletetheme" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="text-start">Are you sure you want to delete this item?</p>
+            </div>
+            <div class="modal-footer border-top-0 justify-content-center">
+                <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill bg-white " style="font-size: 16px; ">Cancel</button>
+                <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Delete</button>
+            </div>
+        </div>
+    </div>
+    </div>
+                                
+                          </td>
+
+                          </tr>
+                          
+                      </tbody>
+                      
+                  </table>
+                  </section>
+                  <section class="m-4" id="ThemeEdit">
+                    <form style="border: 1px solid rgb(222, 218, 218);" class="">
+                      <div>
+                        <p class="m-0 p-2 px-4" style="background-color: rgba(151, 148, 148, 0.148); box-shadow:3px 3px 2px 0 rgb(0 0 0 / 8%);">
+                          Edit
+                        </p>
+                        <hr class="m-0">
+                      </div>
+                      <div class="bg-white" style="padding-left: 25px; padding-bottom: 30px;">
+                        <div class="form-group mb-3 mt-3">
+                          <label for="title">Name</label>
+                          <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">Status</label>
+                          <select class="form-control" id="exampleFormControlSelect1">
+                            <option>Active</option>
+                            <option>Deavtive</option>
+                          </select>
+                        </div>
+                      </div>
+                     </form>
+                     <div class="modal-footer border-top-0 justify-content-end mb-3 ">
+                     <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill bg-white " style="font-size: 16px;">Cancel</button>&nbsp;
+                      <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Save</button>
+                  </div>
+                  </section>
+
+
+                  <!-- skill -->
+                  <section class="m-4" id="Skill">
+                    
+                    <button class="mision-border  p-2" style="background-color: white;"><span style="font-size: 22px;color: #414141">Skill</span></button>
+                    
+                     <a href="#SkillEdit"><button type="submit" class="mx-4 px-4  py-1 btn-block rounded-pill button float-end"> Add<i class="bi-ad ms-2"></i></button></a>
+                 
+                    <hr class="m-0 mb-4">
+                    <table id="example" class="table row-border" style="width:100%">
+                      <thead>
+                          <tr>
+                              <th class="w-75">Name</th>
+                              <th >Status</th> 
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Adam</td>
+                              <td>
+                              Active</td>
+                              <td>
+                                
+                                  <a href="#SkillEdit"><i class="bi bi-pencil-square" style="color:#f88634;"></i></a>
+                                   &nbsp;
+                                   <a href="#modalCenterDeleteSkill" role="button" class="btn p-0" data-bs-toggle="modal">
+                                    <i class="bi bi-trash text-end"></i>
+                                    </i></a> 
+                                    <!-- Modal HTML -->
+    <div id="modalCenterDeleteSkill" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="text-start">Are you sure you want to delete this item?</p>
+            </div>
+            <div class="modal-footer border-top-0 justify-content-center">
+                <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill bg-white " style="font-size: 16px; ">Cancel</button>
+                <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Delete</button>
+            </div>
+        </div>
+    </div>
+    </div>
+                                
+                          </td>
+
+                          </tr>
+                          
+                      </tbody>
+                      
+                  </table>
+                  </section>
+                  <section class="m-4" id="SkillEdit">
+                    <form style="border: 1px solid rgb(222, 218, 218);" class="">
+                      <div>
+                        <p class="m-0 p-2 px-4" style="background-color: rgba(151, 148, 148, 0.148); box-shadow:3px 3px 2px 0 rgb(0 0 0 / 8%);">
+                          Edit
+                        </p>
+                        <hr class="m-0">
+                      </div>
+                      <div class="bg-white" style="padding-left: 25px; padding-bottom: 30px;">
+                        <div class="form-group mb-3 mt-3">
+                          <label for="title">Name</label>
+                          <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">Status</label>
+                          <select class="form-control" id="exampleFormControlSelect1">
+                            <option>Active</option>
+                            <option>Deavtive</option>
+                          </select>
+                        </div>
+                      </div>
+                     </form>
+                     <div class="modal-footer border-top-0 justify-content-end mb-3 ">
+                     <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill bg-white " style="font-size: 16px;">Cancel</button>&nbsp;
+                      <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Save</button>
+                  </div>
+                  </section>
+
+                  <!-- listing -->
+                  <section class="m-4" id="Listing">
+                    
+                    <button class="mision-border  p-2" style="background-color: white;"><span style="font-size: 22px;color: #414141">Listing</span></button>
+                    
+                     <a href="#ListEdit"><button type="submit" class="mx-4 px-4  py-1 btn-block rounded-pill button float-end"> Add<i class="bi-ad ms-2"></i></button></a>
+                 
+                    <hr class="m-0 mb-4">
+                    <table id="example" class="table row-border" style="width:100%">
+                      <thead>
+                          <tr>
+                              <th class="w-75">Name</th>
+                              <th >Status</th> 
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Adam</td>
+                              <td>
+                              Active</td>
+                              <td>
+                                
+                                  <a href="#ListEdit"><i class="bi bi-pencil-square" style="color:#f88634;"></i></a>
+                                   &nbsp;
+                                   <a href="#modalCenterDeleteList" role="button" class="btn p-0" data-bs-toggle="modal">
+                                    <i class="bi bi-trash text-end"></i>
+                                    </i></a> 
+                                    <!-- Modal HTML -->
+    <div id="modalCenterDeleteList" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="text-start">Are you sure you want to delete this item?</p>
+            </div>
+            <div class="modal-footer border-top-0 justify-content-center">
+                <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill bg-white " style="font-size: 16px; ">Cancel</button>
+                <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Delete</button>
+            </div>
+        </div>
+    </div>
+    </div>
+                                
+                          </td>
+
+                          </tr>
+                          
+                      </tbody>
+                      
+                  </table>
+                  </section>
+                  <section class="m-4" id="ListEdit">
+                    <form style="border: 1px solid rgb(222, 218, 218);" class="">
+                      <div>
+                        <p class="m-0 p-2 px-4" style="background-color: rgba(151, 148, 148, 0.148); box-shadow:3px 3px 2px 0 rgb(0 0 0 / 8%);">
+                          Edit
+                        </p>
+                        <hr class="m-0">
+                      </div>
+                      <div class="bg-white" style="padding-left: 25px; padding-bottom: 30px;">
+                        <div class="form-group mb-3 mt-3">
+                          <label for="title">Name</label>
+                          <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">Status</label>
+                          <select class="form-control" id="exampleFormControlSelect1">
+                            <option>Active</option>
+                            <option>Deavtive</option>
+                          </select>
+                        </div>
+                      </div>
+                     </form>
+                     <div class="modal-footer border-top-0 justify-content-end mb-3 ">
+                     <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill bg-white " style="font-size: 16px;">Cancel</button>&nbsp;
+                      <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Save</button>
+                  </div>
+                  </section>
+
+
+                  <!-- Detail -->
+                  <section class="m-4" id="Detail">
+                    
+                    <button class="mision-border  p-2" style="background-color: white;"><span style="font-size: 22px;color: #414141">Story Detail</span></button>
+                    
+                     <a href="#DetailEdit"><button type="submit" class="mx-4 px-4  py-1 btn-block rounded-pill button float-end"> Add<i class="bi-ad ms-2"></i></button></a>
+                 
+                    <hr class="m-0 mb-4">
+                    <table id="example" class="table row-border" style="width:100%">
+                      <thead>
+                          <tr>
+                              <th class="w-75">Name</th>
+                              <th >Status</th> 
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Adam</td>
+                              <td>
+                              Active</td>
+                              <td>
+                                
+                                  <a href="#DetailEdit"><i class="bi bi-pencil-square" style="color:#f88634;"></i></a>
+                                   &nbsp;
+                                   <a href="#modalCenterDeleteDetail" role="button" class="btn p-0" data-bs-toggle="modal">
+                                    <i class="bi bi-trash text-end"></i>
+                                    </i></a> 
+                                    <!-- Modal HTML -->
+    <div id="modalCenterDeleteDetail" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="text-start">Are you sure you want to delete this item?</p>
+            </div>
+            <div class="modal-footer border-top-0 justify-content-center">
+                <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill bg-white " style="font-size: 16px; ">Cancel</button>
+                <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Delete</button>
+            </div>
+        </div>
+    </div>
+    </div>
+                                
+                          </td>
+
+                          </tr>
+                          
+                      </tbody>
+                      
+                  </table>
+                  </section>
+                  <section class="m-4" id="DetailEdit">
+                    <form style="border: 1px solid rgb(222, 218, 218);" class="">
+                      <div>
+                        <p class="m-0 p-2 px-4" style="background-color: rgba(151, 148, 148, 0.148); box-shadow:3px 3px 2px 0 rgb(0 0 0 / 8%);">
+                          Edit
+                        </p>
+                        <hr class="m-0">
+                      </div>
+                      <div class="bg-white" style="padding-left: 25px; padding-bottom: 30px;">
+                        <div class="form-group mb-3 mt-3">
+                          <label for="title">Name</label>
+                          <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">Status</label>
+                          <select class="form-control" id="exampleFormControlSelect1">
+                            <option>Active</option>
+                            <option>Deavtive</option>
+                          </select>
+                        </div>
+                      </div>
+                     </form>
+                     <div class="modal-footer border-top-0 justify-content-end mb-3 ">
+                     <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill bg-white " style="font-size: 16px;">Cancel</button>&nbsp;
+                      <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Save</button>
+                  </div>
+                  </section>
+
+
+                  <!-- Banner -->
+
+                  <section class="m-4" id="Banner">
+                    
+                    <button class="mision-border  p-2" style="background-color: white;"><span style="font-size: 22px;color: #414141">Banner</span></button>
+                    
+                     <a href="#BannerEdit"><button type="submit" class="mx-4 px-4  py-1 btn-block rounded-pill button float-end"> Add<i class="bi-ad ms-2"></i></button></a>
+                 
+                    <hr class="m-0 mb-4">
+                    <table id="example" class="table row-border" style="width:100%">
+                      <thead>
+                          <tr>
+                              <th class="w-75">Name</th>
+                              <th >Status</th> 
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Adam</td>
+                              <td>
+                              Active</td>
+                              <td>
+                                
+                                  <a href="#BannerEdit"><i class="bi bi-pencil-square" style="color:#f88634;"></i></a>
+                                   &nbsp;
+                                   <a href="#modalCenterDeleteBanner" role="button" class="btn p-0" data-bs-toggle="modal">
+                                    <i class="bi bi-trash text-end"></i>
+                                    </i></a> 
+                                    <!-- Modal HTML -->
+    <div id="modalCenterDeleteBanner" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p class="text-start">Are you sure you want to delete this item?</p>
+            </div>
+            <div class="modal-footer border-top-0 justify-content-center">
+                <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill bg-white " style="font-size: 16px; ">Cancel</button>
+                <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Delete</button>
+            </div>
+        </div>
+    </div>
+    </div>
+                                
+                          </td>
+
+                          </tr>
+                          
+                      </tbody>
+                      
+                  </table>
+                  </section>
+                  <section class="m-4" id="BannerEdit">
+                    <form style="border: 1px solid rgb(222, 218, 218);" class="">
+                      <div>
+                        <p class="m-0 p-2 px-4" style="background-color: rgba(151, 148, 148, 0.148); box-shadow:3px 3px 2px 0 rgb(0 0 0 / 8%);">
+                          Edit
+                        </p>
+                        <hr class="m-0">
+                      </div>
+                      <div class="bg-white" style="padding-left: 25px; padding-bottom: 30px;">
+                        <div class="form-group mb-3 mt-3">
+                          <label for="title">Name</label>
+                          <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">Status</label>
+                          <select class="form-control" id="exampleFormControlSelect1">
+                            <option>Active</option>
+                            <option>Deavtive</option>
+                          </select>
+                        </div>
+                      </div>
+                     </form>
+                     <div class="modal-footer border-top-0 justify-content-end mb-3 ">
+                     <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill bg-white " style="font-size: 16px;">Cancel</button>&nbsp;
+                      <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Save</button>
+                  </div>
+                  </section>
+
+                 </main>
+                </div>
+            </div>
+        </div>
+      </header>
+
+
+     <script>
+      $(document).ready(function () {
+    $('#example').DataTable();
+    
+});
+$(document).ready(function () {
+    $('#example1').DataTable();
+});
+
+filterSelection("user")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      element.className += " " + arr2[i];
+    }
+  }
+}
+
+// Hide elements that are not selected
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current control button (highlight it)
+var btnContainer = document.getElementsByClassName("nav-pills");
+var btns = btnContainer.getElementsByClassName("nav-link");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active xyz");
+    for (var j = 0; j < current.length; j++) {
+                    current[j].className = current[j].className.replace(" border-bottom border-dark border-2 active xyz", " ");
+                }
+                this.className += " border-bottom border-dark border-2 active xyz";
+  });
+}
+     </script>     
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script> 
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+       
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" 
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" 
+        crossorigin="anonymous"></script>
+  </body>
+</html>

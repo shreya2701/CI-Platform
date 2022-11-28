@@ -1067,8 +1067,9 @@
         }
 
         .admin-icon{
-          color: #333;
+          color: white;
           border: none;
+          fill: white;
         }
 
 
