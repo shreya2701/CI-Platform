@@ -1,0 +1,58 @@
+﻿@using CI_Platform_Project.Models
+@model AdminZm
+@{
+    ViewData["Title"] = "StoryDetail";
+    Layout = "~/Areas/Admin/Views/Pages/_Layout.cshtml";
+}
+<form method="get" aasp-action="StoryDetail" style="border: 1px solid black" class="p-4">
+    <div >
+    <p class="mb-0">
+        Story Title :-
+    </p>
+   
+       
+</div>
+
+<div >
+    <p class="mb-0">
+        Mission Title :-
+    </p>
+   
+        <p>
+            @Model.
+        </p>
+    
+</div>
+
+<div >
+    <p class="mb-0">
+        User Full Name :-
+    </p>
+   
+        
+    
+</div>
+
+<div >
+    <p class="mb-0">
+        User Full Name :-
+    </p>
+   
+        
+</div>
+</form>
+
+
+@*<div class="container p-3 my-3 border">
+    <h1>Employee Details</h1>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => Model.stories.t)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+    <div>
+*@

@@ -1,0 +1,126 @@
+﻿@using CI_Platform_Project.DataModels
+@model IEnumerable<User>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Pages/_Layout.cshtml";
+}
+
+
+
+
+
+<style>
+
+
+
+    /* Sidebar */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        padding: 58px 0 0; /* Height of navbar */
+        box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+        width: 240px;
+        z-index: 600;
+    }
+
+
+        .sidebar .active {
+            border-radius: 5px;
+            box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+        }
+
+    .sidebar-sticky {
+        position: relative;
+        top: 0;
+        height: calc(100vh - 48px);
+        padding-top: 0.5rem;
+        overflow-x: hidden;
+        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    }
+
+    main > section {
+        display: none;
+    }
+
+    :target {
+        display: block;
+    }
+</style>
+
+
+
+
+
+
+<button class="mision-border  p-2" style="background-color: white;"><span style="font-size: 22px;color: #414141">User</span></button>
+
+<a asp-area="Admin" asp-controller="Admin" asp-action="AddUser"><button type="submit" class="mx-4 px-4  py-1 btn-block rounded-pill button float-end"> Add<i class="bi-ad ms-2"></i></button></a>
+
+<hr class="m-0 mb-4">
+<table id="datatable" class="table row-border" style="width:100%">
+    <thead>
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>EmployeeId</th>
+            <th>Depatment</th>
+            <th>
+                Status
+            </th>
+            <th>
+                Action
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td>@obj.FirstName</td>
+                <td>@obj.LastName</td>
+                <td>@obj.Email</td>
+                <td>@obj.PhoneNumber</td>
+                <td>@obj.Department</td>
+                <td style="color:blue">
+                    @(obj.Status == 1 ? "Active" : "In-Active")
+                </td>
+                <td>
+                <form method="post">
+                    <a asp-area="Admin" asp-controller="Admin" asp-action="EditUser" asp-route-UserId="@obj.UserId"><i class="bi bi-pencil-square" style="color:#f88634;"></i></a>
+                    &nbsp;
+                    <button type="submit" asp-area="Admin" asp-controller="Admin" asp-action="OnPostDelete" asp-route-id=@obj.UserId onclick="confirm('Are You Want to Delete?')" role="button" class="btn p-0" data-bs-toggle="modal">
+                        <i class="bi bi-trash text-end"></i>
+                    </button>
+                </form>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+
+
+
+
+
+
+
+
+<script>
+    $(document).ready(function() {
+        $('#datatable').DataTable();
+        $('#example1').DataTable();
+
+
+    });
+</script>
+
+
+
+

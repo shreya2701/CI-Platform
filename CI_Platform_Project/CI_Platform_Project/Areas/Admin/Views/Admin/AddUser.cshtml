@@ -1,0 +1,75 @@
+﻿@using CI_Platform_Project.DataModels
+@model User;
+@{
+    ViewData["Title"] = "AddUser";
+    Layout = "~/Areas/Admin/Views/Pages/_Layout.cshtml";
+}
+
+<form style="border: 1px solid rgb(222, 218, 218);" class="" method="post">
+    <div>
+        <p class="m-0 p-2 px-4" style="background-color: rgba(151, 148, 148, 0.148); box-shadow:3px 3px 2px 0 rgb(0 0 0 / 8%);">
+            Add
+        </p>
+        <hr class="m-0">
+    </div>
+    <div class="row bg-white" style="padding-left: 25px; padding-bottom: 30px;">
+        <div class="col-6 form-group mb-3 mt-3">
+            <label asp-for="FirstName">FirstName</label>
+            <input type="text" asp-for="FirstName" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="col-6 form-group mb-3 mt-3">
+            <label asp-for="LastName">LastName</label>
+            <input type="text" asp-for="LastName" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+        </div>
+        <div class="col-6 form-group mb-3 mt-3">
+            <label asp-for="Email">Email</label>
+            <input type="email" asp-for="Email" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="col-6 form-group mb-3 mt-3">
+            <label asp-for="PhoneNumber">PhoneNumber</label>
+            <input type="number" asp-for="PhoneNumber" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="col-6 form-group mb-3 mt-3">
+            <label asp-for="Password">Password</label>
+            <input type="text" asp-for="Password" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="col-6 form-group mb-3 mt-3">
+            <label asp-for="ConfirmPassword">ConfirmPassword</label>
+            <input type="text" asp-for="ConfirmPassword" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div class="col-6 form-group mb-3 mt-3">
+            <label asp-for="EmployeeId">EmployeeId</label>
+            <input type="number" asp-for="EmployeeId" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+        </div>
+        <div class="col-6 form-group mb-3 mt-3">
+            <label asp-for="Department">Department</label>
+            <input type="text" asp-for="Department" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+        </div>
+        <div class="form-group">
+            <label asp-for="Status">Status</label>
+            <select asp-for="Status" class="form-control" id="exampleFormControlSelect1">
+                <option asp-for="Status" value="" disabled selected>--Select--</option>
+                <option asp-for="Status" value="1">Active</option>
+                <option asp-for="Status"  value="0">Deavtive</option>
+            </select>
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+    </div>
+    <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill" asp-area="Admin" asp-controller="Admin" asp-action="Index" style="font-size: 16px;">
+        Back to List
+        </button>&nbsp;
+    <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Save</button>
+</form>
+
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
+

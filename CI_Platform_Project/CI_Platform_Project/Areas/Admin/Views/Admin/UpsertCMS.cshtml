@@ -1,0 +1,59 @@
+﻿@using CI_Platform_Project.DataModels
+@model CmsPage;
+@{
+    ViewData["Title"] = "UpsertCMS";
+    Layout = "~/Areas/Admin/Views/Pages/_Layout.cshtml";
+}
+
+<form style="border: 1px solid rgb(222, 218, 218);" class="" method="post" enctype="multipart/form-data" aasp-action="AddBanner">
+    <input asp-for="CmsPageId" hidden />
+    <input asp-for="Slug" hidden />
+    <input asp-for="CreatedAt" hidden />
+    <div>
+        <p class="m-0 p-2 px-4" style="background-color: rgba(151, 148, 148, 0.148); box-shadow:3px 3px 2px 0 rgb(0 0 0 / 8%);">
+            @(Model == null ? "Add":"Update") Banner
+        </p>
+        <hr class="m-0">
+    </div>
+    <div class="row bg-white" style="padding-left: 25px; padding-bottom: 30px;">
+        <div class="col-12 form-group mb-3 mt-3">
+            <label asp-for="Title">Title</label>
+            <input type="text" asp-for="Title" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="col-12 form-group mb-3 ">
+            <label asp-for="Description">Description</label>
+            <input type="text" asp-for="Description" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Status">Status</label>
+            <select asp-for="Status" class="form-control" id="exampleFormControlSelect1">
+                <option asp-for="Status" value="" disabled selected>--Select---</option>
+                <option asp-for="Status" value="1">Active</option>
+                <option asp-for="Status" value="0">In-Active</option>
+            </select>
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+    </div>
+    <a  class=" add-skill px-3  py-1 btn border-dark rounded-pill " asp-area="Admin" asp-controller="Admin" asp-action="CMS" style="font-size: 16px;">
+        Back to List
+    </a>&nbsp;
+    @if (Model == null)
+    {
+        <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Save</button>
+    }
+    else
+    {
+        <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Update</button>
+    }
+
+
+</form>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+}
+

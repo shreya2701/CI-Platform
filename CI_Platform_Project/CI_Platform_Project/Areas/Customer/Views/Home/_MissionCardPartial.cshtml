@@ -1,0 +1,156 @@
+﻿@model IEnumerable<Card>
+
+
+
+<script src="~/js/popper.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(function() {
+        var placeholderElement = $('#modal-placeholder');
+        $('button[data-toggle="ajax-modal"]').click(function(event) {
+            var url = $(this).data('url');
+            var decodeUrl = decodeURIComponent(url);
+            $.get(decodeUrl).done(function(data) {
+                placeholderElement.html(data);
+                placeholderElement.find('.modal').modal('show');
+            });
+        });
+
+
+
+        placeholderElement.on('click', '[data-save="modal"]', function(event) {
+
+            var formData = new FormData($('#modalForm').get(0));
+            var form = $(this).parents('.modal').find('form');
+            var actionUrl = form.attr('action');
+            $.ajax({
+                url: "/Customer/Home/" + actionUrl,
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function(data) {
+                    placeholderElement.find('.modal').modal('hide');
+                },
+                error: function() {
+                    alert(Invalid);
+                }
+            });
+
+            placeholderElement.find('.modal').modal('hide');
+        });
+
+        placeholderElement.on('click', '[data-dismiss="modal"]', function(e) {
+            placeholderElement.find('.modal').modal('hide');
+        });
+    });
+</script>
+
+
+<!--  Grid card -->
+<div class="row row-cols-1 row-cols-lg-3 row-cols-md-2" id="gridView">
+    @foreach (var item in Model)
+    {
+
+        <div class="col mb-4">
+            <div class="card h-100 cardcontainer">
+                <div class="photo">
+                    <img src="@item.img" class="card-img-top w-100" alt="...">
+                    <!-- <button class="card-button heart"><i class="bi bi-suit-heart card-icon p-1"></i></button> -->
+                    <!-- <button class="card-button contact"><i class="bi bi-person-plus card-icon p-1"></i></button> -->
+                    <!-- <button class="border rounded-pill card-button location " style="border-radius: 45%;"><i class="bi bi-geo-alt card-icon p-1"><span class="p-1">Toranto</span></i></button> -->
+                </div>
+                <div class="card-body">
+                    <div class="d-flex align-items-center location">
+                        <img src="~/lib/assets/location.png" alt="" class="img-fuild px-2" style="height: 10px;color: white;">
+                        <span>@item.city</span>
+                    </div>
+                    @if(item.favorite == 0)
+                    {
+                        <div class="d-flex align-items-center heart p-2">
+                            <button type="button" onclick="favorite(@item.mission.MissionId,1)">
+                                <img src="~/lib/assets/heart.png" alt="" class="img-fuild" style="height: 17px;color: white;">
+                            </button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="d-flex align-items-center heart p-2">
+                            <button type="button" onclick="favorite(@item.mission.MissionId,0)" >
+                                <img src="~/lib/assets/heart1.png" alt="" class="img-fuild" style="height: 17px;color: white;">
+                            </button>
+                        </div>
+                    }
+                    <div class="form-group d-flex align-items-center btn user">
+                        <button type="button" class="btn" data-toggle="ajax-modal" data-target="#CoWorker"
+                            data-url="@Url.Action("CoWorker", "Home" , new{id = @item.mission.MissionId})">
+                            <img src="~/lib/assets/user.png" alt="" class="img-fuild" style="height: 17px;color: white;">
+                        </button>
+
+                    </div>
+                    <div id="modal-placeholder"></div>
+
+
+                    <div class="box1 " style="z-index: 5;">
+                        <span class="mb-30px text-wrap btn btn-sm rounded-pill "
+                          style="background-color: white; color: #757575; ">
+                            @item.theme
+                        </span>
+                    </div>
+
+                    <h5 class="card-title">@item.mission.Title</h5>
+                    <p class="card-text">@item.mission.ShortDescription</p>
+                </div>
+                <div class="row">
+                    <div class="col-8 ">
+                        <p style="margin-left: 30px;font-size: 15px;">@item.mission.OrganizationName</p>
+                    </div>
+                    <div class="col-4 p-0" style="padding-right: 30px;">
+                        <img src="~/lib/assets/selected-star.png" width="17px" height="16px">
+                        <img src="~/lib/assets/selected-star.png" width="17px" height="16px">
+                        <img src="~/lib/assets/selected-star.png" width="17px" height="16px">
+                        <img src="~/lib/assets/star.png" width="17px" height="16px">
+                        <img src="~/lib/assets/star.png" width="17px" height="16px">
+                    </div>
+                </div>
+                <div>
+                    <div class="fromuntil">
+                        <span class="text-wrap btn btn-sm btn-outline-dark rounded-pill fromuntil1"
+                          style="background-color: white; color: #757575; ">
+                            From @Convert.ToDateTime(@item.mission.StartDate).ToString("dd/MM/yyyy") until @Convert.ToDateTime(@item.mission.EndDate).ToString("dd/MM/yyyy")
+                        </span>
+                    </div>
+                    <hr style=" z-index: -12;">
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div class=" margin d-flex align-items-center">
+                        <img src="~/lib/assets/Seats-left.png" width="25px" height="25px">&nbsp;&nbsp;
+                        <div class="flex-column">
+                            <p class="mb-0 text0">@item.mission.TotalSeat</p>
+                            <p class="mb-0 text1">TotalSeat</p>
+                        </div>
+                    </div>
+                    <div class=" margin d-flex align-items-center" style="margin-right: 50px;">
+                        <img src="~/lib/assets/deadline.png" width="30px" height="30px">&nbsp;&nbsp;
+                        <div class="flex-column">
+                            <p class="mb-0 text0">@Convert.ToDateTime(@item.mission.RegistrationDeadline).ToString("dd/MM/yyyy")</p>
+                            <p class="mb-0 text1">Deadline</p>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+
+                <div class="text-center">
+                    <button type="submit" class=" px-4  py-1 btn-block rounded-pill button">Apply <i class="bi bi-arrow-right ms-2"></i></button>
+                </div>
+                <br />
+            </div>
+        </div>
+    }
+
+</div>
+
+
+
+

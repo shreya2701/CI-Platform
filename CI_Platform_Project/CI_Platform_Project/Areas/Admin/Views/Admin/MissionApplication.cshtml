@@ -1,0 +1,68 @@
+﻿@using CI_Platform_Project.Models
+@model AdminZm
+@{
+    ViewData["Title"] = "MissionApplication";
+    Layout = "~/Areas/Admin/Views/Pages/_Layout.cshtml";
+}
+
+
+<button class="mision-border  p-2" style="background-color: white;"><span style="font-size: 22px;color: #414141">Mission Application</span></button>
+
+
+
+<hr class="m-0 mb-4">
+<table id="datatable" class="table row-border" style="width:100%">
+    <thead>
+        <tr>
+            <th>Mission ID</th>
+            <th>Mission Title</th>
+            <th>User ID</th>
+            <th>User Full Name</th>
+            <th>Applied Date</th>
+            <th>
+                Action
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model.missionApplication)
+        {
+            <tr>
+                <td>@obj.MissionId</td>
+                @*<td>@obj.Mission.Title</td>*@
+                <td>@obj.UserId</td>
+                <td>@obj.User.FirstName &nbsp; @obj.User.LastName</td>
+                <td>@obj.AppliedAt</td>
+                <td>
+                <form method="post">
+                    <a asp-area="Admin" asp-controller="Admin" asp-action="MissionAppAccept" asp-route-id="@obj.MissionApplicationId"><i class="bi bi-check-circle text-success" style="color:#f88634;"></i></a>
+                    &nbsp;
+                    <a type="submit" asp-area="Admin" asp-controller="Admin" asp-action="MissionAppDecline" asp-route-id=@obj.MissionApplicationId onclick="confirm('Are You Want to Delete?')" role="button"  data-bs-toggle="modal">
+                        <i class="bi bi-x-circle text-danger text-end"></i>
+                    </a>
+                </form>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+
+
+
+
+
+
+
+
+<script>
+    $(document).ready(function() {
+        $('#datatable').DataTable();
+        $('#example1').DataTable();
+
+
+    });
+</script>

@@ -1,0 +1,61 @@
+﻿@using CI_Platform_Project.DataModels
+@model IEnumerable<CmsPage>
+@{
+    ViewData["Title"] = "CMS";
+    Layout = "~/Areas/Admin/Views/Pages/_Layout.cshtml";
+}
+
+
+<button class="mision-border  p-2" style="background-color: white;"><span style="font-size: 22px;color: #414141">CMS Page</span></button>
+
+<a asp-area="Admin" asp-controller="Admin" asp-action="UpsertCMS"><button type="submit" class="mx-4 px-4  py-1 btn-block rounded-pill button float-end"> Add<i class="bi-ad ms-2"></i></button></a>
+
+<hr class="m-0 mb-4">
+<table id="datatable" class="table row-border" style="width:100%">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>
+                Status
+            </th>
+            <th>
+                Action
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td>@obj.Title</td>
+                <td>@obj.Description</td>
+                <td style="color:blue">
+                    @(obj.Status == 1 ? "Active" : "In-Active")
+                </td>
+                <td>
+                <form method="post">
+                    <a asp-area="Admin" asp-controller="Admin" asp-action="UpsertCMS" asp-route-id="@obj.CmsPageId"><i class="bi bi-pencil-square" style="color:#f88634;"></i></a>
+                    &nbsp;
+                    <button type="submit" asp-area="Admin" asp-controller="Admin" asp-action="DeleteCMS" asp-route-id=@obj.CmsPageId onclick="confirm('Are You Want to Delete?')" role="button" class="btn p-0" data-bs-toggle="modal">
+                        <i class="bi bi-trash text-end"></i>
+                    </button>
+                </form>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+
+<script>
+    $(document).ready(function() {
+        $('#datatable').DataTable();
+    });
+</script>
+
+
+

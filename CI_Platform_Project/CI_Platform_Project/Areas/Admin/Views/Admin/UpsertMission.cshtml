@@ -1,0 +1,278 @@
+﻿@using CI_Platform_Project.DataModels
+@model MissionZm;
+
+@{
+    ViewData["Title"] = "UpsertMission";
+    Layout = "~/Areas/Admin/Views/Pages/_Layout.cshtml";
+}
+
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+
+    <script src="~/Scripts/jquery-1.10.2.js"></script>  
+<script>  
+    $(document).ready(function () {  
+        
+        //City Bind By satate id  
+        $("#ddlCountry").change(function () {  
+            var   a = parseInt($(this).val());  
+            if (!isNaN(a)) {  
+                var ddlCity = $('#ddlCity');  
+                ddlCity.append($("<option></option>").val('').html('Please wait ...'));  
+  
+                debugger;  
+                $.ajax({  
+                    url: '/Admin/Admin/City_Bind',  
+                    type: 'GET',  
+                    dataType: 'json',  
+                    data: { CityId:$(this).val() },  
+                    success: function (d) {  
+                        ddlCity.empty(); // Clear the plese wait  
+                        ddlCity.append($("<option></option>").val('').html('Select City Name'));  
+                        $.each(d, function (i, cities) {  
+                            ddlCity.append($("<option></option>").val(cities.value).html(cities.text));  
+                        });  
+                    },  
+                    error: function () {  
+                        alert('Error!');  
+                    }  
+                });  
+            }  
+  
+  
+        });  
+    });  
+</script>  
+
+
+
+
+
+    <script>
+        function ValidateInput() {
+            if (document.getElementById("UploadsBox").value == '') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please Upload Image!',
+                });
+                return false;
+            }
+            return true;
+        };
+
+
+        $(document).ready(function() {
+            $("#TimeShow").hide();
+            $("#GoalShow").hide();
+            $('#selecttype').change(function() {
+
+                var value = $(this).val();
+
+                if (value == 2) {
+                    $("#GoalShow").show();
+                    $("#TimeShow").hide();
+                }
+                else if (value == 1) {
+
+                    $("#GoalShow").hide();
+                    $("#TimeShow").show();
+                }
+                //resultString += "<p class='mb-1 mt-4' style='font-size:14px;'>Total Seats</p><input type='number' asp-for='mission.TotalSeat' class='popup' name='total_seat'><p class='mb-1 mt-4' style='font-size:14px;' >Registration Deadline</p><input type='date' asp-for='mission.RegistrationDeadline'  class='popup' name='deadline'>";
+
+                //$('#divResult').html(resultString);
+
+            });
+        });
+
+    </script>
+}
+    @*@if (Model.mission != null && Model.mission.MissionType == 2)
+{
+     <script>
+         setTimeout(function(){ $("#GoalShow").show(); }, 1000);
+    </script>
+
+}
+else if (Model.mission != null)
+{
+    <script>
+        setTimeout(function(){ $("#TimeShow").show(); }, 1000);
+    </script>
+
+}*@
+
+@if (Model != null)
+{
+    if (Model.mission.MissionType == 2)
+    {
+        <script>
+            setTimeout(function() { $("#GoalShow").show(); }, 1000);
+        </script>
+    }
+    else
+    {
+        <script>
+            setTimeout(function() { $("#TimeShow").show(); }, 1000);
+        </script>
+    }
+
+
+}
+
+
+<form class="row g-3" method="post" enctype="multipart/form-data" aasp-action="UpsertMission">
+    <input asp-for="mission.MissionId" hidden />
+    <input asp-for="mission.MissionMedia" hidden />
+    <input asp-for="mission.CreatedAt" hidden />
+    <div>
+        <p class="m-0 p-2 px-4" style="background-color: rgba(151, 148, 148, 0.148); box-shadow:3px 3px 2px 0 rgb(0 0 0 / 8%);">
+            @(Model == null ? "Add":"Update") Mission
+        </p>
+        <hr class="m-0">
+    </div>
+    <div class="col-md-6">
+        <label asp-for="mission.CountryId" class="form-label w-100">Country</label>
+        <select asp-for="mission.CountryId" asp-items="ViewBag.CountryList" class="form-select w-100" id="ddlCountry">
+            <option value="" disabled selected hidden>Select Country</option>
+        </select>
+    </div>
+    <div class="col-md-6 ">
+        <label asp-for="mission.CityId" class="form-label w-100">City</label>
+        <select asp-for="mission.CityId" asp-items="ViewBag.CityList" class="form-select w-100" aria-placeholder="select Country" id="ddlCity">
+            <option value="" disabled selected hidden>Select city</option>
+        </select>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="mission.Title" class="form-label">Mission Title</label>
+        <input type="text" asp-for='mission.Title' class="form-control" id="title" placeholder="Enter Mission Title">
+    </div>
+    <div class="col-md-6">
+        <label asp-for="mission.OrganizationName" class="form-label">Mission Organisation Name</label>
+        <input type="text" class="form-control" asp-for="mission.OrganizationName" id="department" placeholder="Enter Mission Organisation Name">
+    </div>
+    <div class="col-12">
+        <label asp-for="mission.Description" class="form-label">Mission Description</label>
+        <textarea class="form-control" asp-for="mission.Description" id="myProfile" rows="4" placeholder="Mission Description"></textarea>
+    </div>
+     <div class="col-6">
+        <label asp-for="mission.ShortDescription" class="form-label">Short Description</label>
+        <input type="text" class="form-control" asp-for="mission.ShortDescription" id="myProfile" rows="4" placeholder="Mission Description">
+    </div>
+    <div class="col-6">
+        <label asp-for="mission.Availability">Status</label>
+        <select asp-for="mission.Availability" class="form-control" id="exampleFormControlSelect1">
+            <option  value="" disabled selected>--Select---</option>
+            <option  value="1">Monthly </option>
+            <option  value="0">Weekly</option>
+        </select>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="mission.ThemeId" class="form-label w-100">mission theme</label>
+        <select asp-for="mission.ThemeId" asp-items="ViewBag.ThemeList" class=" w-100">
+            <option value="" disabled selected hidden><span class="add-mission-dropdown">--- select theme ---</span></option>
+        </select>
+    </div>
+    <div class="col-md-6 ">
+        <label asp-for="addSkill" class="form-label w-100 ">Mission Skill</label>
+        <select class="selectpicker w-100" asp-for="addSkill" asp-items="ViewBag.skilllist" multiple data-live-search="true">
+        </select>
+    </div>
+    <div class="form-group col-6">
+        <label asp-for="mission.Status">Status</label>
+        <select asp-for="mission.Status" class="form-control" id="exampleFormControlSelect1">
+            <option asp-for="Status" value="" disabled selected>--Select---</option>
+            <option asp-for="Status" value="1">Active</option>
+            <option asp-for="Status" value="0">In-Active</option>
+        </select>
+        <span asp-validation-for="mission.Status" class="text-danger"></span>
+    </div>
+    <div class="form-group col-md-6">
+        <label asp-for="mission.MissionType">Mission Type</label>
+        <select id="selecttype" asp-for="mission.MissionType" class="form-control">
+            @*<option asp-for="MissionType" value="" disabled selected>--Select---</option>*@
+            <option selected>Open this select menu</option>
+            <option value="1">Time</option>
+            <option value="2">Goal</option>
+        </select>
+    </div>
+    <div id="TimeShow" class="row">
+        <div class="col-6">
+            <label asp-for="mission.RegistrationDeadline" class="form-label">Registration Deadline</label>
+            <input class="form-control" type="date" asp-for="mission.RegistrationDeadline" placeholder="Select start date" id="d">
+        </div>
+        <div class="col-6">
+            <label asp-for="mission.TotalSeat" class="form-label">TotalSeat</label>
+            <input class="form-control" type="text" asp-for="mission.TotalSeat" placeholder="Select start date" id="d">
+        </div>
+        <div class="col-6" id="StartDate">
+            <label asp-for="mission.StartDate" class="form-label">Start Date</label>
+            <input class="form-control" type="date" asp-for="mission.StartDate" placeholder="Select start date" id="d">
+        </div>
+        <div class="col-6" id="EndDate">
+            <label asp-for="mission.EndDate" class="form-label">End Date</label>
+            <input class="form-control" type="date" asp-for="mission.EndDate" placeholder="Select start date" id="d">
+        </div>
+    </div>
+    <div id="GoalShow" class="row">
+        <div class="col-6">
+            <label asp-for="goal.GoalValue" class="form-label">Goal Value</label>
+            <input class="form-control" type="number" asp-for="goal.GoalValue" placeholder="Select start date">
+        </div>
+        <div class="col-6">
+            <label asp-for="goal.GoalObjectiveText" class="form-label">Goal Objective</label>
+            <input class="form-control" type="text" asp-for="goal.GoalObjectiveText" placeholder="Select start date">
+        </div>
+    </div>
+    
+
+    <label asp-for="mission.MissionMedia" class="form-label">Mission Images</label>
+    <div class="drag-area mt-0 mx-2">
+        <div class="icon"><i class="bi bi-cloud-arrow-down"></i></div>
+        <button>Upload Image Here</button>
+        <input type="file" id="UploadsBox" name="file">
+    </div>
+    <label asp-for="mission.MissionDocuments" class="form-label">Mission Documentss</label>
+    <div class="drag-area mt-0 mx-2">
+        <div class="icon"><i class="bi bi-cloud-arrow-down"></i></div>
+        <header>
+            Drag & Drop to Upload File<span>OR</span>
+            <button>Browse File</button>
+        </header>
+
+        <input type="file" name="document">
+    </div>
+    
+    @*<div class="col-md-12">
+    <label asp-for="Availability" class="form-label">Mission Availability</label>
+    <select id="inputState" class="form-select">
+    <option value="" disabled selected hidden class="small">Select Availability</option>
+    <option>india</option>
+    <option>india</option>
+    <option>india</option>
+    <option>india</option>
+    </select>
+    </div>*@
+
+    <a class=" add-skill px-3  py-1 btn border-dark rounded-pill  " asp-area="Admin" asp-controller="Admin" asp-action="Mission" style="font-size: 16px;width:150px">
+        Back to List
+    </a>&nbsp;
+    @if (Model == null)
+    {
+        <button type="submit" class=" px-3 py-1 btn-block rounded-pill button" style="font-size: 17px;width:150px">Save</button>
+    }
+    else
+    {
+        <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;width:150px">Update</button>
+    }
+
+
+
+
+
+
+</form>
