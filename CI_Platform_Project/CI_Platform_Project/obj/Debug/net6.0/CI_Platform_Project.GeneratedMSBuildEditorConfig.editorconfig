@@ -107,12 +107,52 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/Home/missionDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxtaXNzaW9uRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/Home/ShareStory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxTaGFyZVN0b3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/Home/Story.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxTdG9yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/Home/StoryDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxTdG9yeURldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/Home/_Co-WorkerPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxfQ28tV29ya2VyUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/Home/_MissionCardPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxfTWlzc2lvbkNhcmRQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/Home/_StoryCardPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxfU3RvcnlDYXJkUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/Home/_StoryCo-WorkerPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxfU3RvcnlDby1Xb3JrZXJQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/UserDetail/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVXNlckRldGFpbFxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/UserDetail/UserProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVXNlckRldGFpbFxVc2VyUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/UserDetail/_ConfirmPasswordPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVXNlckRldGFpbFxfQ29uZmlybVBhc3N3b3JkUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/UserDetail/_ContactUsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVXNlckRldGFpbFxfQ29udGFjdFVzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/User/ForgotPassword.cshtml]
@@ -135,6 +175,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVXNlclxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/VolunteerTimesheet/VolunteerTimesheet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVm9sdW50ZWVyVGltZXNoZWV0XFZvbHVudGVlclRpbWVzaGVldC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/VolunteerTimesheet/_GoalTimesheetPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVm9sdW50ZWVyVGltZXNoZWV0XF9Hb2FsVGltZXNoZWV0UGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/VolunteerTimesheet/_TimesheetPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVm9sdW50ZWVyVGltZXNoZWV0XF9UaW1lc2hlZXRQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -143,8 +195,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Views/Shared/_Layout1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/TatvaSoft_Task/New folder/CI_Platform_Project/CI_Platform_Project/Views/Shared/_ValidationScriptsPartial.cshtml]

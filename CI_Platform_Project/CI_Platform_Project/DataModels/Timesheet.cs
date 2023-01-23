@@ -11,21 +11,21 @@ public partial class Timesheet
 
     public long MissionId { get; set; }
 
-    public TimeSpan? Time { get; set; }
-
-    public int? Action { get; set; }
-
     public DateTime DateVolunteered { get; set; }
 
     public string? Notes { get; set; }
 
-    public string Status { get; set; } = null!;
+    public int Status { get; set; }
 
     public DateTime CreatedAt { get; set; }
 
     public DateTime? UpdatedAt { get; set; }
 
     public DateTime? DeletedAt { get; set; }
+
+    public int? Hour { get; set; }
+
+    public int? Minute { get; set; }
 
     public virtual Mission Mission { get; set; } = null!;
 

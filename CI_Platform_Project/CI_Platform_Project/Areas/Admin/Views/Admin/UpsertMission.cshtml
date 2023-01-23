@@ -13,40 +13,40 @@
     }
 
 
-    <script src="~/Scripts/jquery-1.10.2.js"></script>  
-<script>  
-    $(document).ready(function () {  
-        
-        //City Bind By satate id  
-        $("#ddlCountry").change(function () {  
-            var   a = parseInt($(this).val());  
-            if (!isNaN(a)) {  
-                var ddlCity = $('#ddlCity');  
-                ddlCity.append($("<option></option>").val('').html('Please wait ...'));  
-  
-                debugger;  
-                $.ajax({  
-                    url: '/Admin/Admin/City_Bind',  
-                    type: 'GET',  
-                    dataType: 'json',  
-                    data: { CityId:$(this).val() },  
-                    success: function (d) {  
-                        ddlCity.empty(); // Clear the plese wait  
-                        ddlCity.append($("<option></option>").val('').html('Select City Name'));  
-                        $.each(d, function (i, cities) {  
-                            ddlCity.append($("<option></option>").val(cities.value).html(cities.text));  
-                        });  
-                    },  
-                    error: function () {  
-                        alert('Error!');  
-                    }  
-                });  
-            }  
-  
-  
-        });  
-    });  
-</script>  
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            //City Bind By satate id
+            $("#ddlCountry").change(function() {
+                var a = parseInt($(this).val());
+                if (!isNaN(a)) {
+                    var ddlCity = $('#ddlCity');
+                    ddlCity.append($("<option></option>").val('').html('Please wait ...'));
+
+                    debugger;
+                    $.ajax({
+                        url: '/Admin/Admin/City_Bind',
+                        type: 'GET',
+                        dataType: 'json',
+                        data: { CityId: $(this).val() },
+                        success: function(d) {
+                            ddlCity.empty(); // Clear the plese wait
+                            ddlCity.append($("<option></option>").val('').html('Select City Name'));
+                            $.each(d, function(i, cities) {
+                                ddlCity.append($("<option></option>").val(cities.value).html(cities.text));
+                            });
+                        },
+                        error: function() {
+                            alert('Error!');
+                        }
+                    });
+                }
+
+
+            });
+        });
+    </script>
 
 
 
@@ -106,7 +106,7 @@ else if (Model.mission != null)
 
 }*@
 
-@if (Model != null)
+    @if (Model != null)
 {
     if (Model.mission.MissionType == 2)
     {
@@ -125,7 +125,7 @@ else if (Model.mission != null)
 }
 
 
-<form class="row g-3" method="post" enctype="multipart/form-data" aasp-action="UpsertMission">
+<form class="row g-3" method="post" enctype="multipart/form-data" asp-action="UpsertMission">
     <input asp-for="mission.MissionId" hidden />
     <input asp-for="mission.MissionMedia" hidden />
     <input asp-for="mission.CreatedAt" hidden />
@@ -159,16 +159,16 @@ else if (Model.mission != null)
         <label asp-for="mission.Description" class="form-label">Mission Description</label>
         <textarea class="form-control" asp-for="mission.Description" id="myProfile" rows="4" placeholder="Mission Description"></textarea>
     </div>
-     <div class="col-6">
+    <div class="col-6">
         <label asp-for="mission.ShortDescription" class="form-label">Short Description</label>
         <input type="text" class="form-control" asp-for="mission.ShortDescription" id="myProfile" rows="4" placeholder="Mission Description">
     </div>
     <div class="col-6">
         <label asp-for="mission.Availability">Status</label>
         <select asp-for="mission.Availability" class="form-control" id="exampleFormControlSelect1">
-            <option  value="" disabled selected>--Select---</option>
-            <option  value="1">Monthly </option>
-            <option  value="0">Weekly</option>
+            <option value="" disabled selected>--Select---</option>
+            <option value="1">Monthly </option>
+            <option value="0">Weekly</option>
         </select>
     </div>
     <div class="col-md-6">
@@ -200,14 +200,14 @@ else if (Model.mission != null)
             <option value="2">Goal</option>
         </select>
     </div>
+    <div class="col-6">
+        <label asp-for="mission.TotalSeat" class="form-label">TotalSeat</label>
+        <input class="form-control" type="text" asp-for="mission.TotalSeat" placeholder="Select start date" id="d">
+    </div>
     <div id="TimeShow" class="row">
         <div class="col-6">
             <label asp-for="mission.RegistrationDeadline" class="form-label">Registration Deadline</label>
             <input class="form-control" type="date" asp-for="mission.RegistrationDeadline" placeholder="Select start date" id="d">
-        </div>
-        <div class="col-6">
-            <label asp-for="mission.TotalSeat" class="form-label">TotalSeat</label>
-            <input class="form-control" type="text" asp-for="mission.TotalSeat" placeholder="Select start date" id="d">
         </div>
         <div class="col-6" id="StartDate">
             <label asp-for="mission.StartDate" class="form-label">Start Date</label>
@@ -228,13 +228,13 @@ else if (Model.mission != null)
             <input class="form-control" type="text" asp-for="goal.GoalObjectiveText" placeholder="Select start date">
         </div>
     </div>
-    
+
 
     <label asp-for="mission.MissionMedia" class="form-label">Mission Images</label>
     <div class="drag-area mt-0 mx-2">
         <div class="icon"><i class="bi bi-cloud-arrow-down"></i></div>
         <button>Upload Image Here</button>
-        <input type="file" id="UploadsBox" name="file">
+        <input type="file" multiple id="UploadsBox" name="file">
     </div>
     <label asp-for="mission.MissionDocuments" class="form-label">Mission Documentss</label>
     <div class="drag-area mt-0 mx-2">
@@ -244,9 +244,9 @@ else if (Model.mission != null)
             <button>Browse File</button>
         </header>
 
-        <input type="file" name="document">
+        <input type="file" multiple name="document">
     </div>
-    
+
     @*<div class="col-md-12">
     <label asp-for="Availability" class="form-label">Mission Availability</label>
     <select id="inputState" class="form-select">

@@ -28,6 +28,7 @@ namespace CI_Platform_Project.Areas.Customer.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Login(User model, CI_Platform_Project.DataModels.Admin models)
         {
             var user = _db.Users.FirstOrDefault(u => u.Email.Equals(model.Email.ToLower()) && u.Password.Equals(model.Password) && u.DeletedAt == null && u.Status == 1);

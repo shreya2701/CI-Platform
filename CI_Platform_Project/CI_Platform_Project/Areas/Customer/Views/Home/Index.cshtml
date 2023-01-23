@@ -1,7 +1,19 @@
 ﻿@model HomePage
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Pager pager = new Pager();
+
+    int pageNo = 0;
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
 }
 @{
 
@@ -12,33 +24,46 @@
 
     }
 }
+
+
+
+
+
+
+<script src="~/js/popper.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/vertuleSelect.js"></script>
+
 <script>
+
+
+    setTimeout(alertFunc, 500);
+    function alertFunc() {
+        VirtualSelect.init({
+            ele: '#cityFilter',
+            dropboxWidth: '170px'
+
+        });
+        VirtualSelect.init({
+            ele: '#countryFilter',
+            dropboxWidth: '170px'
+        });
+        VirtualSelect.init({
+            ele: '#themeFilter',
+            dropboxWidth: '170px'
+        });
+        VirtualSelect.init({
+            ele: '#skillFilter',
+            dropboxWidth: '170px'
+        });
+    }
+
+
     function favorite(Missionid, favorite) {
         $.ajax({
             url: '/Customer/Home/favoriteMission',
             type: 'POST',
-            dataType: 'json',
             data: { id: Missionid, x: favorite },
-            success: function(d) {
-
-            },
-            error: function() {
-                alert('Error');
-            }
-        });
-    }
-
-    function Search() {
-        Filter();
-    }
-
-    function Filter() {
-        var search = $("#searchTitle").val();
-        $.ajax({
-            url: '/Customer/Home/Filter',
-            type: 'POST',
-            dataType: 'json',
-            data: { searchString :search},
             success: function(d) {
                 $("#gridView").empty();
                 $("#gridView").html(d);
@@ -52,18 +77,116 @@
 
 
 
+    //$(document).ready(function() {
+    //    $('#cityDiv').multiselect({
+    //        selectAllText: 'Select all',
+
+    //        // options go here
+    //    });
+    //});
+
+    //$(document).ready(function() {
+    //  $('#cityFilter option').each(function() {
+    //    $(this).before('<input type="checkbox" value="' + $(this).val() + '" name="checkbox_' + $(this).val() + '">' + $(this).text() + '<br>');
+    //    $(this).remove();
+    //  });
+    //});
+
+    function applyMission(Missionid) {
+        $.ajax({
+            url: '/Customer/Home/ApplyMission',
+            type: 'POST',
+            dataType: 'json',
+            data: { id: Missionid },
+            success: function(d) {
+                alert(d);
+            },
+            error: function() {
+                alert('Error');
+            }
+        });
+    }
+
+
+    function FilterTag(str) {
+        var a = document.querySelector(str).getSelectedOptions();
+        $(str + "Div").empty();
+        $.each(a, function(i, text) {
+            $(str + "Div").append('<button type="button" class="btn btn-sm btn-outline-dark rounded-pill firstrow mt-1 me-2"><span class="text-wrap">' + text.label + '</span><i class="bi bi-x"></i></button>');
+        });
+    }
+
+
+    function Search() {
+        Filter();
+    }
+
+    $(document).ready(function() {
+        $("#countryDiv").change(function() {
+            FilterTag("#countryFilter");
+            Filter();
+        });
+        $("#cityDiv").change(function() {
+            FilterTag("#cityFilter");
+            Filter();
+        });
+        $("#themeDiv").change(function() {
+            FilterTag("#themeFilter");
+            Filter();
+        });
+        $("#skillDiv").change(function() {
+            FilterTag("#skillFilter");
+            Filter();
+        });
+        $("#sorts").change(function() {
+            Filter();
+        });
+    });
+
+
+    function Filter() {
+        var search = $("#searchTitle").val();
+        var sort = $("#sorting").val();
+        var city = $("#cityFilter").val();
+        var country = $("#countryFilter").val();
+        var theme = $("#themeFilter").val();
+        var skill = $("#skillFilter").val();
+        $.ajax({
+            url: '/Customer/Home/Filter',
+            type: 'POST',
+            //dataType: 'text/html',
+            data: { sortOrder: sort, searchString: search, cityFilter: city, countryFilter: country, themeFilter: theme, skillFilter: skill },
+            success: function(d) {
+                console.log(d);
+                //alert(d);
+                $("#gridView").empty();
+                $("#gridView").html(d);
+            },
+            error: function(err) {
+                console.log(err);
+                alert('Error');
+            }
+        });
+    }
+
+
+
+
 
 
 </script>
 
+
+
 <hr class="m-0 " />
 <div class="container">
+    <div id="modal-placeholder"></div>
     <nav class="navbar navbar-expand-lg navbar-light lined p-0 ">
         <ul class="navbar-nav ">
-            <li class="nav-link d-flex">
+            <li class="nav-link d-flex p-0">
                 <!-- <input class="form-control w-100" type="search" placeholder="Search" aria-label="Search"> -->
                 <a href="#" class="nav-link text-center">
-                    <input type="search" class="form-control icon1 border-0" onkeyup="Search()" id="searchTitle" placeholder="Search Mission..." />
+                    <input type="search" style="width: 36vw;" class="form-control icon1 border-0" onkeyup="Search()" id="searchTitle" placeholder="Search Mission..." />
                 </a>
             </li>
         </ul>
@@ -87,35 +210,43 @@
 
 
 
-                    <li class="nav-line dropdown px-0">
-                        <a href="#" class="nav-link" data-bs-toggle="dropdown" style="width: 130px;">
-                            <select class="form-select w-100" asp-for="mission.CountryId" asp-items="ViewBag.CountryList">
-                                <option disabled selected>City</option>
-                            </select>
+                    <li class="nav-line dropdown p-1 ">
+                        <a href="#" class="nav-link" data-bs-toggle="dropdown" style="width: 10vw;">
+                            <div id="cityDiv">
+                                <select multiple id="cityFilter" asp-for="mission.CityId" asp-items="ViewBag.CityList" placeholder="City"
+                                        data-search="true" data-silent-initial-value-set="true" name="native-select">
+                                </select>
+                            </div>
                         </a>
 
                     </li>
-                    <li class="nav-line dropdown px-0">
-                        <a href="#" class="nav-link" data-bs-toggle="dropdown" style="width: 130px;">
-                            <select class="form-select w-100" asp-for="mission.CountryId" asp-items="ViewBag.CityList">
-                                <option disabled selected>Country</option>
-                            </select>
+                    <li class="nav-line dropdown p-1">
+                        <a href="#" class="nav-link" data-bs-toggle="dropdown" style="width: 10vw;">
+                            <div id="countryDiv">
+                                <select multiple id="countryFilter" asp-for="mission.CountryId" asp-items="ViewBag.CountryList"
+                                        placeholder="Country" data-search="true" data-silent-initial-value-set="true" name="native-select">
+                                </select>
+                            </div>
                         </a>
 
                     </li>
-                    <li class="nav-line dropdown px-0">
-                        <a href="#" class="nav-link" data-bs-toggle="dropdown" style="width: 130px;">
-                            <select class="form-select w-100" asp-for="mission.CountryId" asp-items="ViewBag.ThemeList">
-                                <option disabled selected>Theme</option>
-                            </select>
+                    <li class="nav-line dropdown p-1">
+                        <a href="#" class="nav-link" data-bs-toggle="dropdown" style="width: 10vw;">
+                            <div id="themeDiv">
+                                <select multiple id="themeFilter" asp-for="mission.ThemeId" asp-items="ViewBag.ThemeList" placeholder="Theme">
+                                    <option disabled selected>Theme</option>
+                                </select>
+                            </div>
                         </a>
 
                     </li>
-                    <li class="nav-line dropdown px-0">
-                        <a href="#" class="nav-link" data-bs-toggle="dropdown" style="width: 130px;">
-                            <select class="form-select w-100" asp-for="mission.CountryId" asp-items="ViewBag.skilllist">
-                                <option disabled selected>Skill</option>
-                            </select>
+                    <li class="nav-line dropdown p-1 d-flex justify-content-end">
+                        <a href="#" class="nav-link" data-bs-toggle="dropdown" style="width: 10vw;">
+                            <div id="skillDiv">
+                                <select multiple id="skillFilter" asp-items="ViewBag.skilllist" placeholder="Skill">
+                                    <option disabled selected>Skill</option>
+                                </select>
+                            </div>
                         </a>
 
                     </li>
@@ -148,84 +279,91 @@
     </nav>
 </div>
 
-
+<hr class="m-0 " />
 @*<hr class="m-0 "/>*@
 <div class="container container-md container-sm container-xs">
     <br class="fadelarge">
 
     <!-- 1st Row -->
     <div class="d-flex flex-wrap">
-        <div class="fadelarge">
-            <p class="btn border rounded-pill small firstrow py-1 px-2" style="max-width:max-content;font-size: 13px;">
-                Tree Plantation
-                <span class="close" aria-label="Close" aria-hidden="true" style="font-size:1.20em;">&times;</span>
-            </p>
+        @*<div class="fadelarge">
+        <p class="btn border rounded-pill small firstrow py-1 px-2" style="max-width:max-content;font-size: 13px;">
+        Tree Plantation
+        <span class="close" aria-label="Close" aria-hidden="true" style="font-size:1.20em;">&times;</span>
+        </p>
         </div>
         <div class="ms-2 fadelarge">
-            <p class="btn border rounded-pill small firstrow py-1 px-2" style="max-width:max-content;font-size: 13px;">
-                Canada
-                <span class="close" aria-label="Close" aria-hidden="true" style="font-size:1.20em;">&times;</span>
-            </p>
+        <p class="btn border rounded-pill small firstrow py-1 px-2" style="max-width:max-content;font-size: 13px;">
+        Canada
+        <span class="close" aria-label="Close" aria-hidden="true" style="font-size:1.20em;">&times;</span>
+        </p>
         </div>
         <div class="ms-2 fadelarge">
-            <p class="btn border rounded-pill small firstrow py-1 px-2" style="max-width:max-content;font-size: 13px;">
-                Toronto
-                <span class="close" aria-label="Close" aria-hidden="true" style="font-size:1.20em;">&times;</span>
-            </p>
+        <p class="btn border rounded-pill small firstrow py-1 px-2" style="max-width:max-content;font-size: 13px;">
+        Toronto
+        <span class="close" aria-label="Close" aria-hidden="true" style="font-size:1.20em;">&times;</span>
+        </p>
         </div>
         <div class="ms-2 fadelarge">
-            <p class="btn border rounded-pill small firstrow py-1 px-2" style="max-width:max-content;font-size: 13px;">
-                Montreal
-                <span class="close" aria-label="Close" aria-hidden="true" style="font-size:1.20em;">&times;</span>
-            </p>
+        <p class="btn border rounded-pill small firstrow py-1 px-2" style="max-width:max-content;font-size: 13px;">
+        Montreal
+        <span class="close" aria-label="Close" aria-hidden="true" style="font-size:1.20em;">&times;</span>
+        </p>
         </div>
         <div class="ms-2 fadelarge">
-            <p class="btn border rounded-pill small firstrow py-1 px-2" style="max-width:max-content;font-size: 13px;">
-                Environment
-                <span class="close" aria-label="Close" aria-hidden="true" style="font-size:1.20em;">&times;</span>
-            </p>
+        <p class="btn border rounded-pill small firstrow py-1 px-2" style="max-width:max-content;font-size: 13px;">
+        Environment
+        <span class="close" aria-label="Close" aria-hidden="true" style="font-size:1.20em;">&times;</span>
+        </p>
         </div>
         <div class="ms-2 fadelarge">
-            <p class="btn border rounded-pill small firstrow py-1 px-2" style="max-width:max-content;font-size: 13px;">
-                Nutrition
-                <span class="close" aria-label="Close" aria-hidden="true" style="font-size:1.20em;">&times;</span>
-            </p>
+        <p class="btn border rounded-pill small firstrow py-1 px-2" style="max-width:max-content;font-size: 13px;">
+        Nutrition
+        <span class="close" aria-label="Close" aria-hidden="true" style="font-size:1.20em;">&times;</span>
+        </p>
         </div>
         <div class="ms-2 fadelarge">
-            <p class="btn border rounded-pill small firstrow py-1 px-2" style="max-width:max-content;font-size: 13px;">
-                Anthropology
-                <span class="close" aria-label="Close" aria-hidden="true" style="font-size:1.20em;">&times;</span>
-            </p>
+        <p class="btn border rounded-pill small firstrow py-1 px-2" style="max-width:max-content;font-size: 13px;">
+        Anthropology
+        <span class="close" aria-label="Close" aria-hidden="true" style="font-size:1.20em;">&times;</span>
+        </p>
         </div>
         <div class="ms-2 fadelarge">
-            <p class="btn border rounded-pill small firstrow py-1 px-2" style="max-width:max-content;font-size: 13px;">
-                Environment Science
-                <span class="close" aria-label="Close" aria-hidden="true" style="font-size:1.20em;">&times;</span>
-            </p>
-        </div>
+        <p class="btn border rounded-pill small firstrow py-1 px-2" style="max-width:max-content;font-size: 13px;">
+        Environment Science
+        <span class="close" aria-label="Close" aria-hidden="true" style="font-size:1.20em;">&times;</span>
+        </p>
+        </div>*@
+        <span id="cityFilterDiv"></span>
+        <span id="countryFilterDiv"></span>
+        <span id="themeFilterDiv"></span>
+        <span id="skillFilterDiv"></span>
+
         <div class="ms-2 fadelarge">
             <p class=" py-1 px-2" style="max-width:max-content;font-size: 13px;">
-                Claer All
+                <a href="Index"> Claer All</a>
             </p>
         </div>
     </div>
     <!-- explore 72 mission row -->
     <div class="d-flex text-center">
         <div class="mt-1">
-            <span class="mission mb-0">Explore&nbsp;<span class="explore">72 missions</span></span>
+            <span class="mission mb-0">Explore&nbsp;<span class="explore">@Model.card.Count() missions</span></span>
         </div>
 
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0  ">
             <li class="nav-link dropdown1 px-2">
-                <select placeholder="Sort By">
-                    <option selected hidden>Sort By</option>
-                    <option value="1">Newest</option>
-                    <option value="2">Oldest</option>
-                    <option value="3">Lowest available seats</option>
-                    <option value="4">Highest available seats</option>
-                    <option value="5">Sort by my favourite</option>
-                    <option value="6">Sort by deadline</option>
-                </select>
+                <div id="sorts">
+                    <select id="sorting" placeholder="Sort By">
+                        <option selected hidden>Sort By</option>
+                        <option value="1">Newest</option>
+                        <option value="2">Oldest</option>
+                        <option value="3">Lowest available seats</option>
+                        <option value="4">Highest available seats</option>
+                        <option value="5">Sort by my favourite</option>
+                        <option value="6">Sort by deadline</option>
+                    </select>
+                </div>
             </li>
         </ul>
         &nbsp;
@@ -243,7 +381,9 @@
 
 
     <!--  Grid card -->
-    <div id="gridView"> @Html.Partial("_MissionCardPartial", Model.card);</div>
+    <div id="gridView">
+        @Html.Partial("_MissionCardPartial", Model.card);
+    </div>
 
 
     <!-- Listed Card -->
@@ -361,39 +501,74 @@
     <!-- Pagination -->
     <div class="d-flex justify-content-center m-5">
         <nav>
-            <ul class="pagination pg-color-black">
-                <li class="page-item">
-                    <a class="page-link" style="color: #757575;" aria-label="Previous">
-                        <span aria-hidden="true"><img src="~/lib/assets/previous.png" width="10px" height="10px" class="my-2 "></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                </li>&nbsp;&nbsp;
-                <li class="page-item">
-                    <a class="page-link" style="color: #757575;;" aria-label="Previous">
-                        <span aria-hidden="true"><img src="~/lib/assets/left.png" width="5px" height="10px" class="my-2 "></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                </li>&nbsp;&nbsp;
-                <li class="page-item active"><a class="page-link" style="background-color:  #f88634;border-color:  #f88634;color: white;">1</a></li>&nbsp;&nbsp;
-                <li class="page-item"><a class="page-link" style="color: #757575;;">2</a></li>&nbsp;&nbsp;
-                <li class="page-item"><a class="page-link" style="color: #757575;;">3</a></li>&nbsp;&nbsp;
-                <li class="page-item"><a class="page-link" style="color: #757575;;">4</a></li>&nbsp;&nbsp;
-                <li class="page-item"><a class="page-link" style="color: #757575;;">5</a></li>&nbsp;&nbsp;
-                <li class="page-item">
-                    <a class="page-link" style="color: #757575;;" aria-label="Next">
-                        <span aria-hidden="true"><img src="~/lib/assets/right-arrow1.png" width="5px" height="10px" class="my-2 "></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </li>&nbsp;&nbsp;
-                <li class="page-item">
-                    <a class="page-link" style="color: #757575;;" aria-label="Next">
-                        <span aria-hidden="true"><img src="~/lib/assets/next.png" width="10px" height="10px" class="my-2 "></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </li>&nbsp;&nbsp;
-            </ul>
+            @if (pager.TotalPages > 0)
+            {
+                <ul class="pagination justify-content-center">
+
+                    @if (pager.CurrentPage > 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" asp-controller="Home" asp-action="Index" asp-route-pg="1">First</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" asp-controller="Home" asp-action="Index" asp-route-pg="@(pager.CurrentPage - 1)">Previous</a>
+                        </li>
+                    }
+
+                    @for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
+                    {
+                        <li class="page-item @(pge == pager.CurrentPage ? "active" : "")">
+                            <a class="page-link" asp-controller="Home" asp-action="Index" asp-route-pg="@pge">@pge</a>
+                        </li>
+                    }
+
+                    @if (pager.CurrentPage < pager.TotalPages)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" asp-controller="Home" asp-action="Index" asp-route-pg="@(pager.CurrentPage + 1)">Next</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" asp-controller="Home" asp-action="Index" asp-route-pg="@(pager.TotalPages)">Last</a>
+                        </li>
+                    }
+                </ul>
+            }
+
+            @* <ul class="pagination pg-color-black">
+            <li class="page-item">
+            <a class="page-link" style="color: #757575;" aria-label="Previous">
+            <span aria-hidden="true"><img src="~/lib/assets/previous.png" width="10px" height="10px" class="my-2 "></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            </li>&nbsp;&nbsp;
+            <li class="page-item">
+            <a class="page-link" style="color: #757575;;" aria-label="Previous">
+            <span aria-hidden="true"><img src="~/lib/assets/left.png" width="5px" height="10px" class="my-2 "></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            </li>&nbsp;&nbsp;
+            <li class="page-item active"><a class="page-link" style="background-color:  #f88634;border-color:  #f88634;color: white;">1</a></li>&nbsp;&nbsp;
+            <li class="page-item"><a class="page-link" style="color: #757575;;">2</a></li>&nbsp;&nbsp;
+            <li class="page-item"><a class="page-link" style="color: #757575;;">3</a></li>&nbsp;&nbsp;
+            <li class="page-item"><a class="page-link" style="color: #757575;;">4</a></li>&nbsp;&nbsp;
+            <li class="page-item"><a class="page-link" style="color: #757575;;">5</a></li>&nbsp;&nbsp;
+            <li class="page-item">
+            <a class="page-link" style="color: #757575;;" aria-label="Next">
+            <span aria-hidden="true"><img src="~/lib/assets/right-arrow1.png" width="5px" height="10px" class="my-2 "></span>
+            <span class="sr-only">Next</span>
+            </a>
+            </li>&nbsp;&nbsp;
+            <li class="page-item">
+            <a class="page-link" style="color: #757575;;" aria-label="Next">
+            <span aria-hidden="true"><img src="~/lib/assets/next.png" width="10px" height="10px" class="my-2 "></span>
+            <span class="sr-only">Next</span>
+            </a>
+            </li>&nbsp;&nbsp;
+            </ul>*@
         </nav>
     </div>
+
+
 
 </div>
 

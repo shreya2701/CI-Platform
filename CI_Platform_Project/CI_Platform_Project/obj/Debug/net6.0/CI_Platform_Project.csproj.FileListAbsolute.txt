@@ -571,3 +571,6 @@ D:\TatvaSoft_Task\New folder\CI_Platform_Project\CI_Platform_Project\obj\Debug\n
 D:\TatvaSoft_Task\New folder\CI_Platform_Project\CI_Platform_Project\obj\Debug\net6.0\CI_Platform_Project.genruntimeconfig.cache
 D:\TatvaSoft_Task\New folder\CI_Platform_Project\CI_Platform_Project\obj\Debug\net6.0\ref\CI_Platform_Project.dll
 D:\TatvaSoft_Task\New folder\CI_Platform_Project\CI_Platform_Project\bin\Debug\net6.0\bundleconfig.json
+D:\TatvaSoft_Task\New folder\CI_Platform_Project\CI_Platform_Project\bin\Debug\net6.0\PagedList.dll
+D:\TatvaSoft_Task\New folder\CI_Platform_Project\CI_Platform_Project\bin\Debug\net6.0\PagedList.Mvc.dll
+D:\TatvaSoft_Task\New folder\CI_Platform_Project\CI_Platform_Project\bin\Debug\net6.0\System.Reflection.MetadataLoadContext.dll

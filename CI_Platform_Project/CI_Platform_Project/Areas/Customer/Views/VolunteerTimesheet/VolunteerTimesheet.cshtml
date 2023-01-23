@@ -1,0 +1,129 @@
+﻿@using CI_Platform_Project.DataModels
+@model IEnumerable<Timesheet>
+@{
+    ViewData["Title"] = "VolunteerTimesheet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/site.js" type="text/javascript"></script>
+<script>
+
+
+    $(function() {
+        var placeholderElement = $('#modal-placeholder');
+        $('button[data-toggle="ajax-modal"]').click(function(event) {
+            console.log("detail");
+            var url = $(this).data('url');
+            var decodeUrl = decodeURIComponent(url);
+            $.get(decodeUrl).done(function(data) {
+                placeholderElement.html(data);
+                placeholderElement.find('.modal').modal('show');
+            });
+        });
+
+
+
+        placeholderElement.on('click', '[data-save="modal"]', function(event) {
+
+            var formData = new FormData($('#modalForm').get(0));
+            var form = $(this).parents('.modal').find('form');
+            var actionUrl = form.attr('action');
+            $.ajax({
+                url: "/Customer/VolunteerTimesheet/" + actionUrl,
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function(data) {
+                    placeholderElement.find('.modal').modal('hide');
+                    alert('hii');
+                },
+                error: function() {
+                    alert(Invalid);
+                }
+            });
+
+            placeholderElement.find('.modal').modal('hide');
+        });
+
+        placeholderElement.on('click', '[data-dismiss="modal"]', function(e) {
+            placeholderElement.find('.modal').modal('hide');
+        });
+    });
+
+</script>
+
+<hr class="m-0">
+<div class="container my-4">
+    <p style="font-size: 35px;">Volunteering Timesheet</p>
+    <div class="row">
+        <div class="col-md-6" style="border: 1px solid #e8e8e8;">
+            <table class="table table-borderless">
+                @*<p style="font-size: 16px;" class="mt-4 ">Volunteering Hours</p>*@
+                <div class="p-2">
+                    <div class="float-start">
+                        Volunteering Hours
+                    </div>
+                    <div class="float-end ps-2">
+                        <button type="button" class="btn btn-outline-warning rounded-pill" data-toggle="ajax-modal"
+                                data-target="#AddEditTimeTimesheet" data-url="@Url.Action("AddTimeTimesheet")">
+                            <i class="bi bi-plus"></i><span class="text-wrap">Add</span>
+                        </button>
+                    </div>
+                    <div id="modal-placeholder"></div>
+                </div>
+                <tr class="">
+                    <td class="" style="padding-left: 0;">
+                        Mission
+                    </td>
+                    <td>
+                        Date
+                    </td>
+                    <td>
+                        Hour
+                    </td>
+                    <td>
+                        Minute
+                    </td>
+                    <td>
+                        Action
+                    </td>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr class="lost-password">
+                        <td style="padding-left: 0;">
+                             @item.Mission.Title
+                        </td>
+                        <td>
+                            @Convert.ToDateTime(@item.DateVolunteered).ToString("dd/MM/yyyy")
+                        </td>
+                        <td>
+                            @item.Hour
+                        </td>
+                        <td>
+                            @item.Minute
+                        </td>
+                        <td>
+                            <a href="#UserEdit"><i class="bi bi-pencil-square" style="color:#f88634;"></i></a>
+                            &nbsp;
+                            <a href="#modalCenterDelete" role="button" class="btn p-0" data-bs-toggle="modal">
+                                <i class="bi bi-trash text-end"></i>
+                             
+                            </a>
+                            <!-- Modal HTML -->
+
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+        <div class="col-md-6">
+        </div>
+    </div>
+
+</div>
+

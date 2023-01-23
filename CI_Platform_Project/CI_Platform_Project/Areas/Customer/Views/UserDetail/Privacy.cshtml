@@ -1,0 +1,108 @@
+﻿@using CI_Platform_Project.DataModels
+@model IEnumerable<CmsPage>
+@{
+    ViewData["Title"] = "Privacy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr class="m-0 " />
+<div class="container">
+    <div>
+        <p class="" style="font-size: 40px">Privacy And Cookie Policy</p>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-sm-12 p-0 ">
+                <nav id="ScrollNavbar" class="navbar navbar-light stickynav">
+                    <ul class="nav nav-pills flex-column ">
+                        @foreach (var obj in Model)
+                        {
+                            <li class="nav-item d-flex align-items-center justify-content-between">
+                                <a class="nav-link text0 px-0" href="#@obj.Title" style="color:black;"><p class="mb-1">@obj.Title</p></a>
+                                <img src="assets/right-arrow1.png" width="6px" height="12px">
+                            </li>
+                            <hr class="m-0" width="250px">
+
+                        }
+                        @*<a class="nav-link active text0 px-0" href="#sec1">Introduction</a>
+                        <img src="assets/right-arrow1.png" width="6px" height="12px">*@
+                        @*<li class="nav-item d-flex align-items-center justify-content-between">
+                        <a class="nav-link text0 px-0" href="#sec2">How does use cookies?</a>
+                        <img src="assets/right-arrow1.png" width="6px" height="12px">
+                        </li>
+                        <hr class="m-0" width="250px">
+                        <li class="nav-item d-flex align-items-center justify-content-between">
+                        <a class="nav-link text0 px-0" href="#sec3">How to manage your cookie<br> preferences?</a>
+                        <img src="assets/right-arrow1.png" width="6px" height="12px">
+                        </li>
+                        <hr class="m-0" width="250px">*@
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-md-8 col-sm-12">
+                @foreach (var item in Model)
+                {
+                    <div id="@item.Title">
+                        <p class="introduction mb-3">@item.Title</p>
+                        <p class="text0">
+                            @item.Description
+                        </p>
+                    </div>
+                }
+                @* <div id="sec1">
+                <p class="introduction mb-3">Introduction</p>
+                <p class="text0">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
+
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.<br><br>
+
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
+                </p>
+                </div>
+                <div id="sec2">
+                <p class="introduction mb-3">How does use cookies?</p>
+                <p class="text0">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                </p>
+                <p style="font-size: 20px;">
+                Why Optimy Uses These Technologies?
+                </p>
+                <p class="text0">We use these technologies for a number of purposes, such as:</p>
+                <ul class="text0">
+                <li class="mb-2">
+                But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain.
+                </li>
+                <li class="mb-2">
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
+                excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.
+                </li>
+                <li class="mb-2">
+                On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized
+                But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain.
+                </li>
+                <li class="mb-3">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                </li>
+                </ul>
+                <p class="text0">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                </p>
+                </div>
+                <div id="sec3">
+                <p class="introduction mb-3">How to manage your cookie preferences?</p>
+                <p class="text0">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
+
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
+                </p>
+                <p class="text0">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
+
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
+                </p>
+                </div>*@
+            </div>
+        </div>
+    </div>
+</div>
+

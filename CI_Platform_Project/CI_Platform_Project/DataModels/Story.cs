@@ -17,6 +17,10 @@ public partial class Story
 
     public int Status { get; set; }
 
+    public int ViewCount { get; set; }
+
+    public DateTime? PublishAt { get; set; }
+
     public DateTime CreatedAt { get; set; }
 
     public DateTime? UpdatedAt { get; set; }

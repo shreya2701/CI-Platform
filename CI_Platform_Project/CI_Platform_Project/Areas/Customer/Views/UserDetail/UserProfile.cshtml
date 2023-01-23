@@ -1,0 +1,424 @@
+﻿@model UserDetail
+@{
+    ViewData["Title"] = "UserProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/js/popper.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/vertuleSelect.js"></script>
+<script>
+    $(function() {
+        var placeholderElement = $('#modal-placeholder');
+        $('button[data-toggle="ajax-modal"]').click(function(event) {
+            var url = $(this).data('url');
+            var decodeUrl = decodeURIComponent(url);
+            $.get(decodeUrl).done(function(data) {
+                placeholderElement.html(data);
+                placeholderElement.find('.modal').modal('show');
+            });
+        });
+
+
+
+        placeholderElement.on('click', '[data-save="modal"]', function(event) {
+
+            var formData = new FormData($('#modalForm').get(0));
+            var form = $(this).parents('.modal').find('form');
+            var actionUrl = form.attr('action');
+            $.ajax({
+                url: "/Customer/UserDetail/" + actionUrl,
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function(data) {
+                    placeholderElement.find('.modal').modal('hide');
+                },
+                error: function() {
+                    alert(Invalid);
+                }
+            });
+
+            placeholderElement.find('.modal').modal('hide');
+        });
+
+        placeholderElement.on('click', '[data-dismiss="modal"]', function(e) {
+            placeholderElement.find('.modal').modal('hide');
+        });
+    });
+
+
+    setTimeout(alertFunc, 500);
+    function alertFunc() {
+        VirtualSelect.init({
+            ele: '#skillFilter',
+            
+
+        });
+    }
+
+</script>
+
+<hr class="m-0 " />
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-3 col-md-push-9 h-100">
+            <div class="border p-4" style="height:auto;width:auto">
+                <div class="text-center col p-3">
+                    <img src=@Url.Content(@Model.User.Avatar) class="rounded-circle"
+                         alt="Avatar" width="180px" height="180px" />
+                    <p class="mb-0" style="font-size: 22px;">@Model.User.FirstName &nbsp @Model.User.LastName</p>
+                </div>
+                <div class="text-center mb-2">
+                    <a class="btn  border rounded-circle p-2 btn-lg btn-floating" style="background-color:white;" href="#!" role="button">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a class="btn  border rounded-circle p-2 btn-lg btn-floating" style="background-color: white;" href="#!" role="button">
+                        <i class="bi bi-twitter"></i>
+                    </a>
+                    <a class="btn border rounded-circle btn-lg btn-floating p-2" style="background-color: white;" href="#!" role="button">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                </div>
+                <div class="text-center mb-5">
+                    <button type="button" data-toggle="ajax-modal" data-target="#ConfirmPassword"
+                            data-url="@Url.Action("ConfirmPassord")" style="border:0;background-color:white">
+                        Change Password
+                    </button>
+                </div>
+                <div id="modal-placeholder"></div>
+                <div class="col-md-12 mb-3">
+                    <label for="availability" class="form-label">Availability</label>
+                    <select id="availability" class="form-select">
+                        <option selected>Enter Availability</option>
+                        <option>india</option>
+                        <option>india</option>
+                        <option>india</option>
+                        <option>india</option>
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label for="availability" class="form-label">Availability</label>
+                    <select id="availability" class="form-select">
+                        <option selected>Enter Availability</option>
+                        <option>india</option>
+                        <option>india</option>
+                        <option>india</option>
+                        <option>india</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-9 col-md-push-3">
+            <form method="post">
+                <div class="mb-5">
+                    <div class="d-block">
+                        <button class="mision-border float-start pt-2 pb-1 px-0" style="background-color: white;"><h4 style="font-size: 22px;">Basic Information</h4></button>
+                    </div>
+                    <br><br>
+                    <hr class="m-0" />
+                    <br>
+                    <div>
+                        <div class="row g-3">
+                            <input asp-for="@Model.User.UserId" hidden />
+                            <input asp-for="@Model.User.CreatedAt" hidden />
+                            <input asp-for="@Model.User.Status" hidden />
+                            <input asp-for="@Model.User.Password" hidden />
+                            <input asp-for="@Model.User.Email" hidden />
+                            <input asp-for="@Model.User.Avatar" hidden />
+                            <input asp-for="@Model.User.ConfirmPassword" hidden />
+                            <div class="col-md-6">
+                                <label for="name" asp-for="@Model.User.FirstName" class="form-label">Name</label>
+                                <input type="text" asp-for="@Model.User.FirstName" class="form-control" id="name" placeholder="Enter your name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="surname" asp-for="@Model.User.LastName" class="form-label">Surname</label>
+                                <input type="text" asp-for="@Model.User.LastName" class="form-control" id="surname" placeholder="Enter your surname">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="employeeID" asp-for="@Model.User.EmployeeId" class="form-label">EmployeeID</label>
+                                <input type="text" class="form-control" asp-for="@Model.User.EmployeeId" id="employeeID" placeholder="Enter your employeeID">
+                            </div>
+                            @*<div class="col-md-6">
+                            <label for="manager"  class="form-label">Manager</label>
+                            <input type="text" class="form-control" id="manager" placeholder="Enter your manager detials">
+                            </div>*@
+                            <div class="col-md-6">
+                                <label for="title" asp-for="@Model.User.Title" class="form-label">Title</label>
+                                <input type="text" asp-for="@Model.User.Title" class="form-control" id="title" placeholder="Enter title">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="department" asp-for="@Model.User.Department" class="form-label">Department</label>
+                                <input type="text" asp-for="@Model.User.Department" class="form-control" id="department" placeholder="Enter department">
+                            </div>
+                            <div class="col-12">
+                                <label for="myProfile" asp-for="@Model.User.ProfileText" class="form-label">My Profile</label>
+                                <textarea class="form-control" asp-for="@Model.User.ProfileText" id="myProfile" rows="4" placeholder="Enter profile"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label for="volunteer" asp-for="@Model.User.WhyIVolunteer" class="form-label">Why I Volunteer?</label>
+                                <textarea class="form-control" asp-for="@Model.User.WhyIVolunteer" id="volunteer" rows="4" placeholder="Enter comment"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-5">
+                    <div class="d-block">
+                        <button class="mision-border float-start pt-2 pb-1 px-0" style="background-color: white;"><h4 style="font-size: 22px;">Address Information</h4></button>
+                    </div>
+                    <br><br>
+                    <hr class="m-0" />
+                    <br>
+                    <div>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="city" class="form-label">City</label>
+                                <select id="inputState" asp-for="@Model.User.CityId" asp-items="ViewBag.CityList" class="form-select">
+                                    <option selected>Country</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputState" class="form-label">Country</label>
+                                <select id="inputState" asp-for="@Model.User.CountryId" asp-items="ViewBag.CountryList" class="form-select">
+                                    <option selected>Country</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="mb-5">
+                <div class="d-block">
+                <button class="mision-border float-start pt-2 pb-1 px-0" style="background-color: white;"><h4 style="font-size: 22px;">Professional Information</h4></button>
+                </div>
+                <br><br>
+                <hr class="m-0" />
+                <br>
+                <div>
+                <form class="row g-3">
+                <div class="col-md-6">
+                <label for="availability" class="form-label">Availability</label>
+                <select id="availability" class="form-select">
+                <option selected>Enter Availability</option>
+                <option>india</option>
+                <option>india</option>
+                <option>india</option>
+                <option>india</option>
+                </select>
+                </div>
+                <div class="col-md-6">
+                <label for="linkedin" class="form-label">Linkedin</label>
+                <input type="text" class="form-control" id="linkedin" placeholder="Enter Linkedin URL">
+                </div>
+                </form>
+                </div>
+                </div>*@
+                <div class="mb-2">
+                    @*<div class="d-block">
+                        <button class="mision-border float-start pt-2 pb-1 px-0" style="background-color: white;"><h4 style="font-size: 22px;">My Skills</h4></button>
+                    </div>*@
+                   
+                        <a href="#" class="" data-bs-toggle="dropdown" style="width: 100%;">
+                            
+                                <select multiple id="skillFilter" asp-for="UserSkill" asp-items="ViewBag.SkillList" placeholder="Add Skill"
+                                        data-search="true" data-silent-initial-value-set="true" name="native-select" style="outline:1px solid black" class="form-select p-1">
+                                </select>
+                            
+                        </a>
+
+                    
+                    <br><br>
+                    <hr class="m-0" />
+                    
+                   @* <div>
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <!-- <textarea class="form-control" id="result" rows="6" placeholder="add skill"></textarea> -->
+                                <textarea id="droptxt" class="list" class="form-control w-100" rows="6" placeholder="Add Skill" readonly></textarea>
+                                <div id="content" class="content myDropDown">
+                                    <div id="market" class="list">
+                                        <label><input type="checkbox" id="market" class="list" value="Bike" /> I have a bike</label>
+                                    </div>
+
+                                    <div class="list">
+                                        <label><input type="checkbox" id="banana" class="list" value="Car" /> I have a car</label>
+                                    </div>
+
+                                    <div class="list">
+                                        <label><input type="checkbox" id="banana" class="list" value="scooter" /> I have a scooter</label>
+                                    </div>
+
+                                    <div class="list">
+                                        <label><input type="checkbox" id="banana" class="list" value="tracter" /> I have a tracter</label>
+                                    </div>
+                                    <div class="list">
+                                        <label><input type="checkbox" id="banana" class="list" value="tracter" /> I have a tracter</label>
+                                    </div>
+                                    <div class="list">
+                                        <label><input type="checkbox" id="banana" class="list" value="tracter" /> I have a tracter</label>
+                                    </div>
+                                    <div class="list">
+                                        <label><input type="checkbox" id="banana" class="list" value="tracter" /> I have a tracter</label>
+                                    </div>
+                                    <div class="list">
+                                        <label><input type="checkbox" id="banana" class="list" value="tracter" /> I have a tracter</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <button type="submit" class="add-skill px-4 mt-4  py-2 btn-block rounded-pill" style="font-size: 16px;"><a href="#modalCenter" role="button" data-bs-toggle="modal" style="text-decoration: none;color: black;">add skill</a></button> -->
+                            <!-- <div id="modalCenter" class="modal fade" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header border-bottom-0">
+                                            <h5 class="modal-title">Change Password</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body pt-0">
+                                          <div class="row">
+                                            <div class="col-6">
+                                              <form>
+                                              <div><input type="checkbox" name="modtype" value="value3"
+                                                onClick="Reveal('div3', this)" />value3 </div>
+                                              <div><input type="checkbox"  name="modtype" value="value4" onClick="Reveal('div4', this)" />value4</div>
+                                            <div><input type="checkbox" name="modtype" value="value5"
+                                              onClick="Reveal('div5', this)" />value5</div>
+                                          </form>
+                                            </div>
+                                            <div class="col-6" id="result">
+                                              <div class="row" id="div3" style="display: none">Show Div 3</div>
+                                      <div class="row" id="div4" style="display: none">Show Div 4</div>
+                                      <div class="row" id="div5" style="display: none">Show Div 5</div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="modal-footer border-top-0">
+                                            <button type="submit" data-bs-dismiss="modal" class="add-skill px-3  py-1 btn-block rounded-pill  " style="font-size: 16px;">Cancel</button>
+                                            <button type="submit" id="btn" class=" px-3 py-1 btn-block rounded-pill button " data-bs-dismiss="modal" style="font-size: 17px;">Add Skill</button>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div> -->
+
+                        </div>
+                    </div>*@
+                </div>
+
+                <div class="text-end mb-2">
+                    <button type="submit" class=" px-5  py-2 btn-block rounded-pill button " style="font-size: 17px;">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+<hr />
+<div class="container">
+    <span class="my-4 d-flex">
+
+        <button type="button" data-toggle="ajax-modal" data-target="#ContactUs"
+                data-url="@Url.Action("ContactUs")" class="btn p-0">
+            Contact Us
+        </button>
+        <form>
+            <button asp-action="Privacy" asp-controller="UserDetail" asp-area="Customer" class="ms-3 mb-0" style="border:0;background-color:white">Privacy Policy</button>
+        </form>
+        <!-- Modal HTML -->
+        @*<div id="modalCenter3" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+        <h5 class="modal-title">Contact Us</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body pt-0">
+        <div class="col-md-12 mb-3">
+        <label for="name" class="form-label mb-0">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter your name">
+        </div>
+        <div class="col-md-12 mb-3">
+        <label for="name" class="form-label mb-0">Email Address</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter your email">
+        </div>
+        <div class="col-md-12 mb-3">
+        <label for="name" class="form-label mb-0">Subject</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter subject">
+        </div>
+        <div class="col-12">
+        <label for="myProfile" class="form-label mb-0">Message</label>
+        <textarea class="form-control" id="myProfile" rows="3" placeholder="Enter Message"></textarea>
+        </div>
+        </div>
+        <div class="modal-footer border-top-0">
+        <button type="submit" data-bs-dismiss="modal" class="add-skill px-3  py-1 btn-block rounded-pill  " style="font-size: 16px;">Cancel</button>
+        <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Save</button>
+        </div>
+        </div>
+        </div>
+        </div>*@
+
+    </span>
+</div>
+
+
+<script>
+    //            document.getElementById('btn').onclick = function() {
+    //   var markedCheckbox = document.getElementsByName('pl');
+    //   for (var checkbox of markedCheckbox) {
+    //     if (checkbox.checked)
+    //       document.getElementById('result').append(checkbox.value + ' ');
+    //   }
+    // }
+
+
+    // function Reveal(it, box) {
+    //     var vis = (box.checked) ? "block" : "none";
+    //     document.getElementById(it).style.display = vis;
+    //   }
+
+    //   function Hide(it, box) {
+    //     var vis = (box.checked) ? "none" : "none";
+    //     document.getElementById(it).style.display = vis;
+    //   }
+
+
+
+    var txt = document.getElementById('droptxt'),
+        content = document.getElementById('content'),
+        list = document.querySelectorAll('.content input[type="checkbox"]'),
+        quantity = document.querySelectorAll('.quantity');
+    txt.addEventListener('click', function() {
+        content.classList.toggle('show')
+    })
+
+    window.onclick = function(e) {
+        if (!e.target.matches('.list')) {
+            if (content.classList.contains('show')) content.classList.remove('show')
+        }
+    }
+
+    list.forEach(function(item, index) {
+        item.addEventListener('click', function() {
+            calc()
+        })
+    })
+
+    function calc() {
+        for (var i = 0, arr = []; i < list.length; i++) {
+            let spanArray = [];
+            document.querySelectorAll('span').forEach(element => {
+                spanArray.push(element.innerHTML);
+            });
+
+            if (list[i].checked) arr.push(list[i].value)
+        }
+        txt.value = arr.join(',')
+    }
+
+
+
+</script>
+

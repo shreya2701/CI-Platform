@@ -1,0 +1,77 @@
+﻿@model StoryZm
+@{
+    ViewData["Title"] = "Story";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Pager pager = new Pager();
+
+    int pageNo = 0;
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+}
+
+<div class="">
+    <div class="hovereffect">
+        <img src="~/lib/assets/Grow-Trees-On-the-path-to-environment-sustainability-login.png" style="width:100%; height: 350px; object-fit: cover; object-position: 100% 33%;" alt="">
+        <div class="overlay">
+            <p class="small fadelarge">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna </br>aliqua. Ut enim ad minim veniam.sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+            <a class="info" asp-area="Customer" asp-controller="Home" asp-action="ShareStory">Share Your Story<i class="bi bi-arrow-right ms-2"></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    @Html.Partial("_StoryCardPartial", Model.storyCard)
+
+
+    <!-- Pagination -->
+    <div class="d-flex justify-content-center m-5">
+        <nav>
+            @if (pager.TotalPages > 0)
+            {
+                <ul class="pagination justify-content-center">
+
+                    @if (pager.CurrentPage > 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" asp-controller="Home" asp-action="Story" asp-route-pg="1">First</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" asp-controller="Home" asp-action="Story" asp-route-pg="@(pager.CurrentPage - 1)">Previous</a>
+                        </li>
+                    }
+
+                    @for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
+                    {
+                        <li class="page-item @(pge == pager.CurrentPage ? "active" : "")">
+                            <a class="page-link" asp-controller="Home" asp-action="Story" asp-route-pg="@pge">@pge</a>
+                        </li>
+                    }
+
+                    @if (pager.CurrentPage < pager.TotalPages)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" asp-controller="Home" asp-action="Story" asp-route-pg="@(pager.CurrentPage + 1)">Next</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" asp-controller="Home" asp-action="Story" asp-route-pg="@(pager.TotalPages)">Last</a>
+                        </li>
+                    }
+                </ul>
+            }
+        </nav>
+    </div>
+
+</div>
+
+
+<!-- Privacy Policy -->
+<hr />
+<div class="container">
+    <div>
+        <p>Privacy Policy</p>
+    </div>
+</div>

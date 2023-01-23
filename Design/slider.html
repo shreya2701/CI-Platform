@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* CSS for styling the slideshow and thumbnails */
+      #slideshow {
+  position: relative;
+}
+
+.slide {
+  display: none;
+}
+
+#thumb-container {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+
+#thumb-prev, #thumb-next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 200px;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+}
+
+#thumb-prev {
+  left: 0;
+}
+
+#thumb-next {
+  right: 0;
+}
+
+#thumb-carousel {
+  overflow: auto;
+  white-space: nowrap;
+  width: calc(100% - 100px);
+  margin: auto;
+}
+
+.thumb {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.thumb.active {
+  border: 2px solid #333;
+}
+
+    </style>
+  </head>
+  <body>
+    <div id="slideshow">
+      <img class="slide" src="assets/card-1.png" alt="image1">
+      <img class="slide" src="assets/card-2.png" alt="image2">
+      <img class="slide" src="assets/card-3.png" alt="image3">
+      <img class="slide" src="assets/card-4.png" alt="image4">
+      <img class="slide" src="assets/card-5.png" alt="image5">
+      <div id="thumb-container">
+        <div id="thumb-prev"><a id="prev" href="#">Prev</a></div>
+        <div id="thumb-carousel">
+          <img class="thumb" src="assets/card-1.png" alt="image1">
+          <img class="thumb" src="assets/card-2.png" alt="image2">
+          <img class="thumb" src="assets/card-3.png" alt="image3">
+          <img class="slide" src="assets/card-4.png" alt="image4">
+      <img class="slide" src="assets/card-5.png" alt="image5">
+        </div>
+        <div id="thumb-next"><a id="next" href="#">Next</a></div>
+      </div>
+      
+      
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      
+      $(document).ready(function() {
+  var currentIndex = 0;
+  var slides = $('.slide');
+  var thumbs = $('.thumb');
+  var prev = $('#prev');
+  var next = $('#next');
+  var thumbPrev = $('#thumb-prev');
+  var thumbNext = $('#thumb-next');
+  var thumbCarousel = $('#thumb-carousel');
+  var thumbWidth = $(thumbs[0]).width() + 10; // 10 is for margin
+
+  function updateSlide() {
+    $(slides).hide();
+    $(slides[currentIndex]).show();
+    $(thumbs).removeClass('active');
+    $(thumbs[currentIndex]).addClass('active');
+  }
+
+  $(thumbs).click(function() {
+    currentIndex = $(thumbs).index(this);
+    updateSlide();
+  });
+
+  $(prev).click(function() {
+    currentIndex--;
+    if (currentIndex < 0) {
+      currentIndex = slides.length - 1;
+    }
+    updateSlide();
+  });
+
+  $(next).click(function() {
+    currentIndex++;
+    if (currentIndex >= slides.length) {
+      currentIndex = 0;
+    }
+    updateSlide();
+  });
+
+  thumbPrev.click(function() {
+    thumbCarousel.animate({
+      scrollLeft: "-=" + thumbWidth
+    }, "slow");
+  });
+
+  thumbNext.click(function() {
+    thumbCarousel.animate({
+      scrollLeft: "+=" + thumbWidth
+    }, "slow");
+  });
+
+  updateSlide();
+});
+
+    </script>
+  </body>
+</html>
+
+
+

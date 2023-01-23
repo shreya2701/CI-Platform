@@ -505,7 +505,7 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
                         missionMedia.MediaName = x.FileName;
                         missionMedia.MediaPath = img(x);
                         missionMedia.UpdatedAt = DateTime.Now;
-                        _db.MissionMedia.Update(missionMedia);
+                        _db.MissionMedia.Add(missionMedia);
                         _db.SaveChanges();
                     }
                 }
@@ -520,7 +520,7 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
                         missionDocument.DocumentName = x.FileName;
                         missionDocument.DocumentPath = img(x);
                         missionDocument.UpdatedAt = DateTime.Now;
-                        _db.MissionDocuments.Update(missionDocument);
+                        _db.MissionDocuments.Add(missionDocument);
                         _db.SaveChanges();
                     }
                 }
@@ -542,13 +542,15 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
 
                 if (model.addSkill != null)
                 {
+                    _db.MissionSkills.RemoveRange(_db.MissionSkills.Where(x => x.MissionId == model.mission.MissionId));
+                    _db.SaveChanges();
                     //var x = model.addSkill[0].Split(',').Select(Int32.Parse).ToList();
                     foreach (var n in model.addSkill)
                     {
                         var missionSkill = new MissionSkill();
                         missionSkill.MissionId = model.mission.MissionId;
                         missionSkill.SkillId = int.Parse(n);
-                       missionSkill.DeletedAt = DateTime.Now;
+                       missionSkill.UpdatedAt = DateTime.Now;
 
                         _db.MissionSkills.Update(missionSkill);
                         _db.SaveChanges();
@@ -619,7 +621,7 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
         public IActionResult MissionApplication()
         {
             var x = new AdminZm();
-            x.missionApplication = _db.MissionApplications.Where(x => x.DeletedAt == null && x.ApprovalStatus == 1).AsEnumerable().ToList();
+            x.missionApplication = _db.MissionApplications.Where(x => x.DeletedAt == null).AsEnumerable().ToList();
             x.User = _db.Users.Where(u => u.DeletedAt == null).AsEnumerable().ToList();
             x.mission = _db.Missions.Where(w => w.DeletedAt == null).AsEnumerable().ToList();
 

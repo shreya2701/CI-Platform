@@ -1,0 +1,35 @@
+﻿@model ContactUs
+<div id="ContactUs" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title">Contact Us</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <form id="modalForm" method="post" action="ContactUs">
+                    <div class="col-md-12 mb-3">
+                        <label for="name" class="form-label mb-0">Name*</label>
+                        <input type="text" class="form-control"  id="name" placeholder="Shreya Kanani" disabled>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="name" class="form-label mb-0">Email Address*</label>
+                        <input type="text" class="form-control" id="name" placeholder="shreyakanani46@gmail.com" disabled>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="name" class="form-label mb-0">Subject</label>
+                        <input type="text" class="form-control" id="name" asp-for="@Model.Subject" placeholder="Enter subject">
+                    </div>
+                    <div class="col-12">
+                        <label for="myProfile" class="form-label mb-0">Message</label>
+                        <textarea class="form-control" id="myProfile" rows="3" asp-for="@Model.Message" placeholder="Enter Message"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer border-top-0">
+                <button type="submit" data-bs-dismiss="modal" class="add-skill px-3  py-1 btn-block rounded-pill  " style="font-size: 16px;">Cancel</button>
+                <button type="submit" data-save="modal" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

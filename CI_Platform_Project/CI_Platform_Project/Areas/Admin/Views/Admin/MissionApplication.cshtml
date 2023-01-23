@@ -30,7 +30,7 @@
         {
             <tr>
                 <td>@obj.MissionId</td>
-                @*<td>@obj.Mission.Title</td>*@
+                <td>@obj.Mission.Title</td>
                 <td>@obj.UserId</td>
                 <td>@obj.User.FirstName &nbsp; @obj.User.LastName</td>
                 <td>@obj.AppliedAt</td>
@@ -38,7 +38,7 @@
                 <form method="post">
                     <a asp-area="Admin" asp-controller="Admin" asp-action="MissionAppAccept" asp-route-id="@obj.MissionApplicationId"><i class="bi bi-check-circle text-success" style="color:#f88634;"></i></a>
                     &nbsp;
-                    <a type="submit" asp-area="Admin" asp-controller="Admin" asp-action="MissionAppDecline" asp-route-id=@obj.MissionApplicationId onclick="confirm('Are You Want to Delete?')" role="button"  data-bs-toggle="modal">
+                    <a asp-area="Admin" asp-controller="Admin" asp-action="MissionAppDecline" asp-route-id="@obj.MissionApplicationId" >
                         <i class="bi bi-x-circle text-danger text-end"></i>
                     </a>
                 </form>

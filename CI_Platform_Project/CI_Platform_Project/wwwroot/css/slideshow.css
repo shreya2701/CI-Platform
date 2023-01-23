@@ -1,0 +1,123 @@
+/*********************************
+* Slideshow Styling
+*********************************/
+container {
+	width: 100%;
+	height: 100%;
+	max-width: 1200px;
+	max-height: 700px;
+	margin: 100px auto;
+	position: relative;
+}
+#slideshow {
+	/*width: 50%;*/
+	height: 50%;
+	margin: 100px auto;
+
+    position:relative;
+
+    overflow: hidden;
+}
+	#slideshow.fullscreen {
+		position: absolute;
+		
+
+		width: 40%;
+		height: 70%;
+		margin: 0;
+		padding: 0;
+
+		overflow: hidden;
+	}
+	.img-wrapper {
+	    min-width: 100%;
+	    min-height: 100%;
+		
+		position: absolute;
+		top: 0;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+
+	    margin: auto;
+	    overflow: hidden;
+	    
+	    z-index:8;
+
+	    background-size: cover;
+	    background-position: center center;
+	}
+		#slideshow .img-wrapper.active {
+		    z-index:10;
+		}
+
+		#slideshow .img-wrapper.last-active {
+		    z-index:9;
+		}
+
+	/*********************************
+	* Thumbnail Styling
+	*********************************/
+	.thumbs-container {
+		width: 100%;
+		height: 140px;
+		position: absolute;
+		left: 0;
+
+		z-index: 11;
+
+		background: #222222;
+		opacity: .9;
+	}
+		.thumbs-container.top {
+			top: 0;
+		}
+		.thumbs-container.bottom {
+			bottom: 0;
+		}
+		.prev, .next {
+			width: 3%;
+			min-width: 40px;
+			height: 48px;
+			padding: 46px 1%;
+
+			color: #999999;
+			cursor: pointer;
+		}
+		.prev { float: left; }
+		.next { float: right; }
+			.prev:hover, .next:hover {
+				color: #555555;
+			}
+		ul.thumbs {
+			position: absolute;
+			top: 0;
+			left: 5%;
+			right: 5%;
+			height: 140px;
+			padding: 0;
+			margin: 0 5%;
+			overflow: hidden;
+			white-space: nowrap;
+			text-align: center;
+		}
+			.thumb {
+				display: inline-block;
+				width: 120px;
+				height: 120px;
+				margin: 10px;
+
+				overflow: hidden;
+				background-size: cover;
+	    		background-position: center center;
+
+	    		cursor: pointer;
+			}
+				.thumb:first-of-type {
+					margin-left: 0px;
+				}
+			.thumb.active {
+				width: 116px;
+				height: 116px;
+				border: 2px solid #FFF;
+			}

@@ -11,6 +11,51 @@ $(document).ready(function () {
 
 });
 
+$(function () {
+    var placeholderElement = $('#modal-placeholder');
+    $('button[data-toggle="ajax-modal"]').off().click(function (event) {
+        event.preventDefault();
+        console.log("hii");
+        var url = $(this).data('url');
+        var decodeUrl = decodeURIComponent(url);
+        $.get(decodeUrl).done(function (data) {
+            placeholderElement.html(data);
+            placeholderElement.find('.modal').modal('show');
+        });
+    });
+
+
+
+    placeholderElement.on('click', '[data-save="modal"]', function (event) {
+
+        var formData = new FormData($('#modalForm').get(0));
+        var form = $(this).parents('.modal').find('form');
+        var actionUrl = form.attr('action');
+        console.log(actionUrl);
+        $.ajax({
+            url: "/Customer/Home/" + actionUrl,
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: function (data) {
+                placeholderElement.find('.modal').modal('hide');
+            },
+            error: function () {
+                alert(Invalid);
+            }
+        });
+
+        placeholderElement.find('.modal').modal('hide');
+    });
+
+    placeholderElement.on('click', '[data-dismiss="modal"]', function (e) {
+        console.log("close");
+        placeholderElement.find('.modal').modal('hide');
+    });
+});
+
 //filterSelection("user")
 //function filterSelection(c) {
 //    var x, i;

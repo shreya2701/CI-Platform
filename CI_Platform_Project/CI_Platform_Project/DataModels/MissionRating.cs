@@ -19,6 +19,8 @@ public partial class MissionRating
 
     public DateTime? DeletedAt { get; set; }
 
+    public int Rating { get; set; }
+
     public virtual Mission Mission { get; set; } = null!;
 
     public virtual User User { get; set; } = null!;

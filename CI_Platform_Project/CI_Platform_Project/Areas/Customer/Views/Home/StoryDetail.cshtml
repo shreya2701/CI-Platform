@@ -1,0 +1,419 @@
+﻿@model StoryDetail;
+@{
+    ViewData["Title"] = "StoryDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    @@ media (max-width: 768px) {
+        .carousel-inner .carousel-item > div {
+            display: none;
+        }
+
+            .carousel-inner .carousel-item > div:first-child {
+                display: block;
+            }
+    }
+
+    .carousel-inner .carousel-item.active,
+    .carousel-inner .carousel-item-next,
+    .carousel-inner .carousel-item-prev {
+        display: flex;
+    }
+
+    /* large - display 6 */
+    @@ media (min-width: 992px) {
+
+        .carousel-inner .carousel-item-right.active,
+        .carousel-inner .carousel-item-next {
+            transform: translateX(50%);
+        }
+
+        .carousel-inner .carousel-item-left.active,
+        .carousel-inner .carousel-item-prev {
+            transform: translateX(-50%);
+        }
+    }
+
+    .carousel-inner .carousel-item-right,
+    .carousel-inner .carousel-item-left {
+        transform: translateX(0);
+    }
+
+    #fullsize-image {
+        width: 300px;
+        height: 300px;
+        object-fit: contain;
+    }
+</style>
+
+
+
+<script src="~/js/popper.min.js"></script>
+<script src="~/js/gallery.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36251023-1']);
+    _gaq.push(['_setDomainName', 'jqueryscript.net']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+
+<script>
+    $(document).ready(function() {
+        const slides = document.querySelectorAll(".slide")
+        const vid = document.querySelectorAll("video.slide")
+        const totalImgInSlider = 4;
+        const totalImg = @Model.storyMedium.Count();
+        var counter = 0;
+        slides.forEach(
+            (slider, index) => {
+                slider.style.left = `${index * 100 / totalImgInSlider}%`
+            }
+        )
+        slideImg = () => {
+            slides.forEach(
+                (slider) => {
+                    slider.style.transform = `translateX(-${counter * 100}%)`
+                }
+            )
+        }
+        goPrev = () => {
+            if (counter != 0)
+                counter--;
+            slideImg();
+        }
+        goNext = () => {
+            if (counter < totalImg - totalImgInSlider)
+                counter++;
+            slideImg();
+        }
+        setImage = () => {
+            document.getElementById("demo").src = document.querySelector(".slide.active").src;
+        }
+    });
+</script>
+
+<script>
+    $('#recipeCarousel').carousel({
+        interval: 10000
+    })
+
+    $('.carousel .carousel-item').each(function() {
+        var minPerSlide = 4;
+        var next = $(this).next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        next.children(':first-child').clone().appendTo($(this));
+
+        for (var i = 0; i < minPerSlide; i++) {
+            next = next.next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+
+            next.children(':first-child').clone().appendTo($(this));
+        }
+    });
+
+    $(document).ready(function() {
+        // Show fullsize image when thumbnail is clicked
+        $('.img-fluid').click(function() {
+            var fullsizeImageUrl = $(this).data('fullsize');
+            $('#fullsize-image').attr('src', fullsizeImageUrl);
+
+        });
+
+    });
+
+    $(function() {
+        var placeholderElement = $('#modal-placeholder');
+        $('button[data-toggle="ajax-modal"]').click(function(event) {
+            event.preventDefault();
+            console.log("hii");
+            var url = $(this).data('url');
+            var decodeUrl = decodeURIComponent(url);
+            $.get(decodeUrl).done(function(data) {
+                placeholderElement.html(data);
+                placeholderElement.find('.modal').modal('show');
+            });
+        });
+
+
+
+        placeholderElement.on('click', '[data-save="modal"]', function(event) {
+
+            var formData = new FormData($('#modalForm').get(0));
+            var form = $(this).parents('.modal').find('form');
+            var actionUrl = form.attr('action');
+            console.log("hii");
+            $.ajax({
+                url: "/Customer/Home/" + actionUrl,
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function(data) {
+                    placeholderElement.find('.modal').modal('hide');
+                },
+                error: function() {
+                    alert(Invalid);
+                }
+            });
+
+            placeholderElement.find('.modal').modal('hide');
+        });
+
+        placeholderElement.on('click', '[data-dismiss="modal"]', function(e) {
+            console.log("close");
+            placeholderElement.find('.modal').modal('hide');
+        });
+    });
+
+
+
+
+</script>
+
+
+<hr class="m-0 " />
+
+<hr class="m-0 " />
+<div class="container">
+    <div class="row mx-0 mb-4">
+
+        <div class="col-md-6 col-md-push-6">
+            <div id="container">
+                <div>
+                    <display>
+                        <img style="height: 420px; width: 100%;object-fit: cover;" id="demo" src="@Model.storyMedium[0].Path" alt="">
+                    </display>
+                    <div class="sliderNav">
+                        @foreach (var item in Model.storyMedium)
+                        {
+                            <div><img class="slide" src="@item.Path" alt="can't rendor"></div>
+                        }
+                        <button onclick="goPrev()">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <button onclick="goNext()" style="right:0">
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <script>
+                $("img.slide").on('click', function(event) {
+                    $('.slide.active').removeClass('active');
+                    $(this).addClass("active");
+                    setImage();
+                });
+            </script>
+            @*<div id="slideshow" class="fullscreen">
+            <!-- Below are the images in the gallery -->
+            <div id="img-1" data-img-id="1" class="img-wrapper active" style="background-image: url(@Model.userImg[0])"></div>
+            @*<div id="img-2" data-img-id="2" class="img-wrapper" style="background-image: url('images/img2.jpg')"></div>
+            <div id="img-3" data-img-id="3" class="img-wrapper" style="background-image: url('images/img3.jpg')"></div>
+            <div id="img-4" data-img-id="4" class="img-wrapper" style="background-image: url('images/img2.jpg')"></div>
+            <div id="img-1" data-img-id="5" class="img-wrapper" style="background-image: url('images/img1.jpg')"></div>
+            <div id="img-2" data-img-id="6" class="img-wrapper" style="background-image: url('images/img2.jpg')"></div>
+            <div id="img-3" data-img-id="7" class="img-wrapper" style="background-image: url('images/img3.jpg')"></div>
+            <div id="img-4" data-img-id="8" class="img-wrapper" style="background-image: url('images/img2.jpg')"></div>*@
+
+            <!-- Below are the thumbnails of above images -->
+            @*<div class="thumbs-container bottom">
+            <div id="prev-btn" class="prev">
+            <i class="fa fa-chevron-left fa-3x"></i>
+            </div>
+
+            <ul class="thumbs">
+            @foreach (var item in @Model.userImg)
+            {
+            <li data-thumb-id="1" class="thumb active" style="background-image: url(@item)"></li>
+            }*@
+            @*<li data-thumb-id="1" class="thumb active" style="background-image: url('images/img1-thumb.jpg')"></li>
+            <li data-thumb-id="2" class="thumb" style="background-image: url('images/img2-thumb.jpg')"></li>
+            <li data-thumb-id="3" class="thumb" style="background-image: url('images/img3-thumb.jpg')"></li>
+            <li data-thumb-id="4" class="thumb" style="background-image: url('images/img2-thumb.jpg')"></li>
+            <li data-thumb-id="5" class="thumb" style="background-image: url('images/img1-thumb.jpg')"></li>
+            <li data-thumb-id="6" class="thumb" style="background-image: url('images/img2-thumb.jpg')"></li>
+            <li data-thumb-id="7" class="thumb" style="background-image: url('images/img3-thumb.jpg')"></li>
+            <li data-thumb-id="8" class="thumb" style="background-image: url('images/img2-thumb.jpg')"></li>*@
+            @*</ul>
+
+            <div id="next-btn" class="next">
+            <i class="fa fa-chevron-right fa-3x"></i>
+            </div>
+            </div>
+            </div>
+            </div>*@
+            @* <div class="container text-center my-3">
+            <div id="fullsize-image-container">
+            <img src="" id="fullsize-image">
+            </div>
+
+            <div class="row mx-auto my-auto justify-content-center">
+            <div id="recipeCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+            <div class="col-lg-2">
+            <img src="~/lib/assets/card-1.png" class="img-fluid"
+            data-fullsize="https://picsum.photos/200/300">
+            </div>
+            </div>
+            <div class="carousel-item">
+            <div class="col-lg-2">
+            <img src="~/lib/assets/card-1.png" class="img-fluid"
+            data-fullsize="https://picsum.photos/300/450">
+            </div>
+            </div>
+            <div class="carousel-item">
+            <div class="col-lg-2">
+            <img src="~/lib/assets/card-1.png" class="img-fluid"
+            data-fullsize="https://picsum.photos/400/600">
+            </div>
+            </div>
+            <div class="carousel-item">
+            <div class="col-lg-2">
+            <img src="~/lib/assets/card-4.png" class="img-fluid"
+            data-fullsize="https://picsum.photos/500/750">
+            </div>
+            </div>
+            <div class="carousel-item">
+            <div class="col-lg-2">
+            <img src="~/lib/assets/card-2.png" class="img-fluid"
+            data-fullsize="https://picsum.photos/600/900">
+            </div>
+            </div>
+            <div class="carousel-item">
+            <div class="col-lg-2">
+            <img src="~/lib/assets/card-3.png" class="img-fluid"
+            data-fullsize="https://picsum.photos/700/1050">
+            </div>
+            </div>
+            </div>
+            <a class="carousel-control-prev bg-dark w-auto" href="#recipeCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next bg-dark w-auto" href="#recipeCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+            </div>
+            </div>
+            </div>*@
+            @*<img src="assets/image2.png" width="100%"
+            height="625px">
+            </br>
+            </br>
+            <ul class="images">
+            @foreach(var x in Model.storyImg)
+            {
+            <li><a href="#"><img src="@Url.Content(x)" width="175" height="120" /></a></li>
+            }
+            @*<li><a href="#"><img src="assets/card-4.png" width="175" height="120" /></a></li>
+            <li><a href="#"><img src="assets/card-1.png" width="175" height="120" /></a></li>
+            <li><a href="#"><img src="assets/card-2.png" width="175" height="120" /></a></li>
+            <li><a href="#"><img src="assets/card-3.png" width="175" height="120" /></a></li>
+            <li><a href="#"><img src="assets/card-5.png" width="175" height="120" /></a></li>
+            <li><a href="#"><img src="assets/card-6.png" width="175" height="120" /></a></li>
+            <li><a href="#"><img src="assets/card-5.png" width="175" height="120" /></a></li>
+            </ul>*@
+        </div>
+        <div class="col-md-6 col-md-push-6 ps-md-5 pt-md-5 p-sm-0">
+            <div class="row justify-content-start position-relative mx-0 pt-3">
+                <div class="align-content-start  col p-0 ">
+                    <img src="@Url.Content(@Model.userImg)" class="rounded-circle "
+                         alt="Avatar" width="100px" height="100px" />
+                    <p class="paragraph">@Model.userName</p>
+                </div>
+                <input type="text" asp-for="Story.StoryId" hidden />
+                <div class="position-absolute bottom-0 end-0 text-end col px-0 mb-3 ">
+                    <button type="submit" class=" px-3  py-1 btn-block rounded-pill " style="border: 2px solid  #e8e8e8;background-color: #fff;">
+                        <img src="~/lib/assets/eye.png"><span class="ms-2">12,000 Views</span>
+                    </button>
+                </div>
+            </div>
+            <div>
+                <p class="mt-3 paragraph">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>
+
+                    Ut enim ad minim veniam. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.<br><br>
+
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.<br><br>
+                </p>
+            </div>
+            <div class="d-flex justify-content-between">
+                <div class="text-center ">
+                    <button type="submit" data-toggle="ajax-modal" data-target="#CoWorkerStory"
+                            data-url="@Url.Action("CoWorkerStory", "Home" , new{id = @Model.storyId})" class=" px-3  py-2 btn-block rounded-pill" style="font-size: 20px;color: #757575; width: 100%;background-color: white;border: solid 2px #757575;">
+                        <img src="assets/add1.png"><span class="ms-2">Recommend to a co-workers</span>
+                    </button>
+                </div>
+                <div id="modal-placeholder"></div>
+                <div class="text-end ">
+                    <form method="post">
+                        <button type="submit" asp-area="Customer" asp-controller="Home" asp-action="missionDetail" asp-route-id="@Model.missionId" class=" px-4  py-2 btn-block rounded-pill button " style="font-size: 20px;">Open Mission <i class="bi bi-arrow-right ms-2"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div>
+        <div class="d-block">
+            <button class="mision-border float-start p-2" style="background-color: white;"><h4 style="font-size: 22px;">@Model.storyTitle</h4></button>
+        </div><br>
+        <br>
+        <hr class="m-0">
+        <br>
+        <div>
+            <p class="paragraph">
+                @Model.storyDescription
+            </p>
+            <p class="paragraph">We use these technologies for a number of purposes, such as:</p>
+            <ul class="paragraph">
+                <li>
+                    But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain.
+                </li>
+                <li>
+                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
+                    excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.
+                </li>
+                <li>
+                    On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized
+                </li>
+                <li>
+                    But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain.
+                </li>
+                <li>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                </li>
+            </ul>
+            <br>
+            <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="container container-md container-sm container-xs">
+    <div>
+        <p>Privacy Policy</p>
+    </div>
+</div>
+
+
