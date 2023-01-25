@@ -20,12 +20,12 @@
     <div class="row bg-white" style="padding-left: 25px; padding-bottom: 30px;">
         <div class="col-12 form-group mb-3 mt-3">
             <label asp-for="Title">Title</label>
-            <input type="text" asp-for="Title" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+            <input type="text" asp-for="Title" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title" required>
             <span asp-validation-for="Title" class="text-danger"></span>
         </div>
         <div class="col-12 form-group mb-3 ">
             <label asp-for="Text">Description</label>
-            <input type="text" asp-for="Text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+            <input type="text" asp-for="Text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title" required>
             <span asp-validation-for="Text" class="text-danger"></span>
         </div>
         <div class="form-group mb-3">

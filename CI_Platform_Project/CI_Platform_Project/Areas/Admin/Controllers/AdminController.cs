@@ -27,17 +27,64 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
 
         public IActionResult AddUser()
         {
+            IEnumerable<SelectListItem> CityList = _db.Cities.Where(x => x.DeletedAt == null).Select(
+                u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.CityId.ToString()
+                }
+            );
+            IEnumerable<SelectListItem> CountryList = _db.Countries.Where(x => x.DeletedAt == null).Select(
+                u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.CountryId.ToString()
+                }
+            );
+            ViewBag.CityList = CityList;
+            ViewBag.CountryList = CountryList;
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddUser(User obj)
+        public IActionResult AddUser(User obj, IFormFile? file)
         {
             if (ModelState.IsValid)
             {
-                _db.Users.Add(obj);
-                _db.SaveChanges();
-                return RedirectToAction("Index", "Admin", new { Areas = "Admin" });
+                if (obj.Password != obj.ConfirmPassword)
+                {
+                    TempData["errorMessage"] = " Confirm Password Not Match with Password";
+                    return View();
+                }
+                else
+                {
+                    string wwwRootPath = _hostEnvironment.WebRootPath;
+                    if (file != null)
+                    {
+                        string fileName = Guid.NewGuid().ToString();
+                        var Uploads = Path.Combine(wwwRootPath, @"images\Banners");
+                        var extension = Path.GetExtension(file.FileName);
+
+                        if (obj.Avatar != null)
+                        {
+                            var oldImagePath = Path.Combine(wwwRootPath, obj.Avatar.TrimStart('\\'));
+                            if (System.IO.File.Exists(oldImagePath))
+                            {
+                                System.IO.File.Delete(oldImagePath);
+                            }
+                        }
+
+                        using (var fileSrteam = new FileStream(Path.Combine(Uploads, fileName + extension), FileMode.Create))
+                        {
+                            file.CopyTo(fileSrteam);
+                        }
+                        obj.Avatar = @"\images\Banners\" + fileName + extension;
+                    }
+                    _db.Users.Add(obj);
+                    _db.SaveChanges();
+                    return RedirectToAction("Index", "Admin", new { Areas = "Admin" });
+                }
+
             }
             return View(obj);
         }
@@ -53,12 +100,50 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            IEnumerable<SelectListItem> CityList = _db.Cities.Where(x => x.DeletedAt == null).Select(
+                u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.CityId.ToString()
+                }
+            );
+            IEnumerable<SelectListItem> CountryList = _db.Countries.Where(x => x.DeletedAt == null).Select(
+                u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.CountryId.ToString()
+                }
+            );
+            ViewBag.CityList = CityList;
+            ViewBag.CountryList = CountryList;
             return View(UserFromDb);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EditUser(User obj, string UserFromDb)
+        public IActionResult EditUser(User obj, string UserFromDb, IFormFile? file)
         {
+            string wwwRootPath = _hostEnvironment.WebRootPath;
+            if (file != null)
+            {
+                string fileName = Guid.NewGuid().ToString();
+                var Uploads = Path.Combine(wwwRootPath, @"images\Banners");
+                var extension = Path.GetExtension(file.FileName);
+
+                if (obj.Avatar != null)
+                {
+                    var oldImagePath = Path.Combine(wwwRootPath, obj.Avatar.TrimStart('\\'));
+                    if (System.IO.File.Exists(oldImagePath))
+                    {
+                        System.IO.File.Delete(oldImagePath);
+                    }
+                }
+
+                using (var fileSrteam = new FileStream(Path.Combine(Uploads, fileName + extension), FileMode.Create))
+                {
+                    file.CopyTo(fileSrteam);
+                }
+                obj.Avatar = @"\images\Banners\" + fileName + extension;
+            }
             _db.Users.Attach(obj);
             var entry = _db.Entry(obj);
             var data = _db.Users.Find(obj.UserId);
@@ -69,9 +154,9 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             return RedirectToAction("Index", "Admin", new { Areas = "Admin" });
         }
 
-        [HttpDelete]
-        [HttpPost]
-        public IActionResult OnPostDelete(int? id)
+        
+        
+        public IActionResult OnPostDelete(int id)
         {
             var user = _db.Users.FirstOrDefault(x => x.UserId == id);
             if (user == null)
@@ -265,10 +350,13 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
 
             }
             Theme.DeletedAt = DateTime.Now;
-            if(Theme.Status == 1)
+            if (Theme.Status == 1)
             {
                 Theme.Status = (Theme.Status = 0);
             }
+            var x = _db.Missions.FirstOrDefault(x => x.ThemeId == id);
+            x.DeletedAt = DateTime.Now;
+            _db.Missions.Update(x);
             _db.MissionThemes.Update(Theme);
             _db.SaveChanges();
             return RedirectToAction("MissionTheme", "Admin", new { Areas = "Admin" });
@@ -402,7 +490,7 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             }
         }
         public JsonResult City_Bind(int CityId)
-            {
+        {
             IEnumerable<SelectListItem> CityList = _db.Cities.Where(x => x.DeletedAt == null && x.CountryId == CityId).Select(
                 u => new SelectListItem
                 {
@@ -537,7 +625,7 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
                     _db.SaveChanges();
                 }
 
-               
+
 
 
                 if (model.addSkill != null)
@@ -550,7 +638,7 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
                         var missionSkill = new MissionSkill();
                         missionSkill.MissionId = model.mission.MissionId;
                         missionSkill.SkillId = int.Parse(n);
-                       missionSkill.UpdatedAt = DateTime.Now;
+                        missionSkill.UpdatedAt = DateTime.Now;
 
                         _db.MissionSkills.Update(missionSkill);
                         _db.SaveChanges();
@@ -590,7 +678,7 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             _db.SaveChanges();
 
 
-            return RedirectToAction("Mission", "Admin" , new { Areas = "Admin" });
+            return RedirectToAction("Mission", "Admin", new { Areas = "Admin" });
         }
 
         public string img(IFormFile file)
@@ -621,8 +709,8 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
         public IActionResult MissionApplication()
         {
             var x = new AdminZm();
-            x.missionApplication = _db.MissionApplications.Where(x => x.DeletedAt == null).AsEnumerable().ToList();
-            x.User = _db.Users.Where(u => u.DeletedAt == null).AsEnumerable().ToList();
+            x.missionApplication = _db.MissionApplications.Where(x => x.DeletedAt == null && x.ApprovalStatus == 0).AsEnumerable().ToList();
+            x.User = _db.Users.AsEnumerable().ToList();
             x.mission = _db.Missions.Where(w => w.DeletedAt == null).AsEnumerable().ToList();
 
             return View(x);
@@ -656,8 +744,8 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
         {
             var x = new AdminZm();
             x.stories = _db.Stories.Where(x => x.DeletedAt == null).AsEnumerable().ToList();
-            x.User = _db.Users.Where(u => u.DeletedAt == null).AsEnumerable().ToList();
-            x.mission = _db.Missions.Where(w => w.DeletedAt == null).AsEnumerable().ToList();
+            x.User = _db.Users.AsEnumerable().ToList();
+            x.mission = _db.Missions.AsEnumerable().ToList();
 
             return View(x);
         }
@@ -703,6 +791,11 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             _db.Stories.Update(story);
             _db.SaveChanges();
             return RedirectToAction("Story", "Admin", new { Areas = "Admin" });
+        }
+
+        public IActionResult logOut()
+        {
+            return RedirectToAction("Login", "User", new { areas = "Customer" });
         }
 
 

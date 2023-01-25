@@ -38,7 +38,7 @@
                 dataType: "json",
                 success: function(data) {
                     placeholderElement.find('.modal').modal('hide');
-                    alert('hii');
+                    location.reload();
                 },
                 error: function() {
                     alert(Invalid);
@@ -59,7 +59,7 @@
 <div class="container my-4">
     <p style="font-size: 35px;">Volunteering Timesheet</p>
     <div class="row">
-        <div class="col-md-6" style="border: 1px solid #e8e8e8;">
+        <div class="col-md-5 mx-4" style="border: 1px solid #e8e8e8;">
             <table class="table table-borderless">
                 @*<p style="font-size: 16px;" class="mt-4 ">Volunteering Hours</p>*@
                 <div class="p-2">
@@ -93,7 +93,9 @@
                 </tr>
                 @foreach (var item in Model)
                 {
-                    <tr class="lost-password">
+                    @if(@item.Action == null)
+                    {
+                         <tr class="lost-password">
                         <td style="padding-left: 0;">
                              @item.Mission.Title
                         </td>
@@ -107,23 +109,100 @@
                             @item.Minute
                         </td>
                         <td>
-                            <a href="#UserEdit"><i class="bi bi-pencil-square" style="color:#f88634;"></i></a>
+                            @*<a href="#UserEdit"><i class="bi bi-pencil-square" style="color:#f88634;"></i></a>*@
+                            <button type="button" class="btn" data-toggle="ajax-modal" data-target="#AddEditTimeTimesheet" data-url="@Url.Action($"EditTimeTimesheet?id={@item.TimesheetId}")">
+                                            <i class="bi bi-pencil-square text-secondary"></i>
+                                        </button>
+                                        <button class="btn" onclick=" if (confirm('Are you sure?')) { return location.href=' @Url.Action("DeleteTimeSheet", "VolunteerTimesheet" ,new {id = @item.TimesheetId})' } ">
+                                            <i class="bi bi-trash text-danger"></i>
+                                        </button>
                             &nbsp;
-                            <a href="#modalCenterDelete" role="button" class="btn p-0" data-bs-toggle="modal">
+                            @*<a href="#modalCenterDelete" role="button" class="btn p-0" data-bs-toggle="modal">
                                 <i class="bi bi-trash text-end"></i>
                              
-                            </a>
+                            </a>*@
                             <!-- Modal HTML -->
 
                         </td>
                     </tr>
+                    }
                 }
 
             </table>
         </div>
-        <div class="col-md-6">
+        &nbsp
+        <div class="col-md-5 px-2" style="border: 1px solid #e8e8e8;">
+            <table class="table table-borderless">
+                @*<p style="font-size: 16px;" class="mt-4 ">Volunteering Hours</p>*@
+                <div class="p-2">
+                    <div class="float-start">
+                        Volunteering Goal
+                    </div>
+                    <div class="float-end ps-2">
+                        <button type="button" class="btn btn-outline-warning rounded-pill" data-toggle="ajax-modal"
+                                data-target="#AddEditTimeTimesheet" data-url="@Url.Action("AddGoalTimesheet")">
+                            <i class="bi bi-plus"></i><span class="text-wrap">Add</span>
+                        </button>
+                    </div>
+                    <div id="modal-placeholder"></div>
+                </div>
+                <tr class="">
+                    <td class="" style="padding-left: 0;">
+                        Mission
+                    </td>
+                    <td>
+                        Date
+                    </td>
+                    <td>
+                        Action
+                    </td>
+                    <td>
+                        Action
+                    </td>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    @if(@item.Action != null)
+                    {
+                        <tr class="lost-password">
+                        <td style="padding-left: 0;">
+                             @item.Mission.Title
+                        </td>
+                        <td>
+                            @Convert.ToDateTime(@item.DateVolunteered).ToString("dd/MM/yyyy")
+                        </td>
+                         <td>
+                            @item.Action
+                        </td>
+                        
+                        <td>
+                            @*<a href="#UserEdit"><i class="bi bi-pencil-square" style="color:#f88634;"></i></a>*@
+                            <button type="button" class="btn" data-toggle="ajax-modal" data-target="#AddEditTimeTimesheet" data-url="@Url.Action($"EditGoalTimesheet?id={@item.TimesheetId}")">
+                                            <i class="bi bi-pencil-square text-secondary"></i>
+                                        </button>
+                                        <button class="btn" onclick=" if (confirm('Are you sure?')) { return location.href=' @Url.Action("DeleteTimeSheet", "VolunteerTimesheet" ,new {id = @item.TimesheetId})' } ">
+                                            <i class="bi bi-trash text-danger"></i>
+                                        </button>
+                            &nbsp;
+                            @*<a href="#modalCenterDelete" role="button" class="btn p-0" data-bs-toggle="modal">
+                                <i class="bi bi-trash text-end"></i>
+                             
+                            </a>*@
+                            <!-- Modal HTML -->
+
+                        </td>
+                    </tr>
+                    }
+                }
+
+            </table>
         </div>
     </div>
 
 </div>
+
+
+    @section Scripts{
+        <partial name="_ValidationScriptsPartial" />
+    }
 

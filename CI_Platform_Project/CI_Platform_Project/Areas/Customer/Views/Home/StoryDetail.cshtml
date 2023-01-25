@@ -194,25 +194,30 @@
     <div class="row mx-0 mb-4">
 
         <div class="col-md-6 col-md-push-6">
-            <div id="container">
-                <div>
-                    <display>
-                        <img style="height: 420px; width: 100%;object-fit: cover;" id="demo" src="@Model.storyMedium[0].Path" alt="">
-                    </display>
-                    <div class="sliderNav">
-                        @foreach (var item in Model.storyMedium)
-                        {
-                            <div><img class="slide" src="@item.Path" alt="can't rendor"></div>
-                        }
-                        <button onclick="goPrev()">
-                            <i class="bi bi-chevron-left"></i>
-                        </button>
-                        <button onclick="goNext()" style="right:0">
-                            <i class="bi bi-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
 
+            <div>
+                <display>
+                    @if (Model.storyMedium.Count != 0)
+                    {
+                        <img style="height: 420px; width: 100%;object-fit: cover;" id="demo" src="@Model.storyMedium[0].Path" alt="">
+                        <div class="sliderNav">
+                            @foreach (var item in Model.storyMedium)
+                            {
+                                <div><img class="slide" src="@item.Path" alt="can't rendor"></div>
+                            }
+                            <button onclick="goPrev()">
+                                <i class="bi bi-chevron-left"></i>
+                            </button>
+                            <button onclick="goNext()" style="right:0">
+                                <i class="bi bi-chevron-right"></i>
+                            </button>
+                        </div>
+                    }
+                    else
+                    {
+                        <img style="height: 550px; width: 100%;object-fit: cover;" id="demo" src="~/lib/assets/volunteer1.png" alt="">
+                    }
+                </display>
             </div>
             <script>
                 $("img.slide").on('click', function(event) {

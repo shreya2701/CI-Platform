@@ -230,11 +230,11 @@ else if (Model.mission != null)
     </div>
 
 
-    <label asp-for="mission.MissionMedia" class="form-label">Mission Images</label>
+    <label asp-for="mission.MissionMedia"  for="gallery-photo-add"  class="form-label">Mission Images
     <div class="drag-area mt-0 mx-2">
-        <div class="icon"><i class="bi bi-cloud-arrow-down"></i></div>
-        <button>Upload Image Here</button>
-        <input type="file" multiple id="UploadsBox" name="file">
+        <div class="icon" style="margin-bottom:25px"><i class="bi bi-cloud-arrow-down"></i></div>
+        </label>
+        <input type="file" id="gallery-photo-add" multiple name="file" hidden>
     </div>
     <label asp-for="mission.MissionDocuments" class="form-label">Mission Documentss</label>
     <div class="drag-area mt-0 mx-2">

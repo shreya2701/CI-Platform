@@ -170,12 +170,13 @@
                         <nav class="nav justify-content-center" aria-label="Secondary navigation">
                             <li class="nav-item dropdown">
                                 <a class="nav-link fadelarge" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: black;">
-                                    <div class=" d-flex justify-content-between ">Shreya<i class=" icon bi bi-chevron-down "></i></div>
-                                </a>
+                                    <div class="d-flex justify-content-between">Shreya<i class=" icon bi bi-chevron-down "></i></div>
+                                
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">volunteered</a></li>
+                                    <li><a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="logOut">volunteered</a></li>
                                     <li><a class="dropdown-item" href="#"> Policy</a></li>
                                 </ul>
+                                </a>
                             </li>
                         </nav>
                     </div>

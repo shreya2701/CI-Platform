@@ -27,6 +27,8 @@ public partial class Timesheet
 
     public int? Minute { get; set; }
 
+    public int? Action { get; set; }
+
     public virtual Mission Mission { get; set; } = null!;
 
     public virtual User? User { get; set; }

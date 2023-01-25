@@ -10,6 +10,8 @@ namespace CI_Platform_Project.Models
         public List<RecentVolunteer> recentVolunteers { get; set; }
         public List<Card> relatedMission { get; set; }
         public int? Rating { get; set; } 
+        public int applicationApply { get; set; }
+        public MissionApplication MissionApplication { get; set; }
 
     }
 }

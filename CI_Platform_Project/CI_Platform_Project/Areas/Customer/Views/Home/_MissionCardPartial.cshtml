@@ -19,7 +19,7 @@
                     <!-- <button class="card-button contact"><i class="bi bi-person-plus card-icon p-1"></i></button> -->
                     <!-- <button class="border rounded-pill card-button location " style="border-radius: 45%;"><i class="bi bi-geo-alt card-icon p-1"><span class="p-1">Toranto</span></i></button> -->
                 </div>
-                <div class="card-body pb-2">
+                <div class="card-body pt-0 pb-2">
                     <div class="d-flex align-items-center location">
                         <img src="~/lib/assets/location.png" alt="" class="img-fuild px-2" style="height: 10px;color: white;">
                         <span>@item.city</span>
@@ -124,7 +124,13 @@
 
                 <div class="text-center">
                     <form method="post">
-                        <button type="submit" onclick="applyMission(@item.mission.MissionId)" class=" px-4  py-1 btn-block rounded-pill button">Apply <i class="bi bi-arrow-right ms-2"></i></button>
+                        @if(@item.mission.RegistrationDeadline <= @DateTime.Now || @item.seatleft == 0 || @item.missionApplication.ApprovalStatus == 1){
+                            
+                        }
+                        else
+                        {
+                            <button type="submit" onclick="applyMission(@item.mission.MissionId)" class=" px-4  py-1 btn-block rounded-pill button">Apply <i class="bi bi-arrow-right ms-2"></i></button>
+                        }
                         <button type="submit" asp-area="Customer" asp-controller="Home" asp-action="missionDetail" asp-route-id="@item.mission.MissionId" class=" px-4  py-1 btn-block rounded-pill button">Detail <i class="bi bi-arrow-right ms-2"></i></button>
                     </form>
                 </div>

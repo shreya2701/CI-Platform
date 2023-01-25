@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Pages/_Layout.cshtml";
 }
 
-<form style="border: 1px solid rgb(222, 218, 218);" class="" method="post">
+<form style="border: 1px solid rgb(222, 218, 218);" class="" method="post" enctype="multipart/form-data">
     <div>
         <p class="m-0 p-2 px-4" style="background-color: rgba(151, 148, 148, 0.148); box-shadow:3px 3px 2px 0 rgb(0 0 0 / 8%);">
             Edit
@@ -15,35 +15,65 @@
     <div class="row bg-white" style="padding-left: 25px; padding-bottom: 30px;">
         <div class="col-6 form-group mb-3 mt-3">
             <label asp-for="FirstName">FirstName</label>
-            <input type="text" asp-for="FirstName" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+            <input type="text" asp-for="FirstName" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter FirstName" required>
         </div>
         <div class="col-6 form-group mb-3 mt-3">
             <label asp-for="LastName">LastName</label>
-            <input type="text" asp-for="LastName" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+            <input type="text" asp-for="LastName" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter LastName" required>
         </div>
         <div class="col-6 form-group mb-3 mt-3">
             <label asp-for="Email">Email</label>
-            <input type="email" asp-for="Email" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+            <input type="email" asp-for="Email" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Email">
         </div>
         <div class="col-6 form-group mb-3 mt-3">
             <label asp-for="PhoneNumber">PhoneNumber</label>
-            <input type="number" asp-for="PhoneNumber" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+            <input type="number" asp-for="PhoneNumber" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter PhoneNumber">
         </div>
         <div class="col-6 form-group mb-3 mt-3">
             <label asp-for="Password">Password</label>
-            <input type="text" asp-for="Password" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+            <input type="text" asp-for="Password" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Password">
         </div>
         <div class="col-6 form-group mb-3 mt-3">
             <label asp-for="ConfirmPassword">ConfirmPassword</label>
-            <input type="text" asp-for="ConfirmPassword" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+            <input type="text" asp-for="ConfirmPassword" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Confirm password">
         </div>
         <div class="col-6 form-group mb-3 mt-3">
             <label asp-for="EmployeeId">EmployeeId</label>
-            <input type="text" asp-for="EmployeeId" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+            <input type="text" asp-for="EmployeeId" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter EmployeeId" required>
         </div>
         <div class="col-6 form-group mb-3 mt-3">
             <label asp-for="Department">Department</label>
-            <input type="text" asp-for="Department" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+            <input type="text" asp-for="Department" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Department" required>
+        </div>
+        <div class="col-md-6 mb-3 mt-3">
+            <label asp-for="CountryId" class="form-label w-100">Country</label>
+            <select asp-for="CountryId" asp-items="ViewBag.CountryList" class="form-select w-100" id="ddlCountry" required>
+                <option value="" disabled selected hidden>Select Country</option>
+            </select>
+        </div>
+        <div class="col-md-6 mb-3 mt-3">
+            <label asp-for="CityId" class="form-label w-100">City</label>
+            <select asp-for="CityId" asp-items="ViewBag.CityList" class="form-select w-100" aria-placeholder="select Country" id="ddlCity" required>
+                <option value="" disabled selected hidden>Select city</option>
+            </select>
+        </div>
+        <div class="col-6 form-group mb-3 mt-3">
+            <label asp-for="FirstName">Profile</label>
+            <input type="text" asp-for="ProfileText" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Profile" >
+            <span asp-validation-for="ProfileText" class="text-danger"></span>
+        </div>
+        <div class="col-6 form-group mb-3 mt-3">
+            <label asp-for="FirstName">WhyIVolunteer</label>
+            <input type="text" asp-for="WhyIVolunteer" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter WhyIVolunteer" >
+            <span asp-validation-for="WhyIVolunteer" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Avatar" for="gallery-photo-add" class="form-label w-100">
+                User Image
+                <div class="drag-area mt-0 mx-2 w-100">
+                    <div class="icon" style="margin-bottom:25px"><i class="bi bi-cloud-arrow-down"></i></div>
+            </label>
+            <input type="file" id="gallery-photo-add" name="file" >
         </div>
         <div class="form-group">
             <label asp-for="Status">Status</label>
@@ -54,9 +84,11 @@
             </select>
         </div>
     </div>
-    <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill" asp-area="Admin" asp-controller="Admin" asp-action="Index" style="font-size: 16px;">
+    <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill"  style="font-size: 16px;">
+        <a href="/Admin/Admin/Index" style="color:black;text-decoration: none;">
         Back to List
-        </button>&nbsp;
+        </a>
+    </button>&nbsp;
     <button type="submit" class=" px-3 py-1 btn-block rounded-pill button " style="font-size: 17px;">Edit</button>
 </form>
 

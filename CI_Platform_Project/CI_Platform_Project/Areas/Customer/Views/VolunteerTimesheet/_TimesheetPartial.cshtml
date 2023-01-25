@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header border-bottom-0">
-                <h5 class="modal-title">Confirm Delete</h5>
+                <h5 class="modal-title">Volunteer Timesheet</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body pt-0">
@@ -14,22 +14,25 @@
                     
                     <div class="col-md-12 mb-3">
                         <label for="inputState" asp-for="@Model.timesheet.MissionId" class="form-label">Select Mission</label>
-                        <select id="inputState" class="form-select" asp-for="@Model.timesheet.MissionId" asp-items="ViewBag.mission">
+                        <select id="inputState" class="form-select" asp-for="@Model.timesheet.MissionId" asp-items="ViewBag.mission" required="">
                             <option selected disabled>Select Your Mission</option>
                         </select>
+                        <span asp-validation-for="@Model.timesheet.MissionId" class="text-danger"></span>
                     </div>
                     <div class="col-md-12 mb-3">
                         <label for="name" class="form-label mb-0">Date Volunteered</label>
-                        <input type="date" name="timeSheet.DateVolunteered" class="form-control" asp-for="@Model.timesheet.DateVolunteered" id="name" placeholder="Select Date">
+                        <input type="date" name="timeSheet.DateVolunteered" class="form-control" asp-for="@Model.timesheet.DateVolunteered" id="name" placeholder="Select Date" required="">
                     </div>
                     <div>
-                        <div class="col-md-6 mb-3">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
                             <label for="name" class="form-label mb-0">Hours</label>
-                            <input type="number" name="timeSheet.Hour" asp-for="timesheet.Hour" class="form-control" id="name"  placeholder="Enter subject">
+                            <input type="number" name="timeSheet.Hour" asp-for="timesheet.Hour" class="form-control" id="name"  placeholder="Enter Hours" required="">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="name" class="form-label mb-0">Minute</label>
-                            <input type="number"name="timeSheet.Minute"  asp-for="timesheet.Minute" class="form-control" id="name" placeholder="Enter subject">
+                            <input type="time"name="timeSheet.Minute"  asp-for="timesheet.Minute" class="form-control" id="name" placeholder="Enter Minute" required="">
+                        </div>
                         </div>
                     </div>
                     <div class="col-12">

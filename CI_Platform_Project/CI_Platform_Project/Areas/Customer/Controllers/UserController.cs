@@ -41,15 +41,20 @@ namespace CI_Platform_Project.Areas.Customer.Controllers
                 return RedirectToAction("Index", "Home", new { area = "Customer" });
                 
             }
-            else if(user == null)
-            {
-                TempData["errorMessage"] = "Email and Password Is Incorrect";
-                return View();
-            }
+            //else if(user == null)
+            //{
+            //    TempData["errorMessage"] = "Email and Password Is Incorrect";
+            //    return View();
+            //}
             else if (admin != null)
             {
                 return RedirectToAction("Index", "Admin" , new { area = "Admin" });
             }
+            //else if (admin == null)
+            //{
+            //    TempData["errorMessage"] = "You Are Not a User.";
+            //    return View();
+            //}
             return View(model);
         }
         //Login End

@@ -366,6 +366,7 @@ namespace CI_Platform_Project.Areas.Customer.Controllers
             var missionDetail = new MissionDetail();
             var item = _db.Missions.FirstOrDefault(x => x.MissionId == id);
             missionDetail.missionCard = MissionCard(item);
+            missionDetail.MissionApplication = _db.MissionApplications.FirstOrDefault(x => x.MissionId == id && x.UserId == int.Parse(HttpContext.Session.GetString("UserId")) && x.ApprovalStatus == 1);
             missionDetail.missionImages = _db.MissionMedia.Where(x => x.MissionId == id && x.DeletedAt == null).ToList();
             //var x =  _db.MissionSkills.Where(x => x.MissionId == id && x.DeletedAt == null);
             //missionDetail.skills = x.Select(y => y.Skill.SkillName).ToList() ;
@@ -386,9 +387,10 @@ namespace CI_Platform_Project.Areas.Customer.Controllers
                 var volunteer = new RecentVolunteer();
                 var user = _db.Users.FirstOrDefault(x => x.UserId == u.UserId);
                 volunteer.VolunteerName = user.FirstName + " " + user.LastName;
-                volunteer.VolunteerImg = user.Avatar == null ? "~/lib/assets/volunteer1.png" : user.Avatar;
+                volunteer.VolunteerImg = user.Avatar == null ? "~/lib/assets/card-1.png" : user.Avatar;
+                volunteer.VolunteerCount = missionApp.Count();
                 listVol.Add(volunteer);
-            }
+            }   
             missionDetail.recentVolunteers = listVol;
             missionDetail.relatedMission = RelatedMission((int)item.CityId, (int)item.CountryId, (int)item.ThemeId);
 
@@ -423,14 +425,14 @@ namespace CI_Platform_Project.Areas.Customer.Controllers
         {
             var card = new Card();
             card.mission = item;
-            card.theme = _db.MissionThemes.FirstOrDefault(x => x.MissionThemeId == item.ThemeId && x.DeletedAt == null && x.Status == 1).Title;
+            card.theme = _db.MissionThemes.FirstOrDefault(x => x.MissionThemeId == item.ThemeId).Title;
             var img = _db.MissionMedia.FirstOrDefault(x => x.MissionId == item.MissionId);
             card.img = img != null ? img.MediaPath : "~/lib/assets/card-1.png";
             card.city = _db.Cities.FirstOrDefault(x => x.CityId == item.CityId && x.DeletedAt == null).Name;
             card.seatleft = (int)(item.TotalSeat - (_db.MissionApplications.Where(x => x.MissionId == item.MissionId).Count()));
             card.GoalMission = _db.GoalMissions.FirstOrDefault(x => x.MissionId == item.MissionId);
             card.favorite = _db.FavoriteMissions.FirstOrDefault(x => x.MissionId == item.MissionId && x.UserId == int.Parse(HttpContext.Session.GetString("UserId")) && x.DeletedAt == null) != null ? 1 : 0;
-
+            card.missionApplication = _db.MissionApplications.FirstOrDefault(x => x.MissionId == item.MissionId && x.UserId == int.Parse(HttpContext.Session.GetString("UserId")) && x.ApprovalStatus == 1);
 
             return card;
         }
@@ -450,7 +452,7 @@ namespace CI_Platform_Project.Areas.Customer.Controllers
                 var img = _db.MissionMedia.FirstOrDefault(x => x.MissionId == item.MissionId);
                 card.img = img != null ? img.MediaPath : "~/lib/assets/card-1.png";
                 var missionTheme = _db.Missions.FirstOrDefault(x => x.MissionId == item.MissionId);
-                card.theme = _db.MissionThemes.FirstOrDefault(x => x.MissionThemeId == missionTheme.ThemeId && x.DeletedAt == null).Title;
+                card.theme = _db.MissionThemes.FirstOrDefault(x => x.MissionThemeId == missionTheme.ThemeId).Title;
                 var user = _db.Users.FirstOrDefault(x => x.UserId == item.UserId);
                 card.UserName = user.LastName + " " + user.FirstName;
                 card.UserImg = user.Avatar != null ? user.Avatar : "~/lib/assets/volunteer1.png";
@@ -522,7 +524,7 @@ namespace CI_Platform_Project.Areas.Customer.Controllers
         {
             var storyDetail = new StoryDetail();
             var story = _db.Stories.FirstOrDefault(x => x.StoryId == id);
-            //story.view_count += 1;
+            story.ViewCount += 1;
             _db.Stories.Update(story);
             _db.SaveChanges();
             var obj = _db.Stories.FirstOrDefault(x => x.StoryId == id);

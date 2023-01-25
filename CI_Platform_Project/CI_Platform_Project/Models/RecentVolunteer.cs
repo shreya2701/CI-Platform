@@ -6,5 +6,6 @@
         public string VolunteerName { get; set; }
 
         public string VolunteerImg { get; set; }
+        public int VolunteerCount { get; set; }
     }
 }

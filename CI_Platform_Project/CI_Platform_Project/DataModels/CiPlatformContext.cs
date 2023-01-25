@@ -825,6 +825,7 @@ public partial class CiPlatformContext : DbContext
             entity.ToTable("timesheet");
 
             entity.Property(e => e.TimesheetId).HasColumnName("timesheet_id");
+            entity.Property(e => e.Action).HasColumnName("action");
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")

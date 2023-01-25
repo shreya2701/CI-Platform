@@ -10753,11 +10753,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\TatvaSoft_Task\\New folder\\CI_Platform_Project\\CI_Platform_Project\\CI_Platform_Project.csproj",
+      "projectUniqueName": "D:\\TatvaSoft_Task\\CI Platform Design\\CI_Platform_Project\\CI_Platform_Project\\CI_Platform_Project.csproj",
       "projectName": "CI_Platform_Project",
-      "projectPath": "D:\\TatvaSoft_Task\\New folder\\CI_Platform_Project\\CI_Platform_Project\\CI_Platform_Project.csproj",
+      "projectPath": "D:\\TatvaSoft_Task\\CI Platform Design\\CI_Platform_Project\\CI_Platform_Project\\CI_Platform_Project.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "D:\\TatvaSoft_Task\\New folder\\CI_Platform_Project\\CI_Platform_Project\\obj\\",
+      "outputPath": "D:\\TatvaSoft_Task\\CI Platform Design\\CI_Platform_Project\\CI_Platform_Project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",

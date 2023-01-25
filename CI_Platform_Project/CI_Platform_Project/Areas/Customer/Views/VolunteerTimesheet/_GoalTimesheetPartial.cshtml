@@ -1,5 +1,45 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model TimesheetVolunteer
+<div id="AddEditTimeTimesheet" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title">Volunteer Timesheet</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <form id="modalForm" method="post" action="AddGoalTimesheet">
+                    <input asp-for="@Model.timesheet.TimesheetId" hidden />
+                    <input asp-for="@Model.timesheet.CreatedAt" hidden />
+                    <input asp-for="@Model.timesheet.Status" hidden />
+                    
+                    <div class="col-md-12 mb-3">
+                        <label for="inputState" asp-for="@Model.timesheet.MissionId" class="form-label">Select Mission</label>
+                        <select id="inputState" class="form-select" asp-for="@Model.timesheet.MissionId" asp-items="ViewBag.mission" required="">
+                            <option selected disabled>Select Your Mission</option>
+                        </select>
+                        <span asp-validation-for="@Model.timesheet.MissionId" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="name" class="form-label mb-0">Date Volunteered</label>
+                        <input type="date"  class="form-control" asp-for="@Model.timesheet.DateVolunteered" id="name" placeholder="Select Date" required="">
+                    </div>
+                    <div>
+                        <div class="col-md-12 mb-3">
+                            <label for="name" class="form-label mb-0">Action</label>
+                            <input type="number"  asp-for="timesheet.Action" class="form-control" id="name" placeholder="Enter Action" required="">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="myProfile" class="form-label mb-0">Message</label>
+                        <textarea class="form-control" id="myProfile" asp-for="@Model.timesheet.Notes" rows="3" placeholder="Enter Message"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer border-top-0 justify-content-center">
+                <button type="submit" data-bs-dismiss="modal" class=" add-skill px-3  py-1 btn-block rounded-pill  " style="font-size: 16px;">Cancel</button>
+                <button type="submit" class=" px-3 py-1 btn-block rounded-pill button" data-save="modal" style="font-size: 17px;">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+

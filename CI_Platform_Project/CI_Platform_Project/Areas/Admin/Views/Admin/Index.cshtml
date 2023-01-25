@@ -91,11 +91,12 @@
                 <td>
                 <form method="post">
                     <a asp-area="Admin" asp-controller="Admin" asp-action="EditUser" asp-route-UserId="@obj.UserId"><i class="bi bi-pencil-square" style="color:#f88634;"></i></a>
-                    &nbsp;
-                    <button type="submit" asp-area="Admin" asp-controller="Admin" asp-action="OnPostDelete" asp-route-id=@obj.UserId onclick="confirm('Are You Want to Delete?')" role="button" class="btn p-0" data-bs-toggle="modal">
+                    
+                     </form>
+                    <button class="btn" onclick=" if (confirm('Are you sure?')) { return location.href=' @Url.Action("OnPostDelete", "Admin" ,new {id = @obj.UserId})'} ">
                         <i class="bi bi-trash text-end"></i>
                     </button>
-                </form>
+               
                 </td>
 
             </tr>
