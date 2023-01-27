@@ -12,6 +12,8 @@ namespace CI_Platform_Project.Models
         public int? Rating { get; set; } 
         public int applicationApply { get; set; }
         public MissionApplication MissionApplication { get; set; }
+        public List<MissionDocument> missionDocuments { get; set; }
+        public List<Comment> comments { get; set; }
 
     }
 }

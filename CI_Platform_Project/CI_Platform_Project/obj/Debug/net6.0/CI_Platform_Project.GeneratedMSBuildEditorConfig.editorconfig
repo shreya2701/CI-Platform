@@ -8,229 +8,229 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CI_Platform_Project
 build_property.RootNamespace = CI_Platform_Project
-build_property.ProjectDir = D:\TatvaSoft_Task\CI Platform Design\CI_Platform_Project\CI_Platform_Project\
+build_property.ProjectDir = C:\Users\DELL\Downloads\Backend\Backend\CI_Platform_Project\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\TatvaSoft_Task\CI Platform Design\CI_Platform_Project\CI_Platform_Project
+build_property.MSBuildProjectDirectory = C:\Users\DELL\Downloads\Backend\Backend\CI_Platform_Project
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Admin/AddBanner.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Admin/AddBanner.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cQWRkQmFubmVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Admin/AddUser.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Admin/AddUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cQWRkVXNlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Admin/Banner.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Admin/Banner.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cQmFubmVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Admin/CMS.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Admin/CMS.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cQ01TLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Admin/EditUser.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Admin/EditUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cRWRpdFVzZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Admin/Index.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Admin/Mission.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Admin/Mission.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cTWlzc2lvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Admin/MissionApplication.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Admin/MissionApplication.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cTWlzc2lvbkFwcGxpY2F0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Admin/MissionSkill.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Admin/MissionSkill.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cTWlzc2lvblNraWxsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Admin/MissionTheme.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Admin/MissionTheme.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cTWlzc2lvblRoZW1lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Admin/Story.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Admin/Story.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cU3RvcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Admin/StoryDetail.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Admin/StoryDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cU3RvcnlEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Admin/UpsertCMS.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Admin/UpsertCMS.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cVXBzZXJ0Q01TLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Admin/UpsertMission.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Admin/UpsertMission.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cVXBzZXJ0TWlzc2lvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Admin/UpsertSkill.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Admin/UpsertSkill.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cVXBzZXJ0U2tpbGwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Admin/UpsertTheme.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Admin/UpsertTheme.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cVXBzZXJ0VGhlbWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Pages/Error.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Pages/_Layout.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Pages/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFnZXNcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Pages/_ViewImports.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/Pages/_ViewStart.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/_ViewImports.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Admin/Views/_ViewStart.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/Home/Index.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/Home/missionDetail.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/Home/missionDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxtaXNzaW9uRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/Home/ShareStory.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/Home/ShareStory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxTaGFyZVN0b3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/Home/Story.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/Home/Story.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxTdG9yeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/Home/StoryDetail.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/Home/StoryDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxTdG9yeURldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/Home/_Co-WorkerPartial.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/Home/_Co-WorkerPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxfQ28tV29ya2VyUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/Home/_MissionCardPartial.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/Home/_MissionCardPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxfTWlzc2lvbkNhcmRQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/Home/_StoryCardPartial.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/Home/_StoryCardPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxfU3RvcnlDYXJkUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/Home/_StoryCo-WorkerPartial.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/Home/_StoryCo-WorkerPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxfU3RvcnlDby1Xb3JrZXJQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/UserDetail/Privacy.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/UserDetail/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVXNlckRldGFpbFxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/UserDetail/UserProfile.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/UserDetail/UserProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVXNlckRldGFpbFxVc2VyUHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/UserDetail/_ConfirmPasswordPartial.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/UserDetail/_ConfirmPasswordPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVXNlckRldGFpbFxfQ29uZmlybVBhc3N3b3JkUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/UserDetail/_ContactUsPartial.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/UserDetail/_ContactUsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVXNlckRldGFpbFxfQ29udGFjdFVzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/User/ForgotPassword.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/User/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVXNlclxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/User/ForgotPasswordConfirmation.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/User/ForgotPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVXNlclxGb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/User/Login.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/User/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVXNlclxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/User/Registration.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/User/Registration.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVXNlclxSZWdpc3RyYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/User/ResetPassword.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/User/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVXNlclxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/VolunteerTimesheet/VolunteerTimesheet.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/VolunteerTimesheet/VolunteerTimesheet.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVm9sdW50ZWVyVGltZXNoZWV0XFZvbHVudGVlclRpbWVzaGVldC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/VolunteerTimesheet/_GoalTimesheetPartial.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/VolunteerTimesheet/_GoalTimesheetPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVm9sdW50ZWVyVGltZXNoZWV0XF9Hb2FsVGltZXNoZWV0UGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/VolunteerTimesheet/_TimesheetPartial.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/VolunteerTimesheet/_TimesheetPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcVm9sdW50ZWVyVGltZXNoZWV0XF9UaW1lc2hlZXRQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/_ViewImports.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Areas/Customer/Views/_ViewStart.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Areas/Customer/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Pages/Error.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Pages/_Layout.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Pages/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Pages/_ViewImports.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Pages/_ViewStart.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Views/Shared/Error.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Views/Shared/_Layout1.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Views/Shared/_Layout1.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Views/_ViewImports.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Views/_ViewStart.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/TatvaSoft_Task/CI Platform Design/CI_Platform_Project/CI_Platform_Project/Views/Shared/_Layout.cshtml]
+[C:/Users/DELL/Downloads/Backend/Backend/CI_Platform_Project/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-d0w97fxwxi

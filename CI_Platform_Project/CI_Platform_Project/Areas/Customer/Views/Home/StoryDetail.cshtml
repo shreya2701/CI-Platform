@@ -69,7 +69,7 @@
 </script>
 
 <script>
-    $(document).ready(function() {
+    $(document).borderunction() {
         const slides = document.querySelectorAll(".slide")
         const vid = document.querySelectorAll("video.slide")
         const totalImgInSlider = 4;
@@ -362,14 +362,14 @@
             <div class="d-flex justify-content-between">
                 <div class="text-center ">
                     <button type="submit" data-toggle="ajax-modal" data-target="#CoWorkerStory"
-                            data-url="@Url.Action("CoWorkerStory", "Home" , new{id = @Model.storyId})" class=" px-3  py-2 btn-block rounded-pill" style="font-size: 20px;color: #757575; width: 100%;background-color: white;border: solid 2px #757575;">
+                            data-url="@Url.Action("CoWorkerStory", "Home" , new{id = @Model.storyId})" class=" px-4  py-2 btn-block rounded-pill" style="font-size: 20px;color: #757575; width: 100%;background-color: white;border: solid 2px #757575;">
                         <img src="assets/add1.png"><span class="ms-2">Recommend to a co-workers</span>
                     </button>
                 </div>
                 <div id="modal-placeholder"></div>
                 <div class="text-end ">
                     <form method="post">
-                        <button type="submit" asp-area="Customer" asp-controller="Home" asp-action="missionDetail" asp-route-id="@Model.missionId" class=" px-4  py-2 btn-block rounded-pill button " style="font-size: 20px;">Open Mission <i class="bi bi-arrow-right ms-2"></i></button>
+                        <button type="submit" asp-area="Customer" asp-controller="Home" asp-action="missionDetail" asp-route-id="@Model.missionId" class=" px-5  py-2 btn-block rounded-pill button " style="font-size: 20px;">Open Mission <i class="bi bi-arrow-right ms-2"></i></button>
                     </form>
                 </div>
             </div>

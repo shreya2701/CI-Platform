@@ -11,18 +11,18 @@
         <div class="col mb-4">
             <div class="card h-100 cardcontainer">
                 <div class="photo">
-                    <img src="@Url.Content(@obj.img)" class="card-img-top w-100" height="200px" alt="...">
+                    <img src="@Url.Content(@obj.img)" class="card-img-top w-100"  alt="...">
                     <div class="overlay">
                         <a class="info" asp-area="Customer" asp-controller="Home" asp-action="StoryDetail" asp-route-id="@obj.Stories.StoryId">View Details<i class="bi bi-arrow-right ms-2"></i></a>
                     </div>
                 </div>
-                <div class="box1">
+                <div class="box1Story">
                     <span class="mb-30 text-wrap btn btn-sm rounded-pill "
                       style="background-color: white; color: #757575; ">
                         @obj.theme 
                     </span>
                 </div>
-                <div class="card-body">
+                <div class="card-body pt-0">
                     <h5 class="card-title">@obj.Stories.Title</h5>
                     <p class="card-text">@obj.Stories.Description</p>
                 </div>

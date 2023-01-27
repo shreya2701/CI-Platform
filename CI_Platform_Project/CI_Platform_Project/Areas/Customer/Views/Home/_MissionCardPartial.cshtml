@@ -13,7 +13,7 @@
 
         <div class="col mb-4">
             <div class="card h-100 cardcontainer">
-                <div class="photo">
+                <div class="photo1">
                     <img src="@Url.Content(@item.img)" class="card-img-top alt="..." height="70">
                     <!-- <button class="card-button heart"><i class="bi bi-suit-heart card-icon p-1"></i></button> -->
                     <!-- <button class="card-button contact"><i class="bi bi-person-plus card-icon p-1"></i></button> -->
@@ -26,17 +26,17 @@
                     </div>
                     @if (item.favorite == 0)
                     {
-                        <div class="d-flex align-items-center heart p-1">
+                        <div class="d-flex align-items-center heart ">
                             <button type="button" onclick="favorite(@item.mission.MissionId,1)" class="btn btn-sm btn-outline-none">
-                                <i class="bi bi-heart"></i>
+                                <i class="bi bi-heart" style="font-size:19px;color:white"></i>
                             </button>
                         </div>
                     }
                     else
                     {
-                        <div class="d-flex align-items-center heart p-1">
+                        <div class="d-flex align-items-center heart ">
                             <button type="button" onclick="favorite(@item.mission.MissionId,0)" class="btn btn-sm btn-outline-none">
-                                <i class="bi bi-heart-fill text-danger"></i>
+                                <i class="bi bi-heart-fill text-danger" style="font-size:19px;"></i>
                             </button>
                         </div>
                     }
@@ -44,9 +44,8 @@
                         <button type="button" data-toggle="ajax-modal" data-target="#CoWorker"
                             data-url="@Url.Action("CoWorker", "Home" , new{id = @item.mission.MissionId})" class="btn btn-sm btn-outline-none rounded-pill p-1" 
                             style="background-color:rgba(0, 0, 0, .5);">
-                            <img src="~/lib/assets/user.png" alt="" class="img-fuild p-1" style="color: white;">
+                            <img src="~/lib/assets/user.png" alt="" class="img-fuild p-1" style="color: white;height:27px;width:27px">
                         </button>
-
                     </div>
                     
 

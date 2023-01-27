@@ -24,64 +24,81 @@ namespace CI_Platform_Project.Areas.Customer.Controllers
         [AllowAnonymous]
         public IActionResult Login()
         {
-            return View();
+            Login login = new Login();
+            login.banner = GetBanner();
+            return View(login);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Login(User model, CI_Platform_Project.DataModels.Admin models)
+        public IActionResult Login(Login model)
         {
-            var user = _db.Users.FirstOrDefault(u => u.Email.Equals(model.Email.ToLower()) && u.Password.Equals(model.Password) && u.DeletedAt == null && u.Status == 1);
-            var admin = _db.Admins.FirstOrDefault(u => u.Email.Equals(models.Email.ToLower()) && u.Password.Equals(model.Password));
-            if (user != null)
+            var user = _db.Users.FirstOrDefault(u => u.Email.Equals(model.User.Email.ToLower()) && u.Password.Equals(model.User.Password) && u.DeletedAt == null && u.Status == 1);
+            
+            if (user == null)
             {
-                
-                HttpContext.Session.SetString("UserId", user.UserId.ToString());
-                HttpContext.Session.SetString("UserName", user.FirstName.ToString());
-                return RedirectToAction("Index", "Home", new { area = "Customer" });
-                
+                var admin = _db.Admins.FirstOrDefault(u => u.Email.Equals(model.User.Email.ToLower()) && u.Password.Equals(model.User.Password));
+                if (admin != null)
+                {
+                    HttpContext.Session.SetString("UserId", admin.AdminId.ToString());
+                    HttpContext.Session.SetString("UserName", admin.FirstName.ToString());
+                    return RedirectToAction("Index", "Admin", new { area = "Admin" });
+                }
+
+                Login login = new Login();
+                login.banner = GetBanner();
+                TempData["errorMessage"] = "Email And Password Incorrect";
+                return View(login);
+
             }
-            //else if(user == null)
-            //{
-            //    TempData["errorMessage"] = "Email and Password Is Incorrect";
-            //    return View();
-            //}
-            else if (admin != null)
+            if(user.Status != 1)
             {
-                return RedirectToAction("Index", "Admin" , new { area = "Admin" });
+                Login login = new Login();
+                login.banner = GetBanner();
+                TempData["errorMessage"] = "You are no longer User.";
+                return View(login);
+
             }
-            //else if (admin == null)
-            //{
-            //    TempData["errorMessage"] = "You Are Not a User.";
-            //    return View();
-            //}
-            return View(model);
+           
+            HttpContext.Session.SetString("UserId", user.UserId.ToString());
+            HttpContext.Session.SetString("UserName", user.FirstName.ToString());
+            return RedirectToAction("Index", "Home", new { area = "Customer" });
+            
         }
         //Login End
 
-
+        public List<Banner> GetBanner()
+        {
+            return _db.Banners.Where(x => x.DeletedAt == null).ToList();
+        }
 
         //Registration 
         //get
         public async Task<IActionResult> Registration()
-        {       
-            return View();
+        {
+            Login login = new Login();
+            login.banner = GetBanner();
+            return View(login);
         }
 
 
         //post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Registration(User model)
+        public async Task<IActionResult> Registration(Login model)
         {
+            var user = _db.Users.FirstOrDefault(u => u.Email.Equals(model.User.Email.ToLower()) && u.DeletedAt == null);
 
-            if (ModelState.IsValid)
+            if (user == null)
             {
-                _db.Users.Add(model);
+                _db.Users.Add(model.User);
                 _db.SaveChanges();
                 return RedirectToAction("Login", "User");
             }
-            return View(model);
+            TempData["ErrorMes"] = "User alraedy exist with same email";
+            Login login = new Login();
+            login.banner = GetBanner();
+            return View(login);
         }
 
         //Registration End
@@ -92,19 +109,24 @@ namespace CI_Platform_Project.Areas.Customer.Controllers
 
         public IActionResult ForgotPassword()
         {
-            return View();
+            Login login = new Login();
+            login.banner = GetBanner();
+            return View(login);
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult ForgotPassword(User model)
+        public IActionResult ForgotPassword(Login model)
         {
             string message = "";
             bool status = false;
 
             using (CiPlatformContext _db = new CiPlatformContext())
             {
-                var account = _db.Users.Where(u => u.Email.Equals(model.Email)).FirstOrDefault();
+                var account = _db.Users.Where(u => u.Email.Equals(model.User.Email)).FirstOrDefault();
+                
+                    
+                
                 var passwordReset = new PasswordReset();
                 // var passwordReset = _db.PasswordResets.Where(u => u.Email.Equals(model.Email)).FirstOrDefault();
                 if (account != null)
@@ -120,7 +142,7 @@ namespace CI_Platform_Project.Areas.Customer.Controllers
                     //var link = Request.URL.AbsoluteUri.Replace(Request.Url.PathAndQuery, verifyUrl);
 
                     var fromEmail = new MailAddress("shreyakanani46@gmail.com", "Dotnet Awesome");
-                    var toEmail = new MailAddress(model.Email);
+                    var toEmail = new MailAddress(model.User.Email);
                     var fromEmailPassword = "gndthjyluwlsuuma"; // Replace with actual password
 
 
@@ -156,7 +178,7 @@ namespace CI_Platform_Project.Areas.Customer.Controllers
 
                     // SendVerificationLinkEmail(account.Email, token, "ResetPassword");
                     passwordReset.Token = token;
-                    passwordReset.Email = model.Email;
+                    passwordReset.Email = model.User.Email;
                     _db.PasswordResets.Add(passwordReset);
                     //This line I have added here to avoid confirm password not match issue , as we had added a confirm password property 
                     //in our model class in part 1
@@ -166,10 +188,14 @@ namespace CI_Platform_Project.Areas.Customer.Controllers
                 }
                 else
                 {
-                    return View("Error");
+                    Login login = new Login();
+                    login.banner = GetBanner();
+                    TempData["errorMessage"] = "Incoorect Mail.Plz enter correct mail";
+                    return View(login);
                 }
             }
-            return RedirectToAction("ForgotPasswordConfirmation", "User");
+            TempData["errorMessage"] = "Mail is Send. Check Your Mail";
+            return RedirectToAction("Login", "User");
         }
 
         public IActionResult ForgotPasswordConfirmation()
@@ -190,10 +216,9 @@ namespace CI_Platform_Project.Areas.Customer.Controllers
             //{
             //    return HttpNotFound();
             //}
-
-
-
-            return View();
+            Login login = new Login();
+            login.banner = GetBanner();
+            return View(login);
 
         }
 

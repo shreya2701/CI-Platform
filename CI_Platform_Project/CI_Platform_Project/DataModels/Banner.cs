@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace CI_Platform_Project.DataModels;
 
@@ -9,9 +8,9 @@ public partial class Banner
     public long BannerId { get; set; }
 
     public string Image { get; set; } = null!;
-    
+
     public string? Text { get; set; }
-    
+
     public string? Title { get; set; }
 
     public int Status { get; set; }

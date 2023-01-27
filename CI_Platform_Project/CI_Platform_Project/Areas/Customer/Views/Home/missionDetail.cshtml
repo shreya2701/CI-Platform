@@ -36,31 +36,57 @@
         });
     }
     $(document).ready(function() {
-        $("#st_1").click(function() {
-            console.log('working');
-            $(".rate").css("color", "#757575");
-            $("#st_1").css("color", "#f8d441");
-            RateMission(@Model.missionCard.mission.MissionId , 1);
+        //$("#st_1").click(function() {
+        //    console.log('working');
+        //    $(".rate").css("color", "#757575");
+        //    $("#st_1").css("color", "#f8d441");
+        //    RateMission(@Model.missionCard.mission.MissionId , 1);
+        //});
+        //$("#st_2").click(function() {
+        //    $(".rate").css("color", "#757575");
+        //    $("#st_1, #st_2").css("color", "#f8d441");
+        //    RateMission(@Model.missionCard.mission.MissionId , 2);
+        //});
+        //$("#st_3").click(function() {
+        //    $(".rate").css("color", "#757575")
+        //    $("#st_1, #st_2, #st_3").css("color", "#f8d441");
+        //    RateMission(@Model.missionCard.mission.MissionId , 3);
+        //});
+        //$("#st_4").click(function() {
+        //    $(".rate").css("color", "#757575");
+        //    $("#st_1, #st_2, #st_3, #st_4").css("color", "#f8d441");
+        //    RateMission(@Model.missionCard.mission.MissionId , 4);
+        //});
+        //$("#st_5").click(function() {
+        //    $(".rate").css("color", "#757575");
+        //    $("#st_1, #st_2, #st_3, #st_4, #st_5").css("color", "#f8d441");
+        //    RateMission(@Model.missionCard.mission.MissionId , 5);
+        //});
+        $("#st_1").click(function(){
+            $(".rtcolor").removeClass("text-warning");
+            $("#st_1").addClass("text-warning");
+            RateMission(1);
         });
-        $("#st_2").click(function() {
-            $(".rate").css("color", "#757575");
-            $("#st_1, #st_2").css("color", "#f8d441");
-            RateMission(@Model.missionCard.mission.MissionId , 2);
+        $("#st_2").click(function(){
+            $(".rtcolor").removeClass("text-warning");
+            $("#st_1, #st_2").addClass("text-warning");
+            RateMission(2);
         });
-        $("#st_3").click(function() {
-            $(".rate").css("color", "#757575")
-            $("#st_1, #st_2, #st_3").css("color", "#f8d441");
-            RateMission(@Model.missionCard.mission.MissionId , 3);
+        $("#st_3").click(function(){
+            console.log("ittttttttttt")
+            $(".rtcolor").removeClass("text-warning");
+            $("#st_1, #st_2, #st_3").addClass("text-warning");
+            RateMission(3);
         });
-        $("#st_4").click(function() {
-            $(".rate").css("color", "#757575");
-            $("#st_1, #st_2, #st_3, #st_4").css("color", "#f8d441");
-            RateMission(@Model.missionCard.mission.MissionId , 4);
+        $("#st_4").click(function(){
+            $(".rtcolor").removeClass("text-warning");
+            $("#st_1, #st_2, #st_3, #st_4").addClass("text-warning");
+            RateMission(4);
         });
-        $("#st_5").click(function() {
-            $(".rate").css("color", "#757575");
-            $("#st_1, #st_2, #st_3, #st_4, #st_5").css("color", "#f8d441");
-            RateMission(@Model.missionCard.mission.MissionId , 5);
+        $("#st_5").click(function(){
+            $(".rtcolor").removeClass("text-warning");
+            $("#st_1, #st_2, #st_3, #st_4, #st_5").addClass("text-warning");
+            RateMission(5);
         });
     });
 
@@ -81,6 +107,22 @@
             }
         });
     }
+
+    function PostComment(id){
+         var com = $("textarea#CommentBox").val();
+         $.ajax({
+            url: 'Customer/Home/PostComment',
+            type:'POST',
+            dataType:'json',
+            data:{id:id,comment:com},
+            success:function(d){
+                location.reload();
+            },
+            error:function(){
+                alert('Error');
+            }
+         });
+     }
 
     //    $(function() {
     //    var placeholderElement = $('#modal-placeholder');
@@ -351,9 +393,9 @@
             }
             else
             {
-                
+
             }
-            
+
 
         </div>
     </div>
@@ -476,36 +518,31 @@
                     <h3 class="mt-5">
                         comment
                     </h3>
-                    <p class="mt-2 small">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br><br>
 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <h3 class="mt-5">
-                        Challenges
-                    </h3>
-                    <p class="mt-2 small">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
+                    <textarea id="CommentBox" class="form-control"></textarea>
+                    <button type="button" onclick="PostComment(@Model.missionCard.mission.MissionId)" class="btn btn-outline-warning my-3 rounded-pill"
+                            style="margin-left: auto; margin-right: auto;">
+                        <span class="text-wrap">Post Comment</span>
+                    </button>
 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <h3 class="mt-5">
-                        Challenges
-                    </h3>
-                    <div class="d-md-flex mb-sm-3 mb-xs-3 align-content-start">
-                        <div class="text-center mt-xs-2  mt-sm-2 ">
-                            <button type="submit" class="p-1 px-4  py-2 btn-block rounded-pill small" style="max-width: 100%"><img src="assets/heart.png"><span class="ms-2">Add To Favorite</span> </button>
-                        </div>
-                        <div class="text-center mt-sm-2 ms-2">
-                            <button type="submit" class=" px-4  py-2 btn-block rounded-pill small "><img src="assets/heart.png"><span class="ms-2">Recommend to a co-workers</span> </button>
-                        </div>
-                        <div class="text-center mt-sm-2 ms-2">
-                            <button type="submit" class=" px-4  py-2 btn-block rounded-pill small "><img src="assets/heart.png"><span class="ms-2">Recommend to a co-workers</span> </button>
-                        </div>
+                    <div class="p-3" style="background-color:#f7f7f7;">
+                        @foreach (var item in Model.comments)
+                        {
+                            <div class="row mb-3 p-3 ms-0 me-0" style="background-color:white;">
+                                <div class="col-lg-1 col-md-2 col-sm-2 col-12 p-0">
+                                    <img src="@Url.Content(item.img)" class="rounded-circle" height="45px">
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-12 p-0">
+                                    <p class="mb-1" style="font-size:14px ;">@item.name</p>
+                                    <p style="font-size:10px ;">@item.createdAt.ToString()</p>
+                                    <p class="mb-0" style="font-size:12px ;">
+                                        @item.comment
+                                    </p>
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>

@@ -20,7 +20,7 @@
     var userId = Context.Session.GetString("UserId");
     if (userId == null)
     {
-        Context.Response.Redirect("https://localhost:7050");
+         Context.Response.Redirect("https://localhost:7050");
 
     }
 }
@@ -186,7 +186,7 @@
             <li class="nav-link d-flex p-0">
                 <!-- <input class="form-control w-100" type="search" placeholder="Search" aria-label="Search"> -->
                 <a href="#" class="nav-link text-center">
-                    <input type="search" style="width: 36vw;" class="form-control icon1 border-0" onkeyup="Search()" id="searchTitle" placeholder="Search Mission..." />
+                    <input type="search" style="width: 21vw;" class="form-control icon1 border-0" onkeyup="Search()" id="searchTitle" placeholder="Search Mission..." />
                 </a>
             </li>
         </ul>
@@ -238,7 +238,6 @@
                                 </select>
                             </div>
                         </a>
-
                     </li>
                     <li class="nav-line dropdown p-1 d-flex justify-content-end">
                         <a href="#" class="nav-link" data-bs-toggle="dropdown" style="width: 10vw;">

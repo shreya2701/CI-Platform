@@ -372,6 +372,20 @@ namespace CI_Platform_Project.Areas.Customer.Controllers
             //missionDetail.skills = x.Select(y => y.Skill.SkillName).ToList() ;
             missionDetail.skills = String.Join(", ", _db.MissionSkills.Where(x => x.MissionId == id && x.DeletedAt == null).Select(x => x.Skill.SkillName).ToList());
             var missionApp = _db.MissionApplications.Where(x => x.MissionId == id && x.ApprovalStatus == 1).AsEnumerable().ToList();
+            missionDetail.missionDocuments = _db.MissionDocuments.Where(x => x.MissionId == id && x.DeletedAt == null).AsEnumerable().ToList();
+            var com = _db.Comments.Where(x => x.MissionId == id).AsEnumerable().ToList();
+            var coms = new List<Models.Comment>();
+            foreach (var comment in com)
+            {
+                var temp1 = new Models.Comment();
+                var user = _db.Users.FirstOrDefault(x => x.UserId == comment.UserId);
+                //temp1.comment = comment.commentText;
+                temp1.img = user.Avatar != null ? user.Avatar : "~/assets/volunteer4.png";
+                temp1.name = user.FirstName + " " + user.LastName;
+                temp1.createdAt = comment.CreatedAt;
+                coms.Add(temp1);
+            }
+            missionDetail.comments = coms;
             var temp = _db.MissionRatings.FirstOrDefault(x => x.MissionId == id && x.UserId == int.Parse(HttpContext.Session.GetString("UserId")));
             if (temp != null)
             {
@@ -395,6 +409,18 @@ namespace CI_Platform_Project.Areas.Customer.Controllers
             missionDetail.relatedMission = RelatedMission((int)item.CityId, (int)item.CountryId, (int)item.ThemeId);
 
             return View(missionDetail);
+        }
+
+        public JsonResult PostComment(int id, string comment)
+        {
+            var com = new DataModels.Comment();
+            com.MissionId = id;
+            com.UserId = int.Parse(HttpContext.Session.GetString("UserId"));
+            //com.CommentText = comment;
+            //com.ApprovalStatus = 1;
+            _db.Comments.Add(com);
+            _db.SaveChanges();
+            return Json("done");
         }
 
         public string RateMission(long Mid, int Rating)
